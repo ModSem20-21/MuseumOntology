@@ -1,0 +1,448 @@
+@prefix : <http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47> .
+
+<http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#appartiene
+:appartiene rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Opera ;
+            rdfs:range :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#cittàHaMuseo
+:cittàHaMuseo rdf:type owl:ObjectProperty ;
+              owl:inverseOf :museoInCittà ;
+              rdfs:domain :Città ;
+              rdfs:range :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#contiene
+:contiene rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :inTerritorio ;
+          rdfs:domain :EntitàGeografica ;
+          rdfs:range :EntitàGeografica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#inTerritorio
+:inTerritorio rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain :EntitàGeografica ;
+              rdfs:range :EntitàGeografica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#localizzataIn
+:localizzataIn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Opera ;
+               rdfs:range :Nazione ;
+               owl:propertyChainAxiom ( :museoInCittà
+                                        :inTerritorio
+                                      ) .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#museoInCittà
+:museoInCittà rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Museo ;
+              rdfs:range :Città .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizza
+:realizza rdf:type owl:ObjectProperty ;
+          owl:inverseOf :realizzatoDa ;
+          rdfs:domain :Artista ;
+          rdfs:range :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaDipinto
+:realizzaDipinto rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :realizza ;
+                 rdfs:domain :Pittore ;
+                 rdfs:range :Dipinto .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaOperaArchitettonica
+:realizzaOperaArchitettonica rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :realizza ;
+                             rdfs:domain :Architetto ;
+                             rdfs:range :OperaArchitettonica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaScultura
+:realizzaScultura rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :realizza ;
+                  rdfs:domain :Scultore ;
+                  rdfs:range :Scultura .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzatoDa
+:realizzatoDa rdf:type owl:ObjectProperty ;
+              rdfs:domain :Opera ;
+              rdfs:range :Artista .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeArtista
+:nomeArtista rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Artista ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeCittà
+:nomeCittà rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Città ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeNazione
+:nomeNazione rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Nazione ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzataNel
+:realizzataNel rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Opera ;
+               rdfs:range xsd:unsignedInt .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#titoloOpera
+:titoloOpera rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Opera ;
+             rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Acquario
+:Acquario rdf:type owl:Class ;
+          rdfs:subClassOf :MuseoMarittimo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Architetto
+:Architetto rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :realizzaScultura ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Scultura
+                                ] ;
+            rdfs:subClassOf :ArtistaFigurativo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Artista
+:Artista rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :realizza ;
+                               owl:someValuesFrom :Opera
+                             ] .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaAudiovisivo
+:ArtistaAudiovisivo rdf:type owl:Class ;
+                    rdfs:subClassOf :Artista .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaFigurativo
+:ArtistaFigurativo rdf:type owl:Class ;
+                   rdfs:subClassOf :ArtistaVisivo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaUditivo
+:ArtistaUditivo rdf:type owl:Class ;
+                rdfs:subClassOf :Artista .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaVisivo
+:ArtistaVisivo rdf:type owl:Class ;
+               rdfs:subClassOf :Artista .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CapoDiModa
+:CapoDiModa rdf:type owl:Class ;
+            rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CasaMuseo
+:CasaMuseo rdf:type owl:Class ;
+           rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Cineasta
+:Cineasta rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :realizza ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Film
+                              ] ;
+          rdfs:subClassOf :ArtistaAudiovisivo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Città
+:Città rdf:type owl:Class ;
+       rdfs:subClassOf :EntitàGeografica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CittàMoltoTuristica
+:CittàMoltoTuristica rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty :cittàHaMuseo ;
+                                           owl:minQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :Museo
+                                         ] ;
+                     rdfs:subClassOf :Città .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CittàPocoTuristica
+:CittàPocoTuristica rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty :cittàHaMuseo ;
+                                          owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Museo
+                                        ] ;
+                    rdfs:subClassOf :Città .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Continente
+:Continente rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:oneOf ( :Americhe
+                                              :Asia
+                                              :Europa
+                                              :Oceania
+                                            )
+                                ] ;
+            rdfs:subClassOf :EntitàGeografica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Dipinto
+:Dipinto rdf:type owl:Class ;
+         rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#EntitàGeografica
+:EntitàGeografica rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Film
+:Film rdf:type owl:Class ;
+      rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fotografia
+:Fotografia rdf:type owl:Class ;
+            rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fotografo
+:Fotografo rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :realizza ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Fotografia
+                               ] ;
+           rdfs:subClassOf :ArtistaVisivo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fumettista
+:Fumettista rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :realizza ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Fumetto
+                                ] ;
+            rdfs:subClassOf :ArtistaVisivo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fumetto
+:Fumetto rdf:type owl:Class ;
+         rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#GiardinoBotanico
+:GiardinoBotanico rdf:type owl:Class ;
+                  rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Museo
+:Museo rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoArcheologico
+:MuseoArcheologico rdf:type owl:Class ;
+                   rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoDellaModa
+:MuseoDellaModa rdf:type owl:Class ;
+                rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoDiStoriaNaturale
+:MuseoDiStoriaNaturale rdf:type owl:Class ;
+                       rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoEtnografico
+:MuseoEtnografico rdf:type owl:Class ;
+                  rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoMarittimo
+:MuseoMarittimo rdf:type owl:Class ;
+                rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoMilitare
+:MuseoMilitare rdf:type owl:Class ;
+               rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoScientifico
+:MuseoScientifico rdf:type owl:Class ;
+                  rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoVirtuale
+:MuseoVirtuale rdf:type owl:Class ;
+               rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Nazione
+:Nazione rdf:type owl:Class ;
+         rdfs:subClassOf :EntitàGeografica .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneAfricana
+:NazioneAfricana rdf:type owl:Class ;
+                 rdfs:subClassOf :Nazione .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneAsiatica
+:NazioneAsiatica rdf:type owl:Class ;
+                 rdfs:subClassOf :Nazione .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneEuropea
+:NazioneEuropea rdf:type owl:Class ;
+                rdfs:subClassOf :Nazione .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Opera
+:Opera rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#OperaArchitettonica
+:OperaArchitettonica rdf:type owl:Class ;
+                     rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#OperaLetteraria
+:OperaLetteraria rdf:type owl:Class ;
+                 rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ParcoArcheologico
+:ParcoArcheologico rdf:type owl:Class ;
+                   rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Pittore
+:Pittore rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :realizzaDipinto ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Dipinto
+                             ] ;
+         rdfs:subClassOf :ArtistaFigurativo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scrittore
+:Scrittore rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :realizza ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :OperaLetteraria
+                               ] ;
+           rdfs:subClassOf :ArtistaVisivo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scultore
+:Scultore rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :realizzaOperaArchitettonica ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :OperaArchitettonica
+                              ] ;
+          rdfs:subClassOf :ArtistaFigurativo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scultura
+:Scultura rdf:type owl:Class ;
+          rdfs:subClassOf :Opera .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoAll'Aperto
+<http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoAll'Aperto> rdf:type owl:Class ;
+                                                                                            rdfs:subClassOf :Museo .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoD'Arte
+<http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoD'Arte> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf :Museo .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Americhe
+:Americhe rdf:type owl:NamedIndividual ,
+                   :Continente .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Asia
+:Asia rdf:type owl:NamedIndividual ,
+               :Continente .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Europa
+:Europa rdf:type owl:NamedIndividual ,
+                 :Continente .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Italia
+:Italia rdf:type owl:NamedIndividual ,
+                 :Nazione ;
+        :inTerritorio :Europa .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Oceania
+:Oceania rdf:type owl:NamedIndividual ,
+                  :Continente .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Torino
+:Torino rdf:type owl:NamedIndividual ,
+                 :Città ;
+        :inTerritorio :Italia .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

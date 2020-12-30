@@ -7,6 +7,7 @@
 @base <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator> .
 
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator> rdf:type owl:Ontology ;
+                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
                                                                          <http://purl.org/dc/elements/1.1/creators> """Pier Balestrucci
 Lanotte Michele"""^^xsd:string ;
                                                                          <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ;
@@ -48,159 +49,355 @@ Lanotte Michele"""^^xsd:string ;
 #    Object Properties
 #################################################################
 
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> rdfs:range :Opera ;
+                                                                              rdfs:label "haMembro"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> rdfs:domain :Opera ;
+                                                                               rdfs:label "èMembroDi"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/cittàsituataInContinente
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/cittàsituataInContinente> rdf:type owl:ObjectProperty ;
+                                                                                                 rdfs:domain :Città ;
+                                                                                                 rdfs:range :Continente ;
+                                                                                                 owl:propertyChainAxiom ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione>
+                                                                                                                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente>
+                                                                                                                        ) ;
+                                                                                                 rdfs:comment """Relazione tra entità della classe Città ed entità della classe Continente.
+Es. Torino è una città 'situataInContinente' Europa"""@it ;
+                                                                                                 rdfs:label "cittàSituataInContinente"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> rdf:type owl:ObjectProperty ,
+                                                                                             owl:TransitiveProperty ;
+                                                                                    rdfs:domain <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> ;
+                                                                                    rdfs:range <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> ;
+                                                                                    rdfs:comment """Relazione tra entità della classe EntitàGeografica
+Es. Torino è una città 'contenutaIn' Europa"""@it ;
+                                                                                    rdfs:label "contenutaIn"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/presentaIn
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/presentaIn> rdf:type owl:ObjectProperty ;
+                                                                                   rdfs:domain :Artista ;
+                                                                                   rdfs:range :Museo ;
+                                                                                   owl:propertyChainAxiom ( :realizza
+                                                                                                            <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf>
+                                                                                                            :appartiene
+                                                                                                          ) ;
+                                                                                   rdfs:comment """Relazione tra entità della classe Artista ed entità della classe Museo.
+Es. Leonardo Da Vinci 'presentaIn' museo del Louvre"""@it ;
+                                                                                   rdfs:label "presentaIn"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente> rdf:type owl:ObjectProperty ,
+                                                                                                     owl:FunctionalProperty ;
+                                                                                            rdfs:domain :Nazione ;
+                                                                                            rdfs:range :Continente ;
+                                                                                            rdfs:comment """Relazione tra entità della classe Nazione ed entità della classe Continente.
+Es. l'Italia è 'situataInContinente' Europa"""@it ;
+                                                                                            rdfs:label "situataInContinente"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione> rdf:type owl:ObjectProperty ,
+                                                                                                  owl:FunctionalProperty ;
+                                                                                         rdfs:domain :Città ;
+                                                                                         rdfs:range :Nazione ;
+                                                                                         rdfs:comment """Relazione tra entità della classe Città ed entità della classe Nazione.
+Es. Torino è 'situataInNazione' Italia"""@it ;
+                                                                                         rdfs:label "situataInNazione"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#appartiene
 :appartiene rdf:type owl:ObjectProperty ,
                      owl:FunctionalProperty ;
-            rdfs:domain :Opera ;
-            rdfs:range :Museo .
+            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+            rdfs:range :Museo ;
+            rdfs:comment """Relazione tra entità della classe Collezione ed entità della classe Museo.
+Es. collezione di arte egiziana è 'presentataIn' museo del Louvre"""@it ;
+            rdfs:label "presentataIn"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#cittàHaMuseo
 :cittàHaMuseo rdf:type owl:ObjectProperty ;
               owl:inverseOf :museoInCittà ;
               rdfs:domain :Città ;
-              rdfs:range :Museo .
+              rdfs:range :Museo ;
+              rdfs:comment """Relazione tra entità della classe Città ed entità della classe Museo.
+Es. Torino 'cittàHaMuseo' museo egizio"""@it ;
+              rdfs:label "cittàHaMuseo"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#contiene
-:contiene rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty ;
-          owl:inverseOf :inTerritorio ;
-          rdfs:domain :EntitàGeografica ;
-          rdfs:range :EntitàGeografica .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#inTerritorio
-:inTerritorio rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty ;
-              rdf:type owl:TransitiveProperty ;
-              rdfs:domain :EntitàGeografica ;
-              rdfs:range :EntitàGeografica .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#localizzataIn
-:localizzataIn rdf:type owl:ObjectProperty ;
-               rdfs:domain :Opera ;
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#localizzatoIn
+:localizzatoIn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Museo ;
                rdfs:range :Nazione ;
                owl:propertyChainAxiom ( :museoInCittà
-                                        :inTerritorio
-                                      ) .
+                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione>
+                                      ) ;
+               rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Nazione.
+Es. il museo egizio è 'localizzatoIn' Italia"""@it ;
+               rdfs:label "localizzatoIn"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#museoInCittà
 :museoInCittà rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty ;
               rdfs:domain :Museo ;
-              rdfs:range :Città .
+              rdfs:range :Città ;
+              rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Città.
+Es. il Louvre è un 'museoIncittà' Parigi"""@it ;
+              rdfs:label "museoInCittà"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizza
 :realizza rdf:type owl:ObjectProperty ;
           owl:inverseOf :realizzatoDa ;
           rdfs:domain :Artista ;
-          rdfs:range :Opera .
+          rdfs:range :Opera ;
+          rdfs:comment """Relazione tra entità della classe Artista ed entità della classe Opera.
+Es. Giuseppe De Nittis 'realizza' La colazione in Giardino"""@it ;
+          rdfs:label "realizza"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaDipinto
 :realizzaDipinto rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :realizza ;
                  rdfs:domain :Pittore ;
-                 rdfs:range :Dipinto .
+                 rdfs:range :Dipinto ;
+                 rdfs:comment """Relazione tra entità della classe Pittore ed entità della classe Dipinto.
+Es. Leonardo Da Vinci 'realizza' la Gioconda"""@it ;
+                 rdfs:label "realizzaDipinto"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaOperaArchitettonica
 :realizzaOperaArchitettonica rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf :realizza ;
                              rdfs:domain :Architetto ;
-                             rdfs:range :OperaArchitettonica .
+                             rdfs:range :OperaArchitettonica ;
+                             rdfs:comment """Relazione tra entità della classe Architetto ed entità della classe OperaArchitettonica.
+Es. Santiago Calatrava e Félix Candela 'realizza' la Città delle Arti e delle Scienze"""@it ;
+                             rdfs:label "realizzaOperaArchitettonica"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaScultura
 :realizzaScultura rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :realizza ;
                   rdfs:domain :Scultore ;
-                  rdfs:range :Scultura .
+                  rdfs:range :Scultura ;
+                  rdfs:comment """Relazione tra entità della classe Scultore ed entità della classe Scultura.
+Es. Michelangelo 'realizza' il David"""@it ;
+                  rdfs:label "realizzaScultura"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzatoDa
 :realizzatoDa rdf:type owl:ObjectProperty ;
               rdfs:domain :Opera ;
-              rdfs:range :Artista .
+              rdfs:range :Artista ;
+              rdfs:comment """Relazione tra entità della classe Opera ed entità della classe Artista.
+Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
+              rdfs:label "realizzaDa"@it .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> rdf:type owl:DatatypeProperty ;
+                                                                                       rdfs:domain :Continente ;
+                                                                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                                                    owl:oneOf [ rdf:type rdf:List ;
+                                                                                                                rdf:first "Africa" ;
+                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                           rdf:first "Americhe" ;
+                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                      rdf:first "Asia" ;
+                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                 rdf:first "Europa" ;
+                                                                                                                                                 rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                            rdf:first "Oceania" ;
+                                                                                                                                                            rdf:rest rdf:nil
+                                                                                                                                                          ]
+                                                                                                                                               ]
+                                                                                                                                    ]
+                                                                                                                         ]
+                                                                                                              ]
+                                                                                                  ] ;
+                                                                                       rdfs:comment "Proprietà che indica il nome di un'entità della classe Continente"@it ;
+                                                                                       rdfs:label "nomeContinente"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> rdf:type owl:DatatypeProperty ;
+                                                                                  rdfs:comment "Proprietà che indica il nome di un'entità della classe Museo"@it ;
+                                                                                  rdfs:label "nomeMuseo"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeArtista
 :nomeArtista rdf:type owl:DatatypeProperty ;
              rdfs:domain :Artista ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "Proprietà che indica il nome di un'entità della classe Artista"@it ;
+             rdfs:label "nomeArtista"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeCittà
 :nomeCittà rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
            rdfs:domain :Città ;
-           rdfs:range xsd:string .
+           rdfs:range xsd:string ;
+           rdfs:comment "Proprietà che indica il nome di un'entità della classe Città"@it ;
+           rdfs:label "nomeCittà"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#nomeNazione
 :nomeNazione rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :Nazione ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "Proprietà che indica il nome di un'entità della classe Nazione"@it ;
+             rdfs:label "nomeNazione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzataNel
 :realizzataNel rdf:type owl:DatatypeProperty ;
                rdfs:domain :Opera ;
-               rdfs:range xsd:unsignedInt .
+               rdfs:range xsd:unsignedInt ;
+               rdfs:comment "Proprietà che indica l'anno di realizzazione di un'entità della classe Opera"@it ;
+               rdfs:label "realizzataNel"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#titoloOpera
 :titoloOpera rdf:type owl:DatatypeProperty ;
              rdfs:domain :Opera ;
-             rdfs:range xsd:string .
+             rdfs:range xsd:string ;
+             rdfs:comment "Proprietà che indica il nome di un'entità della classe Opera"@it ;
+             rdfs:label "titoloOpera"@it .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> ;
+                                                                                                     owl:someValuesFrom :Opera
+                                                                                                   ] ;
+                                                                               rdfs:comment "Una collezione d'arte è un insieme di opere rifacente a un periodo, una cultura, un'area geografica..."@it ;
+                                                                               rdfs:label "Collezione"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto> rdf:type owl:Class ;
                                                                                         rdfs:subClassOf :Museo ;
-                                                                                        rdfs:comment "Classe di musei all'aperto"^^xsd:string ;
-                                                                                        rdfs:label "MuseoAll'Aperto"^^xsd:string .
+                                                                                        rdfs:comment "Classe di musei all'aperto"@it ;
+                                                                                        rdfs:label "MuseoAll'Aperto"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> rdf:type owl:Class ;
                                                                                     rdfs:subClassOf :Museo ;
-                                                                                    rdfs:comment "Classe di musei d'arte"^^xsd:string ;
-                                                                                    rdfs:label "MuseoD'Arte"^^xsd:string ;
+                                                                                    rdfs:comment "Classe di musei d'arte"@it ;
+                                                                                    rdfs:label "MuseoD'Arte"@it ;
                                                                                     rdfs:seeAlso "http://dbpedia.org/page/Art_museum"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteAntica
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteAntica> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                   owl:disjointWith <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna> ;
+                                                                                   rdfs:comment "Classe che rappresenta collezioni di opere d'arte antica"@it ;
+                                                                                   rdfs:label "CollezioneArteAntica"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteDecorativa
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteDecorativa> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                       rdfs:comment "Classe che rappresenta collezioni di opere d'arte decorativa"@it ;
+                                                                                       rdfs:label "CollezioneArteDecorativa"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteIslamica
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteIslamica> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                     owl:disjointWith <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOccidentale> ,
+                                                                                                      <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOrientale> ;
+                                                                                     rdfs:comment "Classe che rappresenta collezioni di arte islamica"@it ;
+                                                                                     rdfs:label "CollezioneArteIslamica"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                    rdfs:comment "Classe che rappresenta collezioni di arte moderna"@it ;
+                                                                                    rdfs:label "CollezioneArteModerna"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOccidentale
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOccidentale> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                        owl:disjointWith <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOrientale> ;
+                                                                                        rdfs:comment "Classe che rappresenta collezioni di opere d'arte occidentale"@it ;
+                                                                                        rdfs:label "CollezioneArteOccidentale"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOrientale
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOrientale> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                      rdfs:comment "Classe che rappresenta collezioni di opere d'arte orientale"@it ;
+                                                                                      rdfs:label "CollezioneArteOrientale"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Artigianato
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Artigianato> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                    rdfs:comment "Classe che rappresenta collezioni di opere artigianali"@it ;
+                                                                                    rdfs:label "CollezioneArtigianato"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Costume
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Costume> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                rdfs:comment "Classe che rappresenta collezioni di costumi"@it ;
+                                                                                rdfs:label "CollezioneCostume"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Orientamento
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Orientamento> rdf:type owl:Class ;
+                                                                                     rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                     rdfs:comment "Classe che rappresenta collezioni di opere ornamentali"@it ;
+                                                                                     rdfs:label "CollezioneOrnamento"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Acquario
 :Acquario rdf:type owl:Class ;
           rdfs:subClassOf :MuseoMarittimo ;
-          rdfs:comment "Classe che rappresenta gli acquari"^^xsd:string ;
-          rdfs:label "Acquario"^^xsd:string ;
+          rdfs:comment "Classe che rappresenta gli acquari"@it ;
+          rdfs:label "Acquario"@it ;
           rdfs:seeAlso "http://dbpedia.org/page/Public_aquarium"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Architetto
 :Architetto rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :realizzaScultura ;
+                                  owl:onProperty :realizzaOperaArchitettonica ;
                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Scultura
+                                  owl:onClass :OperaArchitettonica
                                 ] ;
             rdfs:subClassOf :ArtistaFigurativo ;
-            rdfs:comment "Classe di artisti che realizza opere architettoniche"^^xsd:string ;
-            rdfs:label "Architetto"^^xsd:string ;
+            rdfs:comment "Classe di artisti che realizza opere architettoniche"@it ;
+            rdfs:label "Architetto"@it ;
             rdfs:seeAlso "http://dbpedia.org/ontology/Architect"^^xsd:string .
 
 
@@ -210,50 +407,50 @@ Lanotte Michele"""^^xsd:string ;
                                owl:onProperty :realizza ;
                                owl:someValuesFrom :Opera
                              ] ;
-         rdfs:comment "La classe Artista rappresenta le principali categorie di artisti"^^xsd:string ;
-         rdfs:label "Artista"^^xsd:string ;
+         rdfs:comment "La classe Artista rappresenta le principali categorie di artisti"@it ;
+         rdfs:label "Artista"@it ;
          rdfs:seeAlso "http://dbpedia.org/ontology/Artist"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaAudiovisivo
 :ArtistaAudiovisivo rdf:type owl:Class ;
                     rdfs:subClassOf :Artista ;
-                    rdfs:comment "Rappresenta la classe di artisti che realizzano opere audio-visive"^^xsd:string ;
-                    rdfs:label "ArtistaAudiovisivo"^^xsd:string .
+                    rdfs:comment "Rappresenta la classe di artisti che realizzano opere audio-visive"@it ;
+                    rdfs:label "ArtistaAudiovisivo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaFigurativo
 :ArtistaFigurativo rdf:type owl:Class ;
                    rdfs:subClassOf :ArtistaVisivo ;
-                   rdfs:comment "Classe di artisti che realizza opere architettoniche, dipinti e sculture"^^xsd:string ;
-                   rdfs:label "ArtistaFigurativo"^^xsd:string .
+                   rdfs:comment "Classe di artisti che realizza opere architettoniche, dipinti e sculture"@it ;
+                   rdfs:label "ArtistaFigurativo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaUditivo
 :ArtistaUditivo rdf:type owl:Class ;
                 rdfs:subClassOf :Artista ;
-                rdfs:label "ArtistaUditivo"^^xsd:string .
+                rdfs:label "ArtistaUditivo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ArtistaVisivo
 :ArtistaVisivo rdf:type owl:Class ;
                rdfs:subClassOf :Artista ;
-               rdfs:comment "Classe di artisti che realizza opere visive"^^xsd:string ;
-               rdfs:label "ArtistaVisivo"^^xsd:string .
+               rdfs:comment "Classe di artisti che realizza opere visive"@it ;
+               rdfs:label "ArtistaVisivo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CapoDiModa
 :CapoDiModa rdf:type owl:Class ;
             rdfs:subClassOf :Opera ;
-            rdfs:comment "Classe che rappresenta tutti i capi di moda"^^xsd:string ;
-            rdfs:label "CapoDiModa"^^xsd:string .
+            rdfs:comment "Classe che rappresenta tutti i capi di moda"@it ;
+            rdfs:label "CapoDiModa"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CasaMuseo
 :CasaMuseo rdf:type owl:Class ;
            rdfs:subClassOf :Museo ;
-           rdfs:comment "Rappresenta le case di artisti diventate musei"^^xsd:string ;
-           rdfs:label "CasaMuseo"^^xsd:string .
+           rdfs:comment "Rappresenta le case di artisti diventate musei"@it ;
+           rdfs:label "CasaMuseo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Cineasta
@@ -264,15 +461,15 @@ Lanotte Michele"""^^xsd:string ;
                                 owl:onClass :Film
                               ] ;
           rdfs:subClassOf :ArtistaAudiovisivo ;
-          rdfs:comment "Classe di artisti che realizza film"^^xsd:string ;
-          rdfs:label "Cineasta"^^xsd:string .
+          rdfs:comment "Classe di artisti che realizza film"@it ;
+          rdfs:label "Cineasta"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Città
 :Città rdf:type owl:Class ;
-       rdfs:subClassOf :EntitàGeografica ;
-       rdfs:comment "Classe che rappresenta territori cittadini"^^xsd:string ;
-       rdfs:label "Città"^^xsd:string ;
+       rdfs:subClassOf <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> ;
+       rdfs:comment "Classe che rappresenta territori cittadini"@it ;
+       rdfs:label "Città"@it ;
        rdfs:seeAlso "http://dbpedia.org/ontology/city"^^xsd:string .
 
 
@@ -284,20 +481,20 @@ Lanotte Michele"""^^xsd:string ;
                                            owl:onClass :Museo
                                          ] ;
                      rdfs:subClassOf :Città ;
-                     rdfs:comment "Classe di città in cui sono presenti almeno 4 musei"^^xsd:string ;
-                     rdfs:label "CittàMoltoTuristica"^^xsd:string .
+                     rdfs:comment "Classe di città in cui sono presenti almeno 4 musei"@it ;
+                     rdfs:label "CittàMoltoTuristica"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CittàPocoTuristica
-:CittàPocoTuristica rdf:type owl:Class ;
-                    owl:equivalentClass [ rdf:type owl:Restriction ;
-                                          owl:onProperty :cittàHaMuseo ;
-                                          owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :Museo
-                                        ] ;
-                    rdfs:subClassOf :Città ;
-                    rdfs:comment "Classe di città in cui sono presenti meno di 4 musei"^^xsd:string ;
-                    rdfs:label "CittàPocoTuristica"^^xsd:string .
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#CittàTuristica
+:CittàTuristica rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :cittàHaMuseo ;
+                                      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Museo
+                                    ] ;
+                rdfs:subClassOf :Città ;
+                rdfs:comment "Classe di città in cui sono presenti almeno 4 musei"@it ;
+                rdfs:label "CittàTuristica"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Continente
@@ -310,36 +507,30 @@ Lanotte Michele"""^^xsd:string ;
                                               :Oceania
                                             )
                                 ] ;
-            rdfs:subClassOf :EntitàGeografica ;
+            rdfs:subClassOf <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> ;
             rdfs:comment """Classe che rappresenta quattro continenti:
 -Africa
 -Americhe
 -Asia
 -Europa
--Oceania"""^^xsd:string ;
-            rdfs:label "Continente"^^xsd:string ;
+-Oceania"""@it ;
+            rdfs:label "Continente"@it ;
             rdfs:seeAlso "http://dbpedia.org/ontology/continent"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Dipinto
 :Dipinto rdf:type owl:Class ;
          rdfs:subClassOf :Opera ;
-         rdfs:comment "Classe che rappresenta i dipinti"^^xsd:string ;
-         rdfs:label "Dipinto"^^xsd:string ;
+         rdfs:comment "Classe che rappresenta i dipinti"@it ;
+         rdfs:label "Dipinto"@it ;
          rdfs:seeAlso "http://dbpedia.org/ontology/Painting"^^xsd:string .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#EntitàGeografica
-:EntitàGeografica rdf:type owl:Class ;
-                  rdfs:comment "Rappresenta la classe per territori estesi quali città e nazioni"^^xsd:string ;
-                  rdfs:label "EntitàGeografica"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Film
 :Film rdf:type owl:Class ;
       rdfs:subClassOf :Opera ;
-      rdfs:comment "Classe che rappresenta opere cinematografiche"^^xsd:string ;
-      rdfs:label "Film"^^xsd:string ;
+      rdfs:comment "Classe che rappresenta opere cinematografiche"@it ;
+      rdfs:label "Film"@it ;
       rdfs:seeAlso "http://dbpedia.org/ontology/Film"^^xsd:string ,
                    "http://dbpedia.org/page/Film"^^xsd:string .
 
@@ -347,8 +538,8 @@ Lanotte Michele"""^^xsd:string ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fotografia
 :Fotografia rdf:type owl:Class ;
             rdfs:subClassOf :Opera ;
-            rdfs:comment "Classe che rappresenta opere di tipo fotografico"^^xsd:string ;
-            rdfs:label "Fotografia"^^xsd:string ;
+            rdfs:comment "Classe che rappresenta opere di tipo fotografico"@it ;
+            rdfs:label "Fotografia"@it ;
             rdfs:seeAlso "http://dbpedia.org/page/Photograph"^^xsd:string .
 
 
@@ -360,8 +551,8 @@ Lanotte Michele"""^^xsd:string ;
                                  owl:onClass :Fotografia
                                ] ;
            rdfs:subClassOf :ArtistaVisivo ;
-           rdfs:comment "Classe di artisti che realizza opere fotografiche"^^xsd:string ;
-           rdfs:label "Fotografo"^^xsd:string ;
+           rdfs:comment "Classe di artisti che realizza opere fotografiche"@it ;
+           rdfs:label "Fotografo"@it ;
            rdfs:seeAlso "http://dbpedia.org/ontology/photographer"^^xsd:string .
 
 
@@ -373,16 +564,16 @@ Lanotte Michele"""^^xsd:string ;
                                   owl:onClass :Fumetto
                                 ] ;
             rdfs:subClassOf :ArtistaVisivo ;
-            rdfs:comment "Classe di artisti che realizza fumetti"^^xsd:string ;
-            rdfs:label "Fumettista"^^xsd:string ;
+            rdfs:comment "Classe di artisti che realizza fumetti"@it ;
+            rdfs:label "Fumettista"@it ;
             rdfs:seeAlso "http://dbpedia.org/ontology/ComicsCreator"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fumetto
 :Fumetto rdf:type owl:Class ;
          rdfs:subClassOf :Opera ;
-         rdfs:comment "Classe che rappresenta opere di tipo fumetto"^^xsd:string ;
-         rdfs:label "Fumetto"^^xsd:string ;
+         rdfs:comment "Classe che rappresenta opere di tipo fumetto"@it ;
+         rdfs:label "Fumetto"@it ;
          rdfs:seeAlso "http://dbpedia.org/ontology/Comic"^^xsd:string ,
                       "http://dbpedia.org/page/Comics"^^xsd:string .
 
@@ -390,128 +581,138 @@ Lanotte Michele"""^^xsd:string ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#GiardinoBotanico
 :GiardinoBotanico rdf:type owl:Class ;
                   rdfs:subClassOf :Museo ;
-                  rdfs:comment "Rappresenta musei botanici"^^xsd:string ;
-                  rdfs:label "GiardinoBotanico"^^xsd:string ;
+                  rdfs:comment "Rappresenta musei botanici"@it ;
+                  rdfs:label "GiardinoBotanico"@it ;
                   rdfs:seeAlso "http://dbpedia.org/page/Botanical_garden"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Museo
 :Museo rdf:type owl:Class ;
-       rdfs:comment "Classe che rappresenta i musei"^^xsd:string ;
-       rdfs:label "Museo"^^xsd:string ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :museoInCittà ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Città
+                           ] ;
+       rdfs:comment "Classe che rappresenta i musei"@it ;
+       rdfs:label "Museo"@it ;
        rdfs:seeAlso "http://dbpedia.org/ontology/museum"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoArcheologico
 :MuseoArcheologico rdf:type owl:Class ;
                    rdfs:subClassOf :Museo ;
-                   rdfs:comment "Classe di musei archeologici"^^xsd:string ;
-                   rdfs:label "MuseoArcheologico"^^xsd:string .
+                   rdfs:comment "Classe di musei archeologici"@it ;
+                   rdfs:label "MuseoArcheologico"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoDellaModa
 :MuseoDellaModa rdf:type owl:Class ;
                 rdfs:subClassOf :Museo ;
-                rdfs:comment "Classe di musei della moda"^^xsd:string ;
-                rdfs:label "MuseoDellaModa"^^xsd:string .
+                rdfs:comment "Classe di musei della moda"@it ;
+                rdfs:label "MuseoDellaModa"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoDiStoriaNaturale
 :MuseoDiStoriaNaturale rdf:type owl:Class ;
                        rdfs:subClassOf :Museo ;
-                       rdfs:comment "Classe di musei di storia naturale"^^xsd:string ;
-                       rdfs:label "MuseoDiStoriaNaturale"^^xsd:string .
+                       rdfs:comment "Classe di musei di storia naturale"@it ;
+                       rdfs:label "MuseoDiStoriaNaturale"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoEtnografico
 :MuseoEtnografico rdf:type owl:Class ;
                   rdfs:subClassOf :Museo ;
-                  rdfs:comment "Classe di musei etnografici"^^xsd:string ;
-                  rdfs:label "MuseoEtnografico"^^xsd:string .
+                  rdfs:comment "Classe di musei etnografici"@it ;
+                  rdfs:label "MuseoEtnografico"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoMarittimo
 :MuseoMarittimo rdf:type owl:Class ;
                 rdfs:subClassOf :Museo ;
-                rdfs:comment "Classe di musei marittimi"^^xsd:string ;
-                rdfs:label "MuseoMarittimo"^^xsd:string .
+                rdfs:comment "Classe di musei marittimi"@it ;
+                rdfs:label "MuseoMarittimo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoMilitare
 :MuseoMilitare rdf:type owl:Class ;
                rdfs:subClassOf :Museo ;
-               rdfs:comment "Classe di musei militari"^^xsd:string ;
-               rdfs:label "MuseoMilitare"^^xsd:string .
+               rdfs:comment "Classe di musei militari"@it ;
+               rdfs:label "MuseoMilitare"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoScientifico
 :MuseoScientifico rdf:type owl:Class ;
                   rdfs:subClassOf :Museo ;
-                  rdfs:comment "Classe di musei scientifici"^^xsd:string ;
-                  rdfs:label "MuseoScientifico"^^xsd:string .
+                  rdfs:comment "Classe di musei scientifici"@it ;
+                  rdfs:label "MuseoScientifico"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#MuseoVirtuale
 :MuseoVirtuale rdf:type owl:Class ;
                rdfs:subClassOf :Museo ;
-               rdfs:comment "Classe di musei virtuali"^^xsd:string ;
-               rdfs:label "MuseoVirtuale"^^xsd:string .
+               rdfs:comment "Classe di musei virtuali"@it ;
+               rdfs:label "MuseoVirtuale"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Nazione
 :Nazione rdf:type owl:Class ;
-         rdfs:subClassOf :EntitàGeografica ;
-         rdfs:comment "Classe che rappresenta territori nazionali"^^xsd:string ;
-         rdfs:label "Nazione"^^xsd:string ;
+         rdfs:subClassOf <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> ;
+         rdfs:comment "Classe che rappresenta territori nazionali"@it ;
+         rdfs:label "Nazione"@it ;
          rdfs:seeAlso "http://dbpedia.org/ontology/nation"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneAfricana
 :NazioneAfricana rdf:type owl:Class ;
                  rdfs:subClassOf :Nazione ;
-                 rdfs:comment "Classe che rappresenta le nazioni africane"^^xsd:string ;
-                 rdfs:label "NazioneAfricana"^^xsd:string .
+                 rdfs:comment "Classe che rappresenta le nazioni africane"@it ;
+                 rdfs:label "NazioneAfricana"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneAsiatica
 :NazioneAsiatica rdf:type owl:Class ;
                  rdfs:subClassOf :Nazione ;
-                 rdfs:comment "Classe che rappresenta le nazioni asiatiche"^^xsd:string ;
-                 rdfs:label "NazioneAsiatica"^^xsd:string .
+                 rdfs:comment "Classe che rappresenta le nazioni asiatiche"@it ;
+                 rdfs:label "NazioneAsiatica"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#NazioneEuropea
 :NazioneEuropea rdf:type owl:Class ;
                 rdfs:subClassOf :Nazione ;
-                rdfs:comment "Classe che rappresenta le nazioni europee"^^xsd:string ;
-                rdfs:label "NazioneEuropea"^^xsd:string .
+                rdfs:comment "Classe che rappresenta le nazioni europee"@it ;
+                rdfs:label "NazioneEuropea"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Opera
 :Opera rdf:type owl:Class ;
-       rdfs:comment "Classe che rappresenta le varie tipologie di opere"^^xsd:string ;
-       rdfs:label "Opera"^^xsd:string .
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>
+                           ] ;
+       rdfs:comment "Classe che rappresenta le varie tipologie di opere"@it ;
+       rdfs:label "Opera"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#OperaArchitettonica
 :OperaArchitettonica rdf:type owl:Class ;
                      rdfs:subClassOf :Opera ;
-                     rdfs:comment "Classe che rappresenta opere architettoniche"^^xsd:string ;
-                     rdfs:label "OperaArchitettonica"^^xsd:string .
+                     rdfs:comment "Classe che rappresenta opere architettoniche"@it ;
+                     rdfs:label "OperaArchitettonica"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#OperaLetteraria
 :OperaLetteraria rdf:type owl:Class ;
                  rdfs:subClassOf :Opera ;
-                 rdfs:comment "Classe che rappresenta opere letterarie"^^xsd:string ;
-                 rdfs:label "OperaLetteraria"^^xsd:string .
+                 rdfs:comment "Classe che rappresenta opere letterarie"@it ;
+                 rdfs:label "OperaLetteraria"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#ParcoArcheologico
 :ParcoArcheologico rdf:type owl:Class ;
                    rdfs:subClassOf :Museo ;
-                   rdfs:comment "Classe che rappresenta i parchi archeologici"^^xsd:string ;
-                   rdfs:label "ParcoArcheologico"^^xsd:string .
+                   rdfs:comment "Classe che rappresenta i parchi archeologici"@it ;
+                   rdfs:label "ParcoArcheologico"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Pittore
@@ -522,8 +723,8 @@ Lanotte Michele"""^^xsd:string ;
                                owl:onClass :Dipinto
                              ] ;
          rdfs:subClassOf :ArtistaFigurativo ;
-         rdfs:comment "Classe di artisti che realizza dipinti"^^xsd:string ;
-         rdfs:label "Pittore"^^xsd:string ;
+         rdfs:comment "Classe di artisti che realizza dipinti"@it ;
+         rdfs:label "Pittore"@it ;
          rdfs:seeAlso "http://dbpedia.org/ontology/Painter"^^xsd:string .
 
 
@@ -535,29 +736,29 @@ Lanotte Michele"""^^xsd:string ;
                                  owl:onClass :OperaLetteraria
                                ] ;
            rdfs:subClassOf :ArtistaVisivo ;
-           rdfs:comment "Classe di artisti che realizza opere letterarie"^^xsd:string ;
-           rdfs:label "Scrittore"^^xsd:string ;
+           rdfs:comment "Classe di artisti che realizza opere letterarie"@it ;
+           rdfs:label "Scrittore"@it ;
            rdfs:seeAlso "http://dbpedia.org/ontology/writer"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scultore
 :Scultore rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :realizzaOperaArchitettonica ;
+                                owl:onProperty :realizzaScultura ;
                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :OperaArchitettonica
+                                owl:onClass :Scultura
                               ] ;
           rdfs:subClassOf :ArtistaFigurativo ;
-          rdfs:comment "Classe di artisti che realizza sculture"^^xsd:string ;
-          rdfs:label "Scultore"^^xsd:string ;
+          rdfs:comment "Classe di artisti che realizza sculture"@it ;
+          rdfs:label "Scultore"@it ;
           rdfs:seeAlso "http://dbpedia.org/ontology/Sculptor"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scultura
 :Scultura rdf:type owl:Class ;
           rdfs:subClassOf :Opera ;
-          rdfs:comment "Classe che rappresenta le sculture"^^xsd:string ;
-          rdfs:label "Scultura"^^xsd:string ;
+          rdfs:comment "Classe che rappresenta le sculture"@it ;
+          rdfs:label "Scultura"@it ;
           rdfs:seeAlso "http://dbpedia.org/page/Sculpture"^^xsd:string .
 
 
@@ -567,39 +768,120 @@ Lanotte Michele"""^^xsd:string ;
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Africa
 <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Africa> rdf:type owl:NamedIndividual ,
-                                                                       :Continente .
+                                                                       :Continente ;
+                                                              <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> "Africa"^^xsd:string ;
+                                                              rdfs:comment "Individuo che rappresenta il continente africano"@it ;
+                                                              rdfs:seeAlso "http://dbpedia.org/page/Africa" .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio> rdf:type owl:NamedIndividual ,
+                                                                                             :Museo ;
+                                                                                    <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo Egizio"^^xsd:string ;
+                                                                                    rdfs:comment "Individuo che rappresenta il museo Egizio che si trova nella città di Torino"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale> rdf:type owl:NamedIndividual ,
+                                                                                                      :Museo ;
+                                                                                             <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo d'arte orientale"^^xsd:string ;
+                                                                                             rdfs:comment "Individuo che rappresenta il museo d'arte orientale che si trova nella città di Torino"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Americhe
 :Americhe rdf:type owl:NamedIndividual ,
-                   :Continente .
+                   :Continente ;
+          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> "Americhe"^^xsd:string ;
+          rdfs:comment "Individuo che rappresenta il continente americano"@it ;
+          rdfs:seeAlso "http://dbpedia.org/page/Americas" .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Asia
 :Asia rdf:type owl:NamedIndividual ,
-               :Continente .
+               :Continente ;
+      <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> "Asia"^^xsd:string ;
+      rdfs:comment "Individuo che rappresenta il continente asiatico"@it ;
+      rdfs:seeAlso "http://dbpedia.org/page/Asia" .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Europa
 :Europa rdf:type owl:NamedIndividual ,
-                 :Continente .
+                 :Continente ;
+        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> "Europa"^^xsd:string ;
+        rdfs:comment "Individuo che rappresenta il continente europeo"@it ;
+        rdfs:seeAlso "http://dbpedia.org/page/Europe" .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Italia
 :Italia rdf:type owl:NamedIndividual ,
                  :Nazione ;
-        :inTerritorio :Europa .
+        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Europa ;
+        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente> :Europa ;
+        :nomeNazione "Italia" ;
+        rdfs:comment "Individuo che rappresenta la nazione italiana"@it ;
+        rdfs:seeAlso "http://dbpedia.org/page/Italy" .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Oceania
 :Oceania rdf:type owl:NamedIndividual ,
-                  :Continente .
+                  :Continente ;
+         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeContinente> "Oceania"^^xsd:string ;
+         rdfs:comment "Individuo che rappresenta il continente oceanico"@it ;
+         rdfs:seeAlso "http://dbpedia.org/page/Oceania" .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Torino
 :Torino rdf:type owl:NamedIndividual ,
                  :Città ;
-        :inTerritorio :Italia .
+        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Italia ;
+        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione> :Italia ;
+        :cittàHaMuseo <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio> ,
+                      <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale> ;
+        :nomeCittà "Torino"^^xsd:string ;
+        rdfs:comment "Individuo che rappresenta la città di Torino"@it ;
+        rdfs:seeAlso "http://dbpedia.org/page/Turin" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CapoDiModa
+                :Dipinto
+                :Film
+                :Fotografia
+                :Fumetto
+                :OperaArchitettonica
+                :OperaLetteraria
+                :Scultura
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :NazioneAfricana
+                :NazioneAsiatica
+                :NazioneEuropea
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Africa>
+                        :Americhe
+                        :Asia
+                        :Europa
+                        :Oceania
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale>
+                      )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

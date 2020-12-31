@@ -59,18 +59,6 @@ Lanotte Michele"""^^xsd:string ;
                                                                                rdfs:label "èMembroDi"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/cittàsituataInContinente
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/cittàsituataInContinente> rdf:type owl:ObjectProperty ;
-                                                                                                 rdfs:domain :Città ;
-                                                                                                 rdfs:range :Continente ;
-                                                                                                 owl:propertyChainAxiom ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione>
-                                                                                                                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente>
-                                                                                                                        ) ;
-                                                                                                 rdfs:comment """Relazione tra entità della classe Città ed entità della classe Continente.
-Es. Torino è una città 'situataInContinente' Europa"""@it ;
-                                                                                                 rdfs:label "cittàSituataInContinente"@it .
-
-
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> rdf:type owl:ObjectProperty ,
                                                                                              owl:TransitiveProperty ;
@@ -85,43 +73,13 @@ Es. Torino è una città 'contenutaIn' Europa"""@it ;
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/presentaIn> rdf:type owl:ObjectProperty ;
                                                                                    rdfs:domain :Artista ;
                                                                                    rdfs:range :Museo ;
-                                                                                   owl:propertyChainAxiom ( :realizza
+                                                                                   owl:propertyChainAxiom ( :haRealizzato
                                                                                                             <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf>
-                                                                                                            :appartiene
+                                                                                                            :presentataIn
                                                                                                           ) ;
                                                                                    rdfs:comment """Relazione tra entità della classe Artista ed entità della classe Museo.
 Es. Leonardo Da Vinci 'presentaIn' museo del Louvre"""@it ;
                                                                                    rdfs:label "presentaIn"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente> rdf:type owl:ObjectProperty ,
-                                                                                                     owl:FunctionalProperty ;
-                                                                                            rdfs:domain :Nazione ;
-                                                                                            rdfs:range :Continente ;
-                                                                                            rdfs:comment """Relazione tra entità della classe Nazione ed entità della classe Continente.
-Es. l'Italia è 'situataInContinente' Europa"""@it ;
-                                                                                            rdfs:label "situataInContinente"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione> rdf:type owl:ObjectProperty ,
-                                                                                                  owl:FunctionalProperty ;
-                                                                                         rdfs:domain :Città ;
-                                                                                         rdfs:range :Nazione ;
-                                                                                         rdfs:comment """Relazione tra entità della classe Città ed entità della classe Nazione.
-Es. Torino è 'situataInNazione' Italia"""@it ;
-                                                                                         rdfs:label "situataInNazione"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#appartiene
-:appartiene rdf:type owl:ObjectProperty ,
-                     owl:FunctionalProperty ;
-            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
-            rdfs:range :Museo ;
-            rdfs:comment """Relazione tra entità della classe Collezione ed entità della classe Museo.
-Es. collezione di arte egiziana è 'presentataIn' museo del Louvre"""@it ;
-            rdfs:label "presentataIn"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#cittàHaMuseo
@@ -134,12 +92,52 @@ Es. Torino 'cittàHaMuseo' museo egizio"""@it ;
               rdfs:label "cittàHaMuseo"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#haRealizzato
+:haRealizzato rdf:type owl:ObjectProperty ;
+              owl:inverseOf :realizzatoDa ;
+              rdfs:domain :Artista ;
+              rdfs:range :Opera ;
+              rdfs:comment """Relazione tra entità della classe Artista ed entità della classe Opera.
+Es. Giuseppe De Nittis 'haRealizzato' La colazione in Giardino"""@it ;
+              rdfs:label "haRealizzato"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#haRealizzatoDipinto
+:haRealizzatoDipinto rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :haRealizzato ;
+                     rdfs:domain :Pittore ;
+                     rdfs:range :Dipinto ;
+                     rdfs:comment """Relazione tra entità della classe Pittore ed entità della classe Dipinto.
+Es. Leonardo Da Vinci 'haRealizzatoDipinto' la Gioconda"""@it ;
+                     rdfs:label "haRealizzatoDipinto"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#haRealizzatoOperaArchitettonica
+:haRealizzatoOperaArchitettonica rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :haRealizzato ;
+                                 rdfs:domain :Architetto ;
+                                 rdfs:range :OperaArchitettonica ;
+                                 rdfs:comment """Relazione tra entità della classe Architetto ed entità della classe OperaArchitettonica.
+Es. Santiago Calatrava e Félix Candela 'haRealizzatoOperaArchitettonica' la Città delle Arti e delle Scienze"""@it ;
+                                 rdfs:label "haRealizzatoOperaArchitettonica"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#haRealizzatoScultura
+:haRealizzatoScultura rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :haRealizzato ;
+                      rdfs:domain :Scultore ;
+                      rdfs:range :Scultura ;
+                      rdfs:comment """Relazione tra entità della classe Scultore ed entità della classe Scultura.
+Es. Michelangelo 'haRealizzatoScultura' il David"""@it ;
+                      rdfs:label "haRealizzatoScultura"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#localizzatoIn
 :localizzatoIn rdf:type owl:ObjectProperty ;
                rdfs:domain :Museo ;
                rdfs:range :Nazione ;
                owl:propertyChainAxiom ( :museoInCittà
-                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione>
+                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn>
                                       ) ;
                rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Nazione.
 Es. il museo egizio è 'localizzatoIn' Italia"""@it ;
@@ -155,44 +153,14 @@ Es. il Louvre è un 'museoIncittà' Parigi"""@it ;
               rdfs:label "museoInCittà"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizza
-:realizza rdf:type owl:ObjectProperty ;
-          owl:inverseOf :realizzatoDa ;
-          rdfs:domain :Artista ;
-          rdfs:range :Opera ;
-          rdfs:comment """Relazione tra entità della classe Artista ed entità della classe Opera.
-Es. Giuseppe De Nittis 'realizza' La colazione in Giardino"""@it ;
-          rdfs:label "realizza"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaDipinto
-:realizzaDipinto rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :realizza ;
-                 rdfs:domain :Pittore ;
-                 rdfs:range :Dipinto ;
-                 rdfs:comment """Relazione tra entità della classe Pittore ed entità della classe Dipinto.
-Es. Leonardo Da Vinci 'realizza' la Gioconda"""@it ;
-                 rdfs:label "realizzaDipinto"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaOperaArchitettonica
-:realizzaOperaArchitettonica rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf :realizza ;
-                             rdfs:domain :Architetto ;
-                             rdfs:range :OperaArchitettonica ;
-                             rdfs:comment """Relazione tra entità della classe Architetto ed entità della classe OperaArchitettonica.
-Es. Santiago Calatrava e Félix Candela 'realizza' la Città delle Arti e delle Scienze"""@it ;
-                             rdfs:label "realizzaOperaArchitettonica"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzaScultura
-:realizzaScultura rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :realizza ;
-                  rdfs:domain :Scultore ;
-                  rdfs:range :Scultura ;
-                  rdfs:comment """Relazione tra entità della classe Scultore ed entità della classe Scultura.
-Es. Michelangelo 'realizza' il David"""@it ;
-                  rdfs:label "realizzaScultura"@it .
+###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#presentataIn
+:presentataIn rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+              rdfs:range :Museo ;
+              rdfs:comment """Relazione tra entità della classe Collezione ed entità della classe Museo.
+Es. collezione di arte egiziana è 'presentataIn' museo del Louvre"""@it ;
+              rdfs:label "presentataIn"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#realizzatoDa
@@ -201,7 +169,7 @@ Es. Michelangelo 'realizza' il David"""@it ;
               rdfs:range :Artista ;
               rdfs:comment """Relazione tra entità della classe Opera ed entità della classe Artista.
 Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
-              rdfs:label "realizzaDa"@it .
+              rdfs:label "realizzatoDa"@it .
 
 
 #################################################################
@@ -373,6 +341,13 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EntitàGeografica> rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NazioneAmericana
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NazioneAmericana> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf :Nazione ;
+                                                                                         rdfs:comment "Classe che rappresenta le nazioni americane"@it ;
+                                                                                         rdfs:label "NazioneAmericana"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Orientamento
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Orientamento> rdf:type owl:Class ;
                                                                                      rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
@@ -391,7 +366,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Architetto
 :Architetto rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :realizzaOperaArchitettonica ;
+                                  owl:onProperty :haRealizzatoOperaArchitettonica ;
                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :OperaArchitettonica
                                 ] ;
@@ -404,7 +379,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Artista
 :Artista rdf:type owl:Class ;
          owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty :realizza ;
+                               owl:onProperty :haRealizzato ;
                                owl:someValuesFrom :Opera
                              ] ;
          rdfs:comment "La classe Artista rappresenta le principali categorie di artisti"@it ;
@@ -456,7 +431,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Cineasta
 :Cineasta rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :realizza ;
+                                owl:onProperty :haRealizzato ;
                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Film
                               ] ;
@@ -546,7 +521,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fotografo
 :Fotografo rdf:type owl:Class ;
            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                 owl:onProperty :realizza ;
+                                 owl:onProperty :haRealizzato ;
                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onClass :Fotografia
                                ] ;
@@ -559,7 +534,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Fumettista
 :Fumettista rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :realizza ;
+                                  owl:onProperty :haRealizzato ;
                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Fumetto
                                 ] ;
@@ -718,7 +693,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Pittore
 :Pittore rdf:type owl:Class ;
          owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty :realizzaDipinto ;
+                               owl:onProperty :haRealizzatoDipinto ;
                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onClass :Dipinto
                              ] ;
@@ -731,7 +706,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scrittore
 :Scrittore rdf:type owl:Class ;
            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                 owl:onProperty :realizza ;
+                                 owl:onProperty :haRealizzato ;
                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onClass :OperaLetteraria
                                ] ;
@@ -744,7 +719,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Scultore
 :Scultore rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :realizzaScultura ;
+                                owl:onProperty :haRealizzatoScultura ;
                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :Scultura
                               ] ;
@@ -774,6 +749,220 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
                                                               rdfs:seeAlso "http://dbpedia.org/page/Africa" .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/AcquarioGenova
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/AcquarioGenova> rdf:type owl:NamedIndividual ,
+                                                                                                :Acquario ;
+                                                                                       :museoInCittà <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Genova> ;
+                                                                                       :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Renzo_Piano> ;
+                                                                                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Acquario di Genova"^^xsd:string ;
+                                                                                       rdfs:comment "Individuo che rappresenta l'Acquario di Genova"@it ;
+                                                                                       rdfs:label "AcquarioGenova"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Berlino
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Berlino> rdf:type owl:NamedIndividual ,
+                                                                                         :Città ;
+                                                                                :nomeCittà "Berlino"^^xsd:string ;
+                                                                                rdfs:comment "Individuo che rappresenta la città di Berlino"@it ;
+                                                                                rdfs:label "Berlino"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/BorgoMedievale
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/BorgoMedievale> rdf:type owl:NamedIndividual ,
+                                                                                                <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto> ;
+                                                                                       :museoInCittà :Torino ;
+                                                                                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Borgo Medievale"^^xsd:string ;
+                                                                                       rdfs:comment "Individuo che rappresenta il Borgo medievale della città di Torino"@it ;
+                                                                                       rdfs:label "BorgoMedievale"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CameronDeordio
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CameronDeordio> rdf:type owl:NamedIndividual ,
+                                                                                                :Scrittore ;
+                                                                                       :haRealizzato <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Charlie'sAngelsVsTheBionicWoman> ;
+                                                                                       :nomeArtista "Cameron Deordio"^^xsd:string ;
+                                                                                       rdfs:comment "Individuo che rappresenta lo scrittore Cameron Deordio"@it ;
+                                                                                       rdfs:label "CameronDeordio"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CreazioneDiAdamo
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CreazioneDiAdamo> rdf:type owl:NamedIndividual ,
+                                                                                                  :Dipinto ;
+                                                                                         :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MichelangeloBuonarroti> ;
+                                                                                         :realizzataNel "1511"^^xsd:unsignedInt ;
+                                                                                         :titoloOpera "Creazione di Adamo"^^xsd:string ;
+                                                                                         rdfs:comment "Individuo che rappresenta il dipinto La creazione di Adamo"@it ;
+                                                                                         rdfs:label "CreazioneDiAdamo"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CupolaDiSanPietro
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CupolaDiSanPietro> rdf:type owl:NamedIndividual ,
+                                                                                                   :OperaArchitettonica ;
+                                                                                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Cupola di San Pietro"^^xsd:string ;
+                                                                                          rdfs:comment "Individuo che rappresenta la Cupola di San Pietro"@it ;
+                                                                                          rdfs:label "CupolaDiSanPietro"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteAnticaMuseoEgizioTorino
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteAnticaMuseoEgizioTorino> rdf:type owl:NamedIndividual ,
+                                                                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteAntica> ;
+                                                                                                               :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio> ;
+                                                                                                               rdfs:comment "Individuo che rappresenta l'esposizione d'arte antica nel Museo Egizio di Torino"@it ;
+                                                                                                               rdfs:label "EsposizioneArteAnticaMuseoEgizioTorino"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaNationalGallery
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaNationalGallery> rdf:type owl:NamedIndividual ,
+                                                                                                                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna> ;
+                                                                                                              :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NationalGallery> ;
+                                                                                                              rdfs:comment "Individuo che rappresenta l'esposizione d'arte moderna nel National Gallery di Londra"@it ;
+                                                                                                              rdfs:label "EsposizioneArteModernaNationalGallery"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma> rdf:type owl:NamedIndividual ,
+                                                                                                            <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna> ;
+                                                                                                   :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/GalleriaNazionaleRoma> ;
+                                                                                                   rdfs:comment "Individuo che rappresenta l'esposizione d'arte moderna nell Galleria Nazionale a Roma"@it ;
+                                                                                                   rdfs:label "EsposizioneArteModernaRoma"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneFumettisticaNewYork
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneFumettisticaNewYork> rdf:type owl:NamedIndividual ,
+                                                                                                                <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteOccidentale> ;
+                                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Charlie'sAngelsVsTheBionicWoman> ;
+                                                                                                       :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelFumetto> ;
+                                                                                                       rdfs:comment "Individuo che rappresenta l'esposizione di fumetti nel museo del fumetto di New York"@it ;
+                                                                                                       rdfs:label "EsposizioneFumettisticaNewYork"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Francia
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Francia> rdf:type owl:NamedIndividual ,
+                                                                                         :NazioneEuropea ;
+                                                                                :nomeNazione "Francia"^^xsd:string ;
+                                                                                rdfs:label "Francia"@it ;
+                                                                                rdfs:seeAlso "http://dbpedia.org/page/France"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/GalleriaNazionaleRoma
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/GalleriaNazionaleRoma> rdf:type owl:NamedIndividual ,
+                                                                                                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> ;
+                                                                                              :museoInCittà <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Roma> ;
+                                                                                              <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Galleria Nazionale d'arte contemporanea e moderna"^^xsd:string ;
+                                                                                              rdfs:comment "Individuo che rappresenta la Galleria Nazionale di Roma"@it ;
+                                                                                              rdfs:label "GalleriaNazionaleRoma"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Genova
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Genova> rdf:type owl:NamedIndividual ,
+                                                                                        :Città ;
+                                                                               <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Italia ;
+                                                                               :nomeCittà "Genova"^^xsd:string ;
+                                                                               rdfs:comment "Individuo che rappresenta la città di Genova"@it ;
+                                                                               rdfs:label "Genova"@it ;
+                                                                               rdfs:seeAlso "http://dbpedia.org/page/Genoa"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Germania
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Germania> rdf:type owl:NamedIndividual ,
+                                                                                          :NazioneEuropea ;
+                                                                                 :nomeNazione "Germania"^^xsd:string ;
+                                                                                 rdfs:comment "Individuo che rappresenta la nazione tedesca"@it ;
+                                                                                 rdfs:label "Germania"@it ;
+                                                                                 rdfs:seeAlso "http://dbpedia.org/page/Germany"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IGiocatoriDiCarte
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IGiocatoriDiCarte> rdf:type owl:NamedIndividual ,
+                                                                                                   :Dipinto ;
+                                                                                          :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PaulCézanne> ;
+                                                                                          :realizzataNel "1890"^^xsd:unsignedInt ;
+                                                                                          :titoloOpera "I giocatori di carte"^^xsd:string ;
+                                                                                          rdfs:comment "Individuo che rappresenta l'opera d'arte I Giocatori di Carte di Paul Cézanne"@it ;
+                                                                                          rdfs:label "IGiocatoriDiCarte"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IlGiardiniere
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IlGiardiniere> rdf:type owl:NamedIndividual ,
+                                                                                               :Dipinto ;
+                                                                                      <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma> ;
+                                                                                      :realizzataNel "1889"^^xsd:unsignedInt ;
+                                                                                      :titoloOpera "Il giardiniere"^^xsd:string ;
+                                                                                      rdfs:comment "Individuo che rappresenta l'opera d'arte Il giardiniere di Vincent Van Gogh"@it ;
+                                                                                      rdfs:label "IlGiardiniere"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Inghilterra
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Inghilterra> rdf:type owl:NamedIndividual ,
+                                                                                             :NazioneEuropea ;
+                                                                                    :nomeNazione "Inghilterra"^^xsd:string ;
+                                                                                    rdfs:comment "Individuo che rappresenta la nazione inglese"@it ;
+                                                                                    rdfs:label "Inghilterra"@it ;
+                                                                                    rdfs:seeAlso "http://dbpedia.org/page/England"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LeCabanonDeJourdan
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LeCabanonDeJourdan> rdf:type owl:NamedIndividual ,
+                                                                                                    :Dipinto ;
+                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma> ;
+                                                                                           :realizzataNel "1906"^^xsd:unsignedInt ;
+                                                                                           :titoloOpera "Le Cabanon De Jourdan"^^xsd:string ;
+                                                                                           rdfs:comment "Individuo che rappresenta l'opera d'arte Le Cabanon De Jourdan di Paul Cézanne"@it ;
+                                                                                           rdfs:label "LeCabanonDeJourdan"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LesGrandesBaigneuses
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LesGrandesBaigneuses> rdf:type owl:NamedIndividual ,
+                                                                                                      :Dipinto ;
+                                                                                             <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaNationalGallery> ;
+                                                                                             :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PaulCézanne> ;
+                                                                                             :realizzataNel "1894"^^xsd:unsignedInt ;
+                                                                                             :titoloOpera "Les Grandes Baigneuses"^^xsd:string ;
+                                                                                             rdfs:comment "Individuo che rappresenta l'opera d'arte LesGrandesBaigneuses di Paul Cézanne"@it ;
+                                                                                             rdfs:label "LesGrandesBaigneuses"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Londra
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Londra> rdf:type owl:NamedIndividual ,
+                                                                                        :Città ;
+                                                                               :nomeCittà "Londra"^^xsd:string ;
+                                                                               rdfs:label "Londra"@it ;
+                                                                               rdfs:seeAlso "Individuo che rappresenta la città di Londra"@it ,
+                                                                                            "http://dbpedia.org/page/London"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Marc_Chagall
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Marc_Chagall> rdf:type owl:NamedIndividual ,
+                                                                                              :Pittore ;
+                                                                                     :nomeArtista "Marc Chagall"^^xsd:string ;
+                                                                                     rdfs:label "MarcChagall"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MichelangeloBuonarroti
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MichelangeloBuonarroti> rdf:type owl:NamedIndividual ,
+                                                                                                        :Architetto ,
+                                                                                                        :Pittore ,
+                                                                                                        :Scrittore ,
+                                                                                                        :Scultore ;
+                                                                                               :haRealizzatoScultura <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PietàDiSanPietro> ;
+                                                                                               :nomeArtista "Michelangelo Buonarroti"^^xsd:string ;
+                                                                                               rdfs:label "MichelangeloBuonarroti"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelCinema
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelCinema> rdf:type owl:NamedIndividual ,
+                                                                                                :Museo ;
+                                                                                       :museoInCittà :Torino ;
+                                                                                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo del cinema"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelFumetto
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelFumetto> rdf:type owl:NamedIndividual ,
+                                                                                                 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> ;
+                                                                                        :museoInCittà <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NewYork> ;
+                                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo del Fumetto"^^xsd:string .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio> rdf:type owl:NamedIndividual ,
                                                                                              :Museo ;
@@ -781,11 +970,139 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
                                                                                     rdfs:comment "Individuo che rappresenta il museo Egizio che si trova nella città di Torino"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NationalGallery
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NationalGallery> rdf:type owl:NamedIndividual ,
+                                                                                                 :Museo ;
+                                                                                        :museoInCittà <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Londra> ;
+                                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "National Gallery"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NewYork
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NewYork> rdf:type owl:NamedIndividual ,
+                                                                                         :Città ;
+                                                                                <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatiUniti> ;
+                                                                                :nomeCittà "New York"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Parigi
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Parigi> rdf:type owl:NamedIndividual ,
+                                                                                        :Città ;
+                                                                               :nomeCittà "Parigi"^^xsd:string ;
+                                                                               rdfs:label "Parigi"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PaulCézanne
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PaulCézanne> rdf:type owl:NamedIndividual ,
+                                                                                             :Pittore ;
+                                                                                    :haRealizzatoDipinto <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LeCabanonDeJourdan> ;
+                                                                                    :nomeArtista "Paul Cézanne"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PietàDiSanPietro
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PietàDiSanPietro> rdf:type owl:NamedIndividual ,
+                                                                                                  :Scultura ;
+                                                                                         :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MichelangeloBuonarroti> ;
+                                                                                         :realizzataNel "1497"^^xsd:unsignedInt ;
+                                                                                         :titoloOpera "Pietà di San Pietro"^^xsd:string ;
+                                                                                         rdfs:label "PietàDiSanPietro"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Pisa
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Pisa> rdf:type owl:NamedIndividual ,
+                                                                                      :Città ;
+                                                                             <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Italia ;
+                                                                             :nomeCittà "Pisa"^^xsd:string ;
+                                                                             rdfs:label "Pisa"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Renzo_Piano
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Renzo_Piano> rdf:type owl:NamedIndividual ,
+                                                                                             :Architetto ;
+                                                                                    :nomeArtista "Renzo Piano"^^xsd:string ;
+                                                                                    rdfs:label "RenzoPiano"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Roma
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Roma> rdf:type owl:NamedIndividual ,
+                                                                                      :Città ;
+                                                                             <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Italia ;
+                                                                             :nomeCittà "Roma"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/SooLee
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/SooLee> rdf:type owl:NamedIndividual ,
+                                                                                        :Fumettista .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatiUniti
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatiUniti> rdf:type owl:NamedIndividual ,
+                                                                                            <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NazioneAmericana> ;
+                                                                                   <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Americhe .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatuaDiSetiII
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatuaDiSetiII> rdf:type owl:NamedIndividual ,
+                                                                                                :Scultura ;
+                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteAnticaMuseoEgizioTorino> ;
+                                                                                       :titoloOpera "Statua di Sei II"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatutaDiRamsesII
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatutaDiRamsesII> rdf:type owl:NamedIndividual ,
+                                                                                                   :Scultura ;
+                                                                                          <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteAnticaMuseoEgizioTorino> ;
+                                                                                          :titoloOpera "Statua Di Ramses II"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/VincentVanGogh
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/VincentVanGogh> rdf:type owl:NamedIndividual ,
+                                                                                                :Pittore ;
+                                                                                       :haRealizzatoDipinto <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IlGiardiniere> ,
+                                                                                                            <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/L'Arlesiana> ;
+                                                                                       :nomeArtista "Vincent Van Gogh"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Charlie'sAngelsVsTheBionicWoman
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Charlie'sAngelsVsTheBionicWoman> rdf:type owl:NamedIndividual ,
+                                                                                                                 :Fumetto ;
+                                                                                                        :realizzatoDa <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/SooLee> ;
+                                                                                                        :realizzataNel "1980"^^xsd:unsignedInt ;
+                                                                                                        :titoloOpera "Charlie's Angels Vs The Bionic Woman"^^xsd:string ;
+                                                                                                        rdfs:comment "Individuo che rappresenta il fumetto Charlie's Angels Vs The Bionic Woman"@it ;
+                                                                                                        rdfs:label "Charlie'sAngelsVsTheBionicWoman"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaMuseoD'Orsay
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaMuseoD'Orsay> rdf:type owl:NamedIndividual ,
+                                                                                                                    <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/ArteModerna> ;
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IGiocatoriDiCarte> ;
+                                                                                                           :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'Orsay> ;
+                                                                                                           rdfs:comment "Individuo che rappresenta l'esposizione d'arte moderna nel Museo D'Orsay"@it ;
+                                                                                                           rdfs:label "EsposizioneArteModernaMuseoD'Orsay"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/L'Arlesiana
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/L'Arlesiana> rdf:type owl:NamedIndividual ,
+                                                                                             :Dipinto ;
+                                                                                    <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma> ;
+                                                                                    :realizzataNel "1890"^^xsd:unsignedInt ;
+                                                                                    :titoloOpera "L'Arlesiana"^^xsd:string ;
+                                                                                    rdfs:comment "Individuo che rappresenta l'opera d'arte L'Arlesiana di Vincent Van Gogh"@it ;
+                                                                                    rdfs:label "L'Arlesiana"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale> rdf:type owl:NamedIndividual ,
                                                                                                       :Museo ;
                                                                                              <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo d'arte orientale"^^xsd:string ;
                                                                                              rdfs:comment "Individuo che rappresenta il museo d'arte orientale che si trova nella città di Torino"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'Orsay
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'Orsay> rdf:type owl:NamedIndividual ,
+                                                                                              :Museo ;
+                                                                                     :museoInCittà <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Parigi> ;
+                                                                                     <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/nomeMuseo> "Museo D'Orsay"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Americhe
@@ -814,9 +1131,8 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/untitled-ontology-47#Italia
 :Italia rdf:type owl:NamedIndividual ,
-                 :Nazione ;
+                 :NazioneEuropea ;
         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Europa ;
-        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInContinente> :Europa ;
         :nomeNazione "Italia" ;
         rdfs:comment "Individuo che rappresenta la nazione italiana"@it ;
         rdfs:seeAlso "http://dbpedia.org/page/Italy" .
@@ -834,7 +1150,6 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 :Torino rdf:type owl:NamedIndividual ,
                  :Città ;
         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/contenutaIn> :Italia ;
-        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/situataInNazione> :Italia ;
         :cittàHaMuseo <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio> ,
                       <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale> ;
         :nomeCittà "Torino"^^xsd:string ;
@@ -847,6 +1162,15 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NazioneAmericana>
+                :NazioneAfricana
+                :NazioneAsiatica
+                :NazioneEuropea
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :CapoDiModa
                 :Dipinto
                 :Film
@@ -855,14 +1179,6 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
                 :OperaArchitettonica
                 :OperaLetteraria
                 :Scultura
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :NazioneAfricana
-                :NazioneAsiatica
-                :NazioneEuropea
               )
 ] .
 
@@ -878,8 +1194,76 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio>
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/AcquarioGenova>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/BorgoMedievale>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/GalleriaNazionaleRoma>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelCinema>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoDelFumetto>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoEgizio>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/NationalGallery>
                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'ArteOrientale>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MuseoD'Orsay>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/AcquarioGenova>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CreazioneDiAdamo>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CupolaDiSanPietro>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IGiocatoriDiCarte>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/IlGiardiniere>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LeCabanonDeJourdan>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/LesGrandesBaigneuses>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PietàDiSanPietro>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatuaDiSetiII>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatutaDiRamsesII>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Charlie'sAngelsVsTheBionicWoman>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/L'Arlesiana>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Berlino>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Genova>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Londra>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Parigi>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Pisa>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Roma>
+                        :Torino
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/CameronDeordio>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Marc_Chagall>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/MichelangeloBuonarroti>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/PaulCézanne>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Renzo_Piano>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/SooLee>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/VincentVanGogh>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteAnticaMuseoEgizioTorino>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaNationalGallery>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaRoma>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneFumettisticaNewYork>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/EsposizioneArteModernaMuseoD'Orsay>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Francia>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Germania>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/Inghilterra>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/StatiUniti>
+                        :Italia
                       )
 ] .
 

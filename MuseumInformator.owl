@@ -13,7 +13,7 @@ Michele Lanotte"""^^xsd:string ;
                                                                         <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ;
                                                                         <http://purl.org/dc/elements/1.1/description> ""^^xsd:string ;
                                                                         <http://purl.org/dc/elements/1.1/title> "Museum Informator"^^xsd:string ;
-                                                                        <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <> ;
+                                                                        <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology> ;
                                                                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> ""^^xsd:string ;
                                                                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> ""^^xsd:string ;
                                                                         :reusesPatternAsTemplate <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
@@ -73,6 +73,14 @@ Es. Torino 'cittàHaMuseo' museo egizio"""@it ;
              rdfs:comment """Relazione tra entità della classe EntitàGeografica
 Es. Torino è una città 'contenutaIn' Europa"""@it ;
              rdfs:label "contenutaIn"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haDescrizione
+:haDescrizione rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty <https://w3id.org/italia/onto/l0/hasDescription> ;
+               owl:inverseOf :èDescrizioneDi ;
+               rdfs:domain :Opera ;
+               rdfs:range :Descrizione .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haMembroOpera
@@ -138,7 +146,8 @@ Es. il museo egizio è 'localizzatoIn' Italia"""@it ;
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#museoInCittà
-:museoInCittà rdf:type owl:ObjectProperty ;
+:museoInCittà rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
               rdfs:domain :Museo ;
               rdfs:range :Città ;
               rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Città.
@@ -188,6 +197,13 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
               rdfs:label "realizzatoDa"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#èDescrizioneDi
+:èDescrizioneDi rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty <https://w3id.org/italia/onto/l0/isDescriptionOf> ;
+                rdfs:domain :Descrizione ;
+                rdfs:range :Opera .
+
+
 ###  https://w3id.org/arco/ontology/core/hasMethod
 <https://w3id.org/arco/ontology/core/hasMethod> rdf:type owl:ObjectProperty ;
                                                 rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/hasDescription> ;
@@ -228,6 +244,11 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#contenutoDescrizione
+:contenutoDescrizione rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Descrizione .
+
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#nomeArtista
 :nomeArtista rdf:type owl:DatatypeProperty ;
@@ -565,7 +586,10 @@ E71(x) ⊃ E70(x)"""@en ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Descrizione
 :Descrizione rdf:type owl:Class ;
-             owl:equivalentClass <https://w3id.org/italia/onto/l0/Description> .
+             owl:equivalentClass <https://w3id.org/italia/onto/l0/Description> ;
+             rdfs:comment """Classe che si riferisce alle descrizioni delle opere.
+Ad esempio il metodo usato per realizzarle"""@it ;
+             rdfs:label "Descrizione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto
@@ -978,6 +1002,22 @@ E71(x) ⊃ E70(x)"""@en ;
                    rdfs:label "CupolaDiSanPietro"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneIlGiardiniere
+:DescrizioneIlGiardiniere rdf:type owl:NamedIndividual ,
+                                   :Descrizione ;
+                          :contenutoDescrizione """Il giardiniere, conosciuto anche come Ritratto di giovane contadino o Contadino provenzale, è un olio su tela (61×51 cm) di Vincent van Gogh, databile al settembre del 1889 e conservato nella Galleria nazionale d'arte moderna e contemporanea di Roma.
+
+L'opera, considerata la più importante del pittore olandese tra quelle presenti nelle collezioni pubbliche italiane, è un capolavoro del periodo provenzale di Van Gogh e racchiude alcuni dei temi fondamentali della sua pittura, come il tema del ritratto, il rapporto con la natura e l'accostamento dei colori primari e complementari."""@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizionePietàDiSanPietro
+:DescrizionePietàDiSanPietro rdf:type owl:NamedIndividual ,
+                                      :Descrizione ;
+                             :èDescrizioneDi :PietàDiSanPietro ;
+                             :contenutoDescrizione """La Pietà di San Pietro è una scultura in marmo realizzata da Michelangelo Buonarroti e conservata nella basilica di San Pietro in Vaticano.
+Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro dell'artista, allora poco più che ventenne, nonché una delle maggiori opere d'arte che l'Occidente abbia mai prodotto."""@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteAnticaMuseoEgizioTorino
 :EsposizioneArteAnticaMuseoEgizioTorino rdf:type owl:NamedIndividual ,
                                                  :CollezioneArteAntica ;
@@ -1070,6 +1110,7 @@ E71(x) ⊃ E70(x)"""@en ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere
 :IlGiardiniere rdf:type owl:NamedIndividual ,
                         :Dipinto ;
+               :haDescrizione :DescrizioneIlGiardiniere ;
                :operaMembroDi :EsposizioneArteModernaRoma ;
                :realizzataNel "1889"^^xsd:unsignedInt ;
                :titoloOpera "Il giardiniere"^^xsd:string ;

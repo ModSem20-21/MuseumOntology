@@ -4,18 +4,20 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#> .
+@base <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#> .
 
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#> rdf:type owl:Ontology ;
-                                                                          owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
-                                                                          <http://purl.org/dc/elements/1.1/creators> """Pier Balestrucci
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#> rdf:type owl:Ontology ;
+                                                                        owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
+                                                                        <http://purl.org/dc/elements/1.1/creators> """Pier Balestrucci
 Michele Lanotte"""^^xsd:string ;
-                                                                          <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ;
-                                                                          <http://purl.org/dc/elements/1.1/description> ""^^xsd:string ;
-                                                                          <http://purl.org/dc/elements/1.1/title> "Museum Informator"^^xsd:string ;
-                                                                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> ""^^xsd:string ;
-                                                                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> ""^^xsd:string ;
-                                                                          rdfs:label "MuseumInformator"^^xsd:string .
+                                                                        <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ;
+                                                                        <http://purl.org/dc/elements/1.1/description> ""^^xsd:string ;
+                                                                        <http://purl.org/dc/elements/1.1/title> "Museum Informator"^^xsd:string ;
+                                                                        <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <> ;
+                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> ""^^xsd:string ;
+                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> ""^^xsd:string ;
+                                                                        :reusesPatternAsTemplate <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
+                                                                        rdfs:label "MuseumInformator"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -43,6 +45,10 @@ Michele Lanotte"""^^xsd:string ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#reusesPatternAsTemplate
+:reusesPatternAsTemplate rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -182,6 +188,43 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
               rdfs:label "realizzatoDa"@it .
 
 
+###  https://w3id.org/arco/ontology/core/hasMethod
+<https://w3id.org/arco/ontology/core/hasMethod> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/hasDescription> ;
+                                                owl:inverseOf <https://w3id.org/arco/ontology/core/isMethodOf> ;
+                                                rdfs:domain owl:Thing ;
+                                                rdfs:range <https://w3id.org/arco/ontology/core/Method> ;
+                                                rdfs:comment "L'object property che collega un'entità a un metodo."@it ,
+                                                             "The object property that links an entity to a method."@en ;
+                                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/core> ;
+                                                rdfs:label "ha metodo"@it ,
+                                                           "has method"@en ;
+                                                owl:versionInfo "stabile"@it ,
+                                                                "stable"@en .
+
+
+###  https://w3id.org/arco/ontology/core/isMethodOf
+<https://w3id.org/arco/ontology/core/isMethodOf> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/isDescriptionOf> ;
+                                                 rdfs:domain <https://w3id.org/arco/ontology/core/Method> ;
+                                                 rdfs:range owl:Thing ;
+                                                 rdfs:comment "L'object property che collega un metodo a un'entità."@it ,
+                                                              "The object property that links a method to an entity."@en ;
+                                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/core> ;
+                                                 rdfs:label "is method of"@en ,
+                                                            "è metodo di"@it ;
+                                                 owl:versionInfo "stabile"@it ,
+                                                                 "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/hasDescription
+<https://w3id.org/italia/onto/l0/hasDescription> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/italia/onto/l0/isDescriptionOf
+<https://w3id.org/italia/onto/l0/isDescriptionOf> rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -262,6 +305,28 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 #################################################################
 #    Classes
 #################################################################
+
+###  http://erlangen-crm.org/200717/E71_Human-Made_Thing
+<http://erlangen-crm.org/200717/E71_Human-Made_Thing> rdf:type owl:Class ;
+                                                      owl:equivalentClass <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall'uomo> ;
+                                                      rdfs:comment """Scope note:
+This class comprises discrete, identifiable human-made items that are documented as single units.
+
+These items are either intellectual products or human-made physical things, and are characterized by relative stability. They may for instance have a solid physical form, an electronic encoding, or they may be logical concepts or structures. 
+
+
+Examples:
+- Beethoven’s 5th Symphony (E73) (Lockwood, 2015)
+- Michelangelo’s David (Paoletti, 2015)
+- Einstein’s Theory of General Relativity (E73) (Hartle, 2003)
+- the taxon ‘Fringilla coelebs Linnaeus,1758’ (E55) (Sinkevicius and Narusevicius, 2002)
+
+
+In First Order Logic:
+E71(x) ⊃ E70(x)"""@en ;
+                                                      rdfs:isDefinedBy <http://erlangen-crm.org/200717/> ;
+                                                      rdfs:label "E71 Man-Made Thing"@en .
+
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection
 <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> owl:equivalentClass :Collezione .
@@ -498,6 +563,11 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
             rdfs:seeAlso "http://dbpedia.org/ontology/continent"^^xsd:string .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Descrizione
+:Descrizione rdf:type owl:Class ;
+             owl:equivalentClass <https://w3id.org/italia/onto/l0/Description> .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto
 :Dipinto rdf:type owl:Class ;
          rdfs:subClassOf :Opera ;
@@ -683,6 +753,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                              owl:onClass :Collezione
                            ] ;
+       rdfs:subClassOf <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall'uomo> ;
        rdfs:comment "Classe che rappresenta le varie tipologie di opere"@it ;
        rdfs:label "Opera"@it .
 
@@ -753,6 +824,27 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
           rdfs:comment "Classe che rappresenta le sculture"@it ;
           rdfs:label "Scultura"@it ;
           rdfs:seeAlso "http://dbpedia.org/page/Sculpture"^^xsd:string .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall'uomo
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall'uomo> rdf:type owl:Class ;
+                                                                                         rdfs:label "CoseFatteDall'uomo"@it .
+
+
+###  https://w3id.org/arco/ontology/core/Method
+<https://w3id.org/arco/ontology/core/Method> rdf:type owl:Class ;
+                                             rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description> ;
+                                             rdfs:comment "Classe che rappresenta il concetto di metodo."@it ,
+                                                          "The class representing the concept of method."@en ;
+                                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/core> ;
+                                             rdfs:label "Method"@en ,
+                                                        "Metodo"@it ;
+                                             owl:versionInfo "stabile"@it ,
+                                                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/Description
+<https://w3id.org/italia/onto/l0/Description> rdf:type owl:Class .
 
 
 #################################################################

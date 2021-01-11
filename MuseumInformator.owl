@@ -997,7 +997,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CupolaDiSanPietro
 :CupolaDiSanPietro rdf:type owl:NamedIndividual ,
                             :OperaArchitettonica ;
-                   :nomeMuseo "Cupola di San Pietro"^^xsd:string ;
+                   :titoloOpera "Cupola di San Pietro"^^xsd:string ;
                    rdfs:comment "Individuo che rappresenta la Cupola di San Pietro"@it ;
                    rdfs:label "CupolaDiSanPietro"@it .
 

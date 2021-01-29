@@ -6,6 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	</head>
 
 	<body>
@@ -96,20 +100,11 @@
 					<!-- tabella museo - città -->
 					<div class="tab-pane active" id="div_for_all" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
 						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
-							<tr>
-								<th>Museo</th>
-								<th>Città</th>
-								<th>Nazione</th>
-							</tr>
 							<tr id="consoleName"></tr>
 						</table>
 					</div>
 					<div class="tab-pane active" id="div_for_countries" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
 						<table id="table1" class="table table-striped" style="width:100%; margin-top:3em;">
-							<tr id="head">
-								<th>Museo</th>
-								<th>Città</th>
-							</tr>
 							<tr id="consoleName"></tr>
 						</table>
 					</div>
@@ -121,74 +116,104 @@
 			<p>All Right Reserved © MuseumInformator 2020/2021 - Università degli Studi di Torino</p>
 		</footer>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<script src="modernizr-3.7.1.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-		<script src="plugins.js"></script>
-
-		<script>
-			window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-			ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
-		</script>
-		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-			<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-
 		<script>
 			//stampa di tutti i musei organizzati per nazione e città
 			$(document).ready(function () {
+				//il codice jQuery che segue, è usato per effettuare il refresh della tabella in cui vengono stampati i risultati della query richiesta
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var table = $("#table0");
+				createTable(table, 0);
 				
 				div_for_all.style.display = "block";
 				div_for_countries.style.display = "none";
-				stampaMusei("");
+				stampaMusei(table, "");
 			});
 		  
 			//stampa dei musei italiani organizzati per città
 			jQuery("#italia").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var table = $("#table1");	
+				
+				createTable(table);
 				
 				div_for_all.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei("Italia");
+				stampaMusei(table, "Italia");
 			});
 			
 			//stampa dei musei francesi organizzati per città
 			jQuery("#francia").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var table = $("#table1");
+				
+				createTable(table, 1);
 				
 				div_for_all.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei("Francia");
+				
+				stampaMusei(table, "Francia");
 			});
 			
 			//stampa dei musei inglesi organizzati per città
 			jQuery("#inghilterra").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var table = $("#table1");
+				
+				createTable(table, 1);
 				
 				div_for_all.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei("Inghilterra");
+				stampaMusei(table, "Inghilterra");
 			});
 			
 			//stampa dei musei tedeschi organizzati per città
 			jQuery("#germania").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var table = $("#table1");
+				createTable(table, 1);
 				
 				div_for_all.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei("germania");
+				stampaMusei(table, "germania");
 			});
 			
-		 
-			function stampaMusei(entitàGeografica){
+			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
+			function createTable(table, type){
+				var row = $("<tr>").appendTo(table);
+				
+				row.append($("<th> Museo </th>"));
+				row.append($("<th> Città </th>"));
+				if(type == 0)
+					row.append($("<th> Nazione </th>"));
+				row.append($("</tr>"));
+			}
+			
+			function stampaMusei(table, entitàGeografica){
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
@@ -203,17 +228,18 @@
 					statusCode:{
 
 					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
 					success: function (dati) {
 						var str = "";
-						var table = $("#table0");
 						if(dati.head.vars){
 							$.each(dati.results.bindings, function(index, entity){
 								if(entitàGeografica != ""){ 
-									table = $("#table1");
 									printMuseumGroupedByCountry(table, entity, entitàGeografica);
 								}
-								else	
-									printMuseum(table, entity);							
+								else{	
+									printMuseum(table, entity);	
+								}									
 							});
 						}
 					},
@@ -223,10 +249,10 @@
 				});
 			}
 			
-			
+			//stampa dei musei della nazione specificata
 			function printMuseumGroupedByCountry(table, entity, nazione){
 				var row;
-				if(nazione.localeCompare(entity.nazione.value.slice(entity.nazione.value.search("#") + 1)) == 0) {
+				if(nazione == entity.nazione.value.slice(entity.nazione.value.search("#") + 1)) {
 					row = $("<tr>").appendTo(table);
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
 					row.append($("</td>"));
@@ -234,15 +260,14 @@
 					row.append($("</td>"));
 					row.append($("</tr>"));
 							
-					//row.append($("<td>", {text: entity.nazione.value.slice(entity.nazione.value.search("#") + 1)}));
-					//row.append($("</tr>"));
 				}
 			}
 			
+			//stampa dei musei presenti nel mondo esplicitati nell'ontologia
 			function printMuseum(table, entity){
 				var row;
 				row = $("<tr>").appendTo(table);
-				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
+				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
 				row.append($("</td>"));		

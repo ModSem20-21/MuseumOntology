@@ -1,0 +1,304 @@
+<!doctype html>
+<html  class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link active" href="localita.html">Località<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<!--<a class="nav-link" href="#">Link</a>-->
+							<a class="nav-link" href="artisti.html">Grandi artisti<span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<div class="content">
+			<div class="col-md-8 ml-auto mr-auto">
+				<!--suddivisione in continenti    -->
+				<ul class="nav nav-pills mb-3 nav-pills-primary nav-pills-icons justify-content-center">
+					<li class="nav-item dropdown">
+						<a id="europa" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="now-ui-icons objects_umbrella-13"></i>
+							Europa
+						</a>
+						<div class="dropdown-menu">
+							<a id="italia" class="dropdown-item" data-toggle="tab" href="#italia" role="tablist">
+								<i class="now-ui-icons objects_umbrella-13"></i>
+								Italia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="francia" class="dropdown-item" data-toggle="tab" href="#francia" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Francia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="inghilterra" class="dropdown-item" data-toggle="tab" href="#inghilterra" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Inghilterra
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="germania" class="dropdown-item" data-toggle="tab" href="#germania" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Germania
+							</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a id="america" class="nav-link" data-toggle="tab" href="#america" role="tablist">
+							<i class="now-ui-icons shopping_shop"></i>
+							America
+						</a>
+					</li>
+					<li class="nav-item">
+						<a id="asia" class="nav-link" data-toggle="tab" href="#asia" role="tablist">
+							<i class="now-ui-icons shopping_shop"></i>
+							Asia
+						</a>
+					</li>
+					<li id="oceania" class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#oceania" role="tablist">
+							<i class="now-ui-icons shopping_shop"></i>
+							Oceania
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#africa" role="tablist">
+							<i class="now-ui-icons shopping_shop"></i>
+							Africa
+						</a>
+					</li>
+				</ul>	
+				<br>		
+				<div class="tab-content tab-space tab-subcategories">
+					<!-- tabella museo - città -->
+					<div class="tab-pane active" id="div_for_all" style="background-color: white; border-style: dotted;   margin: auto; width: 100%; padding: 10px;">
+						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="head">
+								<th id="table" cope="col">Museo</th>
+								<th scope="col" >Città</th>
+								<th scope="col" >Nazione</th>
+							</tr>
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
+					<div class="tab-pane active" id="div_for_continents" style="background-color: white; border-style: dotted;   margin: auto; width: 100%; padding: 10px;">
+						<table id="table1" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="head">
+								<th id="table" cope="col">Museo</th>
+								<th scope="col" >Città</th>
+								<th scope="col" >Nazione</th>
+							</tr>
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
+					<div class="tab-pane active" id="div_for_countries" style="background-color: white; border-style: dotted;   margin: auto; width: 100%; padding: 10px;">
+						<table id="table2" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="head">
+								<th id="table" cope="col">Museo</th>
+								<th scope="col" >Città</th>
+							</tr>
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		 </div>
+		 
+		<footer class="footer">
+			<p>All Right Reserved © AssisTV 2020/2021 - Università degli Studi di Torino</p>
+		</footer>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="modernizr-3.7.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+		<script src="plugins.js"></script>
+
+		<script>
+			window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+			ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+		</script>
+		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+			<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+
+		<script>
+			//stampa di tutti i musei organizzati per nazione e città
+			$(document).ready(function () {
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "block";
+				div_for_continents.style.display = "none";
+				div_for_countries.style.display = "none";
+				stampaMusei("");
+			});
+		  
+		  
+			//l'output prodotto dipenderà dal tab scelto (continenti o nazioni)
+		  	//stampa dei musei europei organizzati per città
+			jQuery("#europa").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "block";
+				div_for_countries.style.display = "none";
+				stampaMusei("Europa");
+			});
+			
+			//stampa dei musei americani organizzati per città
+			jQuery("#america").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "block";
+				div_for_countries.style.display = "none";
+				stampaMusei("America");
+			});
+			
+			//stampa dei musei asiatici organizzati per città
+			jQuery("#asia").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "block";
+				div_for_countries.style.display = "none";
+				stampaMusei("Asia");
+			});
+			
+			//stampa dei musei oceanici organizzati per città
+			jQuery("#oceania").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "block";
+				div_for_countries.style.display = "none";
+				stampaMusei("Oceania");
+			});
+			
+			
+			//stampa dei musei italiani organizzati per città
+			jQuery("#italia").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "none";
+				div_for_countries.style.display = "block";
+				stampaMusei("Italia");
+			});
+			
+			//stampa dei musei francesi organizzati per città
+			jQuery("#francia").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "none";
+				div_for_countries.style.display = "block";
+				stampaMusei("Francia");
+			});
+			
+			//stampa dei musei inglesi organizzati per città
+			jQuery("#inghilterra").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "none";
+				div_for_countries.style.display = "block";
+				stampaMusei("Inghilterra");
+			});
+			
+			//stampa dei musei tedeschi organizzati per città
+			jQuery("#germania").click(function(e){
+				var div_for_continents = document.getElementById("div_for_continents");
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				
+				div_for_all.style.display = "none";
+				div_for_continents.style.display = "none";
+				div_for_countries.style.display = "block";
+				stampaMusei("germania");
+			});
+			
+		 
+			function stampaMusei(nazione){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?museo ?citta ?nazione WHERE {{?museo museum:localizzatoIn ?nazione} UNION {{?museo museum:museoInCittà ?citta} UNION {?citta museum:cittàHaMuseo ?museo} ?citta museum:contenutaIn ?nazione.}.}";
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					success: function (dati) {
+						var str = "";
+						var table = $("#table1");
+
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+								var i = 0
+								var row;
+								if(entity.nazione.value.slice(entity.nazione.value.search("#") + 1)=="Italia") {
+									if(i == 0){
+										row = $("<tr>").appendTo(table);
+										row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
+										i = 1;
+									}
+									row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
+									row.append($("</tr>"));
+								}
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

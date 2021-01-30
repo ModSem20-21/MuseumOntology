@@ -55,14 +55,23 @@ Michele Lanotte"""^^xsd:string ;
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#cittàHaMuseo
-:cittàHaMuseo rdf:type owl:ObjectProperty ;
-              owl:inverseOf :museoInCittà ;
-              rdfs:domain :Città ;
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#cittaHaMuseo
+:cittaHaMuseo rdf:type owl:ObjectProperty ;
+              owl:inverseOf :museoInCitta ;
+              rdfs:domain :Citta ;
               rdfs:range :Museo ;
               rdfs:comment """Relazione tra entità della classe Città ed entità della classe Museo.
 Es. Torino 'cittàHaMuseo' museo egizio"""@it ;
               rdfs:label "cittàHaMuseo"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#cittaInNazione
+:cittaInNazione rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :contenutaIn ;
+                rdfs:domain :Citta ;
+                rdfs:range :Nazione ;
+                rdfs:comment "Mostra in quale nazione è una citta"@it ;
+                rdfs:label "cittaInNazione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#contenutaIn
@@ -80,7 +89,9 @@ Es. Torino è una città 'contenutaIn' Europa"""@it ;
                owl:equivalentProperty <https://w3id.org/italia/onto/l0/hasDescription> ;
                owl:inverseOf :èDescrizioneDi ;
                rdfs:domain :Opera ;
-               rdfs:range :Descrizione .
+               rdfs:range :Descrizione ;
+               rdfs:comment "La descrizione di un'opera"@it ;
+               rdfs:label "haDescrizione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haMembroOpera
@@ -137,22 +148,34 @@ Es. Michelangelo 'haRealizzatoScultura' il David"""@it ;
 :localizzatoIn rdf:type owl:ObjectProperty ;
                rdfs:domain :Museo ;
                rdfs:range :Nazione ;
-               owl:propertyChainAxiom ( :museoInCittà
-                                        :contenutaIn
+               owl:propertyChainAxiom ( :museoInCitta
+                                        :cittaInNazione
                                       ) ;
                rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Nazione.
 Es. il museo egizio è 'localizzatoIn' Italia"""@it ;
-               rdfs:label "localizzatoIn"@it .
+               rdfs:label "museoInNazione"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#museoInCittà
-:museoInCittà rdf:type owl:ObjectProperty ,
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#museoInCitta
+:museoInCitta rdf:type owl:ObjectProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain :Museo ;
-              rdfs:range :Città ;
+              rdfs:range :Citta ;
               rdfs:comment """Relazione tra entità della classe Museo ed entità della classe Città.
 Es. il Louvre è un 'museoIncittà' Parigi"""@it ;
-              rdfs:label "museoInCittà"@it .
+              rdfs:label "museoInCitta"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#operaInCitta
+:operaInCitta rdf:type owl:ObjectProperty ;
+              rdfs:domain :Opera ;
+              rdfs:range :Citta ;
+              owl:propertyChainAxiom ( :operaMembroDi
+                                       :presentataIn
+                                       :museoInCitta
+                                     ) ;
+              rdfs:comment "Identifica la posizione di un'opera nel mondo, mostrano la nazione e il continente in cui è"@it ;
+              rdfs:label "operaInCitta"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#operaMembroDi
@@ -201,7 +224,9 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 :èDescrizioneDi rdf:type owl:ObjectProperty ;
                 owl:equivalentProperty <https://w3id.org/italia/onto/l0/isDescriptionOf> ;
                 rdfs:domain :Descrizione ;
-                rdfs:range :Opera .
+                rdfs:range :Opera ;
+                rdfs:comment "La descrizione di un'opera"@it ;
+                rdfs:label "èDescrizioneDi"@it .
 
 
 ###  https://w3id.org/arco/ontology/core/hasMethod
@@ -260,7 +285,7 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#nomeCittà
 :nomeCittà rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Città ;
+           rdfs:domain :Citta ;
            rdfs:range xsd:string ;
            rdfs:comment "Proprietà che indica il nome di un'entità della classe Città"@it ;
            rdfs:label "nomeCittà"@it .
@@ -353,21 +378,6 @@ E71(x) ⊃ E70(x)"""@en ;
 <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> owl:equivalentClass :Collezione .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto> rdf:type owl:Class ;
-                                                                                        rdfs:subClassOf :Museo ;
-                                                                                        rdfs:comment "Classe di musei all'aperto"@it ;
-                                                                                        rdfs:label "MuseoAll'Aperto"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> rdf:type owl:Class ;
-                                                                                    rdfs:subClassOf :Museo ;
-                                                                                    rdfs:comment "Classe di musei d'arte"@it ;
-                                                                                    rdfs:label "MuseoD'Arte"@it ;
-                                                                                    rdfs:seeAlso "http://dbpedia.org/page/Art_museum"^^xsd:string .
-
-
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Acquario
 :Acquario rdf:type owl:Class ;
           rdfs:subClassOf :MuseoMarittimo ;
@@ -454,22 +464,22 @@ E71(x) ⊃ E70(x)"""@en ;
           rdfs:label "Cineasta"@it .
 
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Città
-:Città rdf:type owl:Class ;
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Citta
+:Citta rdf:type owl:Class ;
        rdfs:subClassOf :EntitàGeografica ;
        rdfs:comment "Classe che rappresenta territori cittadini"@it ;
-       rdfs:label "Città"@it ;
+       rdfs:label "Citta"@it ;
        rdfs:seeAlso "http://dbpedia.org/ontology/city"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàMoltoTuristica
 :CittàMoltoTuristica rdf:type owl:Class ;
                      owl:equivalentClass [ rdf:type owl:Restriction ;
-                                           owl:onProperty :cittàHaMuseo ;
+                                           owl:onProperty :cittaHaMuseo ;
                                            owl:minQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
                                            owl:onClass :Museo
                                          ] ;
-                     rdfs:subClassOf :Città ;
+                     rdfs:subClassOf :Citta ;
                      rdfs:comment "Classe di città in cui sono presenti almeno 4 musei"@it ;
                      rdfs:label "CittàMoltoTuristica"@it .
 
@@ -477,11 +487,11 @@ E71(x) ⊃ E70(x)"""@en ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàTuristica
 :CittàTuristica rdf:type owl:Class ;
                 owl:equivalentClass [ rdf:type owl:Restriction ;
-                                      owl:onProperty :cittàHaMuseo ;
-                                      owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                      owl:onProperty :cittaHaMuseo ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                       owl:onClass :Museo
                                     ] ;
-                rdfs:subClassOf :Città ;
+                rdfs:subClassOf :Citta ;
                 rdfs:comment "Classe di città in cui sono presenti almeno 4 musei"@it ;
                 rdfs:label "CittàTuristica"@it .
 
@@ -669,9 +679,9 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo
 :Museo rdf:type owl:Class ;
        owl:equivalentClass [ rdf:type owl:Restriction ;
-                             owl:onProperty :museoInCittà ;
+                             owl:onProperty :museoInCitta ;
                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Città
+                             owl:onClass :Citta
                            ] ;
        rdfs:comment "Classe che rappresenta i musei"@it ;
        rdfs:label "Museo"@it ;
@@ -855,6 +865,21 @@ Ad esempio il metodo usato per realizzarle"""@it ;
                                                                                          rdfs:label "CoseFatteDall'uomo"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoAll'Aperto
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoAll'Aperto> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf :Museo ;
+                                                                                      rdfs:comment "Classe di musei all'aperto"@it ;
+                                                                                      rdfs:label "MuseoAll'Aperto"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf :Museo ;
+                                                                                  rdfs:comment "Classe di musei d'arte"@it ;
+                                                                                  rdfs:label "MuseoD'Arte"@it ;
+                                                                                  rdfs:seeAlso "http://dbpedia.org/page/Art_museum"^^xsd:string .
+
+
 ###  https://w3id.org/arco/ontology/core/Method
 <https://w3id.org/arco/ontology/core/Method> rdf:type owl:Class ;
                                              rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description> ;
@@ -878,6 +903,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman> rdf:type owl:NamedIndividual ,
                                                                                                                  :Fumetto ;
+                                                                                                        :operaMembroDi :EsposizioneFumettisticaNewYork ;
                                                                                                         :realizzatoDa :SooLee ;
                                                                                                         :realizzataNel "1980"^^xsd:unsignedInt ;
                                                                                                         :titoloOpera "Charlie's Angels Vs The Bionic Woman"^^xsd:string ;
@@ -915,7 +941,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay> rdf:type owl:NamedIndividual ,
                                                                                               :Museo ;
-                                                                                     :museoInCittà :Parigi ;
+                                                                                     :museoInCitta :Parigi ;
                                                                                      :nomeMuseo "Museo D'Orsay"^^xsd:string ;
                                                                                      rdfs:comment "Individuo che rappresenta il museo parigino di Orsay"@it ;
                                                                                      rdfs:label "MuseoD'Orsay"@it .
@@ -924,7 +950,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova
 :AcquarioGenova rdf:type owl:NamedIndividual ,
                          :Acquario ;
-                :museoInCittà :Genova ;
+                :museoInCitta :Genova ;
                 :realizzatoDa :RenzoPiano ;
                 :nomeMuseo "Acquario di Genova"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta l'Acquario di Genova"@it ;
@@ -960,7 +986,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Berlino
 :Berlino rdf:type owl:NamedIndividual ,
-                  :Città ;
+                  :Citta ;
          :nomeCittà "Berlino"^^xsd:string ;
          rdfs:comment "Individuo che rappresenta la città di Berlino"@it ;
          rdfs:label "Berlino"@it .
@@ -968,8 +994,8 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#BorgoMedievale
 :BorgoMedievale rdf:type owl:NamedIndividual ,
-                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoAll'Aperto> ;
-                :museoInCittà :Torino ;
+                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoAll'Aperto> ;
+                :museoInCitta :Torino ;
                 :nomeMuseo "Borgo Medievale"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta il Borgo medievale della città di Torino"@it ;
                 rdfs:label "BorgoMedievale"@it .
@@ -987,6 +1013,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CreazioneDiAdamo
 :CreazioneDiAdamo rdf:type owl:NamedIndividual ,
                            :Dipinto ;
+                  :operaInCitta :Roma ;
                   :realizzatoDa :MichelangeloBuonarroti ;
                   :realizzataNel "1511"^^xsd:unsignedInt ;
                   :titoloOpera "Creazione di Adamo"^^xsd:string ;
@@ -997,6 +1024,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CupolaDiSanPietro
 :CupolaDiSanPietro rdf:type owl:NamedIndividual ,
                             :OperaArchitettonica ;
+                   :operaInCitta :Roma ;
                    :titoloOpera "Cupola di San Pietro"^^xsd:string ;
                    rdfs:comment "Individuo che rappresenta la Cupola di San Pietro"@it ;
                    rdfs:label "CupolaDiSanPietro"@it .
@@ -1063,6 +1091,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia
 :Francia rdf:type owl:NamedIndividual ,
                   :NazioneEuropea ;
+         :contenutaIn :Europa ;
          :nomeNazione "Francia"^^xsd:string ;
          rdfs:comment "Individuo che rappresenta la nazione francese"@it ;
          rdfs:label "Francia"@it ;
@@ -1071,8 +1100,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma
 :GalleriaNazionaleRoma rdf:type owl:NamedIndividual ,
-                                <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> ;
-                       :museoInCittà :Roma ;
+                                <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte> ;
+                       :museoInCitta :Roma ;
                        :nomeMuseo "Galleria Nazionale d'arte contemporanea e moderna"^^xsd:string ;
                        rdfs:comment "Individuo che rappresenta la Galleria Nazionale di Roma"@it ;
                        rdfs:label "GalleriaNazionaleRoma"@it .
@@ -1080,8 +1109,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Genova
 :Genova rdf:type owl:NamedIndividual ,
-                 :Città ;
-        :contenutaIn :Italia ;
+                 :Citta ;
+        :cittaInNazione :Italia ;
         :nomeCittà "Genova"^^xsd:string ;
         rdfs:comment "Individuo che rappresenta la città di Genova"@it ;
         rdfs:label "Genova"@it ;
@@ -1091,6 +1120,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Germania
 :Germania rdf:type owl:NamedIndividual ,
                    :NazioneEuropea ;
+          :contenutaIn :Europa ;
           :nomeNazione "Germania"^^xsd:string ;
           rdfs:comment "Individuo che rappresenta la nazione tedesca"@it ;
           rdfs:label "Germania"@it ;
@@ -1100,6 +1130,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte
 :IGiocatoriDiCarte rdf:type owl:NamedIndividual ,
                             :Dipinto ;
+                   :operaInCitta :Parigi ;
                    :realizzatoDa :PaulCézanne ;
                    :realizzataNel "1890"^^xsd:unsignedInt ;
                    :titoloOpera "I giocatori di carte"^^xsd:string ;
@@ -1121,6 +1152,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Inghilterra
 :Inghilterra rdf:type owl:NamedIndividual ,
                       :NazioneEuropea ;
+             :contenutaIn :Europa ;
              :nomeNazione "Inghilterra"^^xsd:string ;
              rdfs:comment "Individuo che rappresenta la nazione inglese"@it ;
              rdfs:label "Inghilterra"@it ;
@@ -1160,7 +1192,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Londra
 :Londra rdf:type owl:NamedIndividual ,
-                 :Città ;
+                 :Citta ;
+        :cittaInNazione :Inghilterra ;
         :nomeCittà "Londra"^^xsd:string ;
         rdfs:label "Londra"@it ;
         rdfs:seeAlso "Individuo che rappresenta la città di Londra"@it ,
@@ -1190,7 +1223,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelCinema
 :MuseoDelCinema rdf:type owl:NamedIndividual ,
                          :Museo ;
-                :museoInCittà :Torino ;
+                :museoInCitta :Torino ;
                 :nomeMuseo "Museo del cinema"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta il museo del cinema di Torino"@it ;
                 rdfs:label "MuseoDelCinema"@it .
@@ -1198,8 +1231,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto
 :MuseoDelFumetto rdf:type owl:NamedIndividual ,
-                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Arte> ;
-                 :museoInCittà :NewYork ;
+                          <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte> ;
+                 :museoInCitta :NewYork ;
                  :nomeMuseo "Museo del Fumetto"^^xsd:string ;
                  rdfs:comment "Individuo che rappresenta il museo newyorkese del fumetto"@it ;
                  rdfs:label "MuseoDelFumetto"@it .
@@ -1216,7 +1249,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery
 :NationalGallery rdf:type owl:NamedIndividual ,
                           :Museo ;
-                 :museoInCittà :Londra ;
+                 :museoInCitta :Londra ;
                  :nomeMuseo "National Gallery"^^xsd:string ;
                  rdfs:comment "Individuo che rappresenta il museo londinese della National Gallery"@it ;
                  rdfs:label "NationalGallery"@it .
@@ -1224,8 +1257,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NewYork
 :NewYork rdf:type owl:NamedIndividual ,
-                  :Città ;
-         :contenutaIn :StatiUniti ;
+                  :Citta ;
+         :cittaInNazione :StatiUniti ;
          :nomeCittà "New York"^^xsd:string ;
          rdfs:comment "Individuo che rappresenta la città di NewYork"@it ;
          rdfs:label "NewYork"@it ;
@@ -1243,7 +1276,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi
 :Parigi rdf:type owl:NamedIndividual ,
-                 :Città ;
+                 :Citta ;
+        :cittaInNazione :Francia ;
         :nomeCittà "Parigi"^^xsd:string ;
         rdfs:comment "Individuo che rappresenta la città di Parigi"@it ;
         rdfs:label "Parigi"@it ;
@@ -1262,6 +1296,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PietàDiSanPietro
 :PietàDiSanPietro rdf:type owl:NamedIndividual ,
                            :Scultura ;
+                  :operaInCitta :Roma ;
                   :realizzatoDa :MichelangeloBuonarroti ;
                   :realizzataNel "1497"^^xsd:unsignedInt ;
                   :titoloOpera "Pietà di San Pietro"^^xsd:string ;
@@ -1271,7 +1306,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Pisa
 :Pisa rdf:type owl:NamedIndividual ,
-               :Città ;
+               :Citta ;
       :contenutaIn :Italia ;
       :nomeCittà "Pisa"^^xsd:string ;
       rdfs:comment "Individuo che rappresenta la cittadina italiana di Pisa"@it ;
@@ -1289,7 +1324,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Roma
 :Roma rdf:type owl:NamedIndividual ,
-               :Città ;
+               :Citta ;
       :contenutaIn :Italia ;
       :nomeCittà "Roma"^^xsd:string ;
       rdfs:comment "Individuo che rappresenta la città di Roma"@it ;
@@ -1333,10 +1368,10 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino
 :Torino rdf:type owl:NamedIndividual ,
-                 :Città ;
-        :cittàHaMuseo <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale> ,
+                 :Citta ;
+        :cittaHaMuseo <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale> ,
                       :MuseoEgizio ;
-        :contenutaIn :Italia ;
+        :cittaInNazione :Italia ;
         :nomeCittà "Torino"^^xsd:string ;
         rdfs:comment "Individuo che rappresenta la città di Torino"@it ;
         rdfs:label "Torino"@it ;

@@ -49,48 +49,54 @@
 							Europa
 						</a>
 						<div class="dropdown-menu">
-							<a id="italia" class="dropdown-item" data-toggle="tab" href="#italia" role="tablist">
+							<a id="italia" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons objects_umbrella-13"></i>
 								Italia
 							</a>
 							<div class="dropdown-divider"></div>
-							<a id="francia" class="dropdown-item" data-toggle="tab" href="#francia" role="tablist">
+							<a id="francia" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons shopping_shop"></i>
 								Francia
 							</a>
 							<div class="dropdown-divider"></div>
-							<a id="inghilterra" class="dropdown-item" data-toggle="tab" href="#inghilterra" role="tablist">
+							<a id="inghilterra" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons shopping_shop"></i>
 								Inghilterra
 							</a>
 							<div class="dropdown-divider"></div>
-							<a id="germania" class="dropdown-item" data-toggle="tab" href="#germania" role="tablist">
+							<a id="germania" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons shopping_shop"></i>
 								Germania
 							</a>
 						</div>
 					</li>
-					<li class="nav-item">
-						<a id="america" class="nav-link" data-toggle="tab" href="#america" role="tablist">
-							<i class="now-ui-icons shopping_shop"></i>
+					<li class="nav-item dropdown">
+						<a id="america" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="now-ui-icons objects_umbrella-13"></i>
 							America
 						</a>
+						<div class="dropdown-menu">
+							<a id="statiuniti" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons objects_umbrella-13"></i>
+								Stati Uniti
+							</a>
+						</div>
 					</li>
 					<li class="nav-item">
-						<a id="asia" class="nav-link" data-toggle="tab" href="#asia" role="tablist">
-							<i class="now-ui-icons shopping_shop"></i>
+						<a id="asia"  class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="now-ui-icons objects_umbrella-13"></i>
 							Asia
 						</a>
 					</li>
-					<li id="oceania" class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#oceania" role="tablist">
-							<i class="now-ui-icons shopping_shop"></i>
+					<li class="nav-item">
+						<a id="oceania" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="now-ui-icons objects_umbrella-13"></i>
 							Oceania
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#africa" role="tablist">
-							<i class="now-ui-icons shopping_shop"></i>
+						<a id="africa" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="now-ui-icons objects_umbrella-13"></i>
 							Africa
 						</a>
 					</li>
@@ -105,6 +111,11 @@
 					</div>
 					<div class="tab-pane active" id="div_for_countries" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
 						<table id="table1" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
+					<div class="tab-pane active" id="div_for_continents" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						<table id="table2" class="table table-striped" style="width:100%; margin-top:3em;">
 							<tr id="consoleName"></tr>
 						</table>
 					</div>
@@ -126,81 +137,124 @@
 				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
+				var div_for_continents = document.getElementById("div_for_continents");
+				
 				var table = $("#table0");
 				createTable(table, 0);
 				
 				div_for_all.style.display = "block";
 				div_for_countries.style.display = "none";
+				div_for_continents.style.display = "none";
 				stampaMusei(table, "");
 			});
+			
+			//stampa dei musei europei
+			jQuery("#europa").click(function(e){
+				$('*').removeClass('active');
+				$("#europa").addClass('active');
+				var continent = "Europa";
+				handleEventForContinents(continent);
+			});
+			
+			//stampa dei musei americani
+			jQuery("#america").click(function(e){
+				$('*').removeClass('active');
+				$("#america").addClass('active');
+				var continent = "Americhe";
+				handleEventForContinents(continent);
+			});
+			
+			//stampa dei musei asiatici
+			jQuery("#asia").click(function(e){
+				$('*').removeClass('active');
+				$("#asia").addClass('active');
+				var continent = "Asia";
+				handleEventForContinents(continent);
+			});
+			
+			//stampa dei musei oceanici
+			jQuery("#oceania").click(function(e){
+				$('*').removeClass('active');
+				$("#oceania").addClass('active');
+				var continent = "Oceania";
+				handleEventForContinents(continent);
+			});
+			
+			//stampa dei musei africani
+			jQuery("#africa").click(function(e){
+				$('*').removeClass('active');
+				$("#africa").addClass('active');
+				var continent = "Africa";
+				handleEventForContinents(continent);
+			});
+			
+			function handleEventForContinents(continent){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				var div_for_continents = document.getElementById("div_for_continents");
+				
+				var table = $("#table0");
+				createTable(table, 0);
+				
+				div_for_all.style.display = "block";
+				div_for_countries.style.display = "none";
+				div_for_continents.style.display = "none";
+				stampaMusei(table, continent);
+			}
+
+			//stampa dei musei negli Stati Uniti organizzati per città
+			jQuery("#statiuniti").click(function(e){
+				var country = "StatiUniti";
+				handleEvent(country);
+			});			
 		  
 			//stampa dei musei italiani organizzati per città
 			jQuery("#italia").click(function(e){
-				$( "tr" ).each(function() {
-					$( "tr" ).remove();
-				});
-				
-				var div_for_countries = document.getElementById("div_for_countries");
-				var div_for_all = document.getElementById("div_for_all");
-				var table = $("#table1");	
-				
-				createTable(table);
-				
-				div_for_all.style.display = "none";
-				div_for_countries.style.display = "block";
-				stampaMusei(table, "Italia");
+				var country = "Italia";
+				handleEvent(country);
 			});
+			
 			
 			//stampa dei musei francesi organizzati per città
 			jQuery("#francia").click(function(e){
-				$( "tr" ).each(function() {
-					$( "tr" ).remove();
-				});
-				
-				var div_for_countries = document.getElementById("div_for_countries");
-				var div_for_all = document.getElementById("div_for_all");
-				var table = $("#table1");
-				
-				createTable(table, 1);
-				
-				div_for_all.style.display = "none";
-				div_for_countries.style.display = "block";
-				
-				stampaMusei(table, "Francia");
+				var country = "Francia";
+				handleEvent(country);
 			});
 			
 			//stampa dei musei inglesi organizzati per città
 			jQuery("#inghilterra").click(function(e){
-				$( "tr" ).each(function() {
-					$( "tr" ).remove();
-				});
-				
-				var div_for_countries = document.getElementById("div_for_countries");
-				var div_for_all = document.getElementById("div_for_all");
-				var table = $("#table1");
-				
-				createTable(table, 1);
-				
-				div_for_all.style.display = "none";
-				div_for_countries.style.display = "block";
-				stampaMusei(table, "Inghilterra");
+				var country = "Inghilterra";
+				handleEvent(country);
 			});
 			
 			//stampa dei musei tedeschi organizzati per città
 			jQuery("#germania").click(function(e){
+				var country = "Germania";
+				handleEvent(country);
+			});
+			
+			
+			function handleEvent(country){
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
 				});
 				
 				var div_for_countries = document.getElementById("div_for_countries");
 				var div_for_all = document.getElementById("div_for_all");
-				var table = $("#table1");
-				createTable(table, 1);
+				var div_for_continents = document.getElementById("div_for_continents");
+				var table = $("#table1");	
+				
+				createTable(table, 2);
 				
 				div_for_all.style.display = "none";
+				div_for_continents.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei(table, "germania");
-			});
+				stampaMusei(table, country);
+			}
 			
 			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
 			function createTable(table, type){
@@ -217,7 +271,7 @@
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
-				var query = "SELECT ?museo ?citta ?nazione WHERE { {?museo museum:localizzatoIn ?nazione} UNION { {?museo museum:museoInCittà ?citta} UNION {?citta museum:cittàHaMuseo ?museo} ?citta museum:contenutaIn ?nazione.}.}";
+				var query = "SELECT ?museo ?citta ?nazione ?continente WHERE { {?museo museum:localizzatoIn ?nazione} UNION { {?museo museum:museoInCittà ?citta} UNION {?citta museum:cittàHaMuseo ?museo} ?citta museum:contenutaIn ?nazione.}. ?nazione museum:contenutaIn ?continente.}";
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
 
 				$.ajax({
@@ -232,13 +286,17 @@
 					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
 					success: function (dati) {
 						var str = "";
+						var continents = ["Europa", "Americhe", "Asia", "Oceania", "Africa"];
 						if(dati.head.vars){
 							$.each(dati.results.bindings, function(index, entity){
-								if(entitàGeografica != ""){ 
-									printMuseumGroupedByCountry(table, entity, entitàGeografica);
-								}
-								else{	
+								if(entitàGeografica == ""){ 
 									printMuseum(table, entity);	
+								}
+								else{
+									if(continents.indexOf(entitàGeografica) != -1){
+										printMuseumGroupedByContinent(table, entity, entitàGeografica);
+									}else
+										printMuseumGroupedByCountry(table, entity, entitàGeografica);
 								}									
 							});
 						}
@@ -266,6 +324,7 @@
 			//stampa dei musei presenti nel mondo esplicitati nell'ontologia
 			function printMuseum(table, entity){
 				var row;
+				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				row = $("<tr>").appendTo(table);
 				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 				row.append($("</td>"));
@@ -273,6 +332,21 @@
 				row.append($("</td>"));		
 				row.append($("<td>", {text: entity.nazione.value.slice(entity.nazione.value.search("#") + 1)}));
 				row.append($("</tr>"));
+			}
+			
+						//stampa dei musei presenti nel mondo esplicitati nell'ontologia
+			function printMuseumGroupedByContinent(table, entity, continent){
+				var row;
+				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
+				if(continentForEntity == continent){
+					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
+					row.append($("</td>"));		
+					row.append($("<td>", {text: entity.nazione.value.slice(entity.nazione.value.search("#") + 1)}));
+					row.append($("</tr>"));
+				}
 			}
 		</script>
 	</body>

@@ -290,12 +290,15 @@
 						if(dati.head.vars){
 							$.each(dati.results.bindings, function(index, entity){
 								if(entitàGeografica == ""){ 
+									//print se non è stata selezionata alcuna entità geografica
 									printMuseum(table, entity);	
 								}
 								else{
 									if(continents.indexOf(entitàGeografica) != -1){
+										//print eseguita se è stato selezionato un continente
 										printMuseumGroupedByContinent(table, entity, entitàGeografica);
 									}else
+										//print eseguita se è stato selezionato una nazione
 										printMuseumGroupedByCountry(table, entity, entitàGeografica);
 								}									
 							});
@@ -334,7 +337,7 @@
 				row.append($("</tr>"));
 			}
 			
-						//stampa dei musei presenti nel mondo esplicitati nell'ontologia
+			//stampa dei musei presenti nel continente specificato
 			function printMuseumGroupedByContinent(table, entity, continent){
 				var row;
 				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);

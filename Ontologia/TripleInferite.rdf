@@ -428,15 +428,18 @@ Es. la Gioconda è stata &apos;realizzataDa&apos; Leonardo Da Vinci</rdfs:commen
         <owl:equivalentProperty>
             <rdf:Description>
                 <owl:inverseOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#èDescrizioneDi"/>
-                <owl:equivalentProperty>
-                    <rdf:Description>
-                        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/l0/isDescriptionOf"/>
-                    </rdf:Description>
-                </owl:equivalentProperty>
             </rdf:Description>
         </owl:equivalentProperty>
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/l0/isDescriptionOf"/>
     </owl:ObjectProperty>
+    <rdf:Description>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haDescrizione"/>
+        <owl:equivalentProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/l0/hasDescription"/>
+            </rdf:Description>
+        </owl:equivalentProperty>
+    </rdf:Description>
     
 
 
@@ -446,14 +449,17 @@ Es. la Gioconda è stata &apos;realizzataDa&apos; Leonardo Da Vinci</rdfs:commen
         <owl:equivalentProperty>
             <rdf:Description>
                 <owl:inverseOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haDescrizione"/>
-                <owl:equivalentProperty>
-                    <rdf:Description>
-                        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/l0/hasDescription"/>
-                    </rdf:Description>
-                </owl:equivalentProperty>
             </rdf:Description>
         </owl:equivalentProperty>
     </owl:ObjectProperty>
+    <rdf:Description>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#èDescrizioneDi"/>
+        <owl:equivalentProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/l0/isDescriptionOf"/>
+            </rdf:Description>
+        </owl:equivalentProperty>
+    </rdf:Description>
     
 
 
@@ -1382,86 +1388,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman">
-        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
-        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
-        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NewYork"/>
-        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
-        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CameronDeordio"/>
-        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SooLee"/>
-        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1980</realizzataNel>
-        <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Charlie&apos;s Angels Vs The Bionic Woman</titoloOpera>
-        <rdfs:comment xml:lang="it">Individuo che rappresenta il fumetto Charlie&apos;s Angels Vs The Bionic Woman</rdfs:comment>
-        <rdfs:label xml:lang="it">Charlie&apos;sAngelsVsTheBionicWoman</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay">
-        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteModerna"/>
-        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte"/>
-        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte"/>
-        <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay"/>
-        <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte moderna nel Museo D&apos;Orsay</rdfs:comment>
-        <rdfs:label xml:lang="it">EsposizioneArteModernaMuseoD&apos;Orsay</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana">
-        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
-        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
-        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Roma"/>
-        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
-        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#VincentVanGogh"/>
-        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1890</realizzataNel>
-        <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">L&apos;Arlesiana</titoloOpera>
-        <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;opera d&apos;arte L&apos;Arlesiana di Vincent Van Gogh</rdfs:comment>
-        <rdfs:label xml:lang="it">L&apos;Arlesiana</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;ArteOrientale -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;ArteOrientale">
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo"/>
-        <localizzatoIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia"/>
-        <museoInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino"/>
-        <nomeMuseo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museo d&apos;arte orientale</nomeMuseo>
-        <rdfs:comment xml:lang="it">Individuo che rappresenta il museo d&apos;arte orientale che si trova nella città di Torino</rdfs:comment>
-        <rdfs:label xml:lang="it">MuseoD&apos;ArteOrientale</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay">
-        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo"/>
-        <localizzatoIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia"/>
-        <museoInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi"/>
-        <nomeMuseo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museo D&apos;Orsay</nomeMuseo>
-        <rdfs:comment xml:lang="it">Individuo che rappresenta il museo parigino di Orsay</rdfs:comment>
-        <rdfs:label xml:lang="it">MuseoD&apos;Orsay</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova">
@@ -1553,7 +1479,7 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaVisivo"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumettista"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scrittore"/>
-        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman"/>
+        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
         <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cameron Deordio</nomeArtista>
         <rdfs:comment xml:lang="it">Individuo che rappresenta lo scrittore Cameron Deordio</rdfs:comment>
@@ -1677,12 +1603,12 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteModerna"/>
-        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
-        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
+        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana"/>
         <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
         <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana"/>
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte moderna nell Galleria Nazionale a Roma</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneArteModernaRoma</rdfs:label>
@@ -1696,8 +1622,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteOccidentale"/>
-        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman"/>
-        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman"/>
+        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman"/>
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione di fumetti nel museo del fumetto di New York</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneFumettisticaNewYork</rdfs:label>
@@ -1819,9 +1745,9 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
-        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay"/>
+        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD&apos;Orsay"/>
         <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi"/>
-        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD&apos;Orsay"/>
         <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PaulCézanne"/>
         <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1890</realizzataNel>
         <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">I giocatori di carte</titoloOpera>
@@ -2112,7 +2038,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Citta"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàTuristica"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica"/>
-        <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay"/>
+        <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay"/>
         <cittaInNazione rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia"/>
         <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Europa"/>
         <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia"/>
@@ -2135,9 +2061,9 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
         <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LesGrandesBaigneuses"/>
         <haRealizzatoDipinto rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
-        <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
+        <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay"/>
         <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paul Cézanne</nomeArtista>
         <rdfs:comment xml:lang="it">Individuo che rappresenta il pittore francese Cézanne</rdfs:comment>
         <rdfs:label xml:lang="it">PaulCézanne</rdfs:label>
@@ -2217,7 +2143,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Artista"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaVisivo"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumettista"/>
-        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman"/>
+        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta il fumettista Soo Lee</rdfs:comment>
         <rdfs:label xml:lang="it">SooLee</rdfs:label>
@@ -2313,10 +2239,10 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàMoltoTuristica"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàTuristica"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica"/>
-        <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;ArteOrientale"/>
         <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#BorgoMedievale"/>
         <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelCinema"/>
         <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoEgizio"/>
+        <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;ArteOrientale"/>
         <cittaInNazione rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia"/>
         <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Europa"/>
         <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia"/>
@@ -2335,14 +2261,94 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaFigurativo"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaVisivo"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Pittore"/>
-        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
         <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
-        <haRealizzatoDipinto rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
+        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana"/>
         <haRealizzatoDipinto rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
+        <haRealizzatoDipinto rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
         <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vincent Van Gogh</nomeArtista>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;artista Vincent Van Gogh</rdfs:comment>
         <rdfs:label xml:lang="it">VincentVanGogh</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman">
+        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
+        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
+        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NewYork"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
+        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CameronDeordio"/>
+        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SooLee"/>
+        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1980</realizzataNel>
+        <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Charlie&apos;s Angels Vs The Bionic Woman</titoloOpera>
+        <rdfs:comment xml:lang="it">Individuo che rappresenta il fumetto Charlie&apos;s Angels Vs The Bionic Woman</rdfs:comment>
+        <rdfs:label xml:lang="it">Charlie&apos;sAngelsVsTheBionicWoman</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD&apos;Orsay -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD&apos;Orsay">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteModerna"/>
+        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte"/>
+        <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay"/>
+        <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte moderna nel Museo D&apos;Orsay</rdfs:comment>
+        <rdfs:label xml:lang="it">EsposizioneArteModernaMuseoD&apos;Orsay</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana">
+        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
+        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
+        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Roma"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
+        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#VincentVanGogh"/>
+        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1890</realizzataNel>
+        <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">L&apos;Arlesiana</titoloOpera>
+        <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;opera d&apos;arte L&apos;Arlesiana di Vincent Van Gogh</rdfs:comment>
+        <rdfs:label xml:lang="it">L&apos;Arlesiana</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;ArteOrientale -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;ArteOrientale">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo"/>
+        <localizzatoIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia"/>
+        <museoInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino"/>
+        <nomeMuseo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museo d&apos;arte orientale</nomeMuseo>
+        <rdfs:comment xml:lang="it">Individuo che rappresenta il museo d&apos;arte orientale che si trova nella città di Torino</rdfs:comment>
+        <rdfs:label xml:lang="it">MuseoD&apos;ArteOrientale</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo"/>
+        <localizzatoIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia"/>
+        <museoInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi"/>
+        <nomeMuseo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museo D&apos;Orsay</nomeMuseo>
+        <rdfs:comment xml:lang="it">Individuo che rappresenta il museo parigino di Orsay</rdfs:comment>
+        <rdfs:label xml:lang="it">MuseoD&apos;Orsay</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2380,8 +2386,21 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie&apos;sAngelsVsTheBionicWoman"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#BorgoMedievale"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelCinema"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoEgizio"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;ArteOrientale"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Orsay"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CreazioneDiAdamo"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CupolaDiSanPietro"/>
@@ -2394,32 +2413,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiRamsesII"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiSetiII"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteAnticaMuseoEgizioTorino"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaNationalGallery"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;ArteOrientale"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#BorgoMedievale"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelCinema"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoEgizio"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie&apos;sAngelsVsTheBionicWoman"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L&apos;Arlesiana"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
@@ -2466,6 +2461,17 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneIlGiardiniere"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizionePietàDiSanPietro"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteAnticaMuseoEgizioTorino"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaNationalGallery"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD&apos;Orsay"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>

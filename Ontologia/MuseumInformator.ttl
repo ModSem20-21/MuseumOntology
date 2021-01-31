@@ -916,53 +916,6 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman> rdf:type owl:NamedIndividual ,
-                                                                                                                 :Fumetto ;
-                                                                                                        :operaMembroDi :EsposizioneFumettisticaNewYork ;
-                                                                                                        :realizzatoDa :SooLee ;
-                                                                                                        :realizzataNel "1980"^^xsd:unsignedInt ;
-                                                                                                        :titoloOpera "Charlie's Angels Vs The Bionic Woman"^^xsd:string ;
-                                                                                                        rdfs:comment "Individuo che rappresenta il fumetto Charlie's Angels Vs The Bionic Woman"@it ;
-                                                                                                        rdfs:label "Charlie'sAngelsVsTheBionicWoman"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD'Orsay
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD'Orsay> rdf:type owl:NamedIndividual ,
-                                                                                                                    :CollezioneArteModerna ;
-                                                                                                           :haMembroOpera :IGiocatoriDiCarte ;
-                                                                                                           :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay> ;
-                                                                                                           rdfs:comment "Individuo che rappresenta l'esposizione d'arte moderna nel Museo D'Orsay"@it ;
-                                                                                                           rdfs:label "EsposizioneArteModernaMuseoD'Orsay"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L'Arlesiana
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L'Arlesiana> rdf:type owl:NamedIndividual ,
-                                                                                             :Dipinto ;
-                                                                                    :operaMembroDi :EsposizioneArteModernaRoma ;
-                                                                                    :realizzataNel "1890"^^xsd:unsignedInt ;
-                                                                                    :titoloOpera "L'Arlesiana"^^xsd:string ;
-                                                                                    rdfs:comment "Individuo che rappresenta l'opera d'arte L'Arlesiana di Vincent Van Gogh"@it ;
-                                                                                    rdfs:label "L'Arlesiana"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale> rdf:type owl:NamedIndividual ,
-                                                                                                      :Museo ;
-                                                                                             :nomeMuseo "Museo d'arte orientale"^^xsd:string ;
-                                                                                             rdfs:comment "Individuo che rappresenta il museo d'arte orientale che si trova nella città di Torino"@it ;
-                                                                                             rdfs:label "MuseoD'ArteOrientale"@it .
-
-
-###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay
-<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay> rdf:type owl:NamedIndividual ,
-                                                                                              :Museo ;
-                                                                                     :museoInCitta :Parigi ;
-                                                                                     :nomeMuseo "Museo D'Orsay"^^xsd:string ;
-                                                                                     rdfs:comment "Individuo che rappresenta il museo parigino di Orsay"@it ;
-                                                                                     rdfs:label "MuseoD'Orsay"@it .
-
-
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova
 :AcquarioGenova rdf:type owl:NamedIndividual ,
                          :Acquario ;
@@ -1020,7 +973,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CameronDeordio
 :CameronDeordio rdf:type owl:NamedIndividual ,
                          :Scrittore ;
-                :haRealizzato <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman> ;
+                :haRealizzato <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie'sAngelsVsTheBionicWoman> ;
                 :nomeArtista "Cameron Deordio"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta lo scrittore Cameron Deordio"@it ;
                 rdfs:label "CameronDeordio"@it .
@@ -1101,7 +1054,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork
 :EsposizioneFumettisticaNewYork rdf:type owl:NamedIndividual ,
                                          :CollezioneArteOccidentale ;
-                                :haMembroOpera <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman> ;
+                                :haMembroOpera <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie'sAngelsVsTheBionicWoman> ;
                                 :presentataIn :MuseoDelFumetto ;
                                 rdfs:comment "Individuo che rappresenta l'esposizione di fumetti nel museo del fumetto di New York"@it ;
                                 rdfs:label "EsposizioneFumettisticaNewYork"@it .
@@ -1463,8 +1416,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino
 :Torino rdf:type owl:NamedIndividual ,
                  :Citta ;
-        :cittaHaMuseo <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale> ,
-                      :MuseoEgizio ;
+        :cittaHaMuseo :MuseoEgizio ,
+                      <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'ArteOrientale> ;
         :cittaInNazione :Italia ;
         :nomeCittà "Torino"^^xsd:string ;
         rdfs:comment "Individuo che rappresenta la città di Torino"@it ;
@@ -1475,11 +1428,58 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#VincentVanGogh
 :VincentVanGogh rdf:type owl:NamedIndividual ,
                          :Pittore ;
-                :haRealizzatoDipinto <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L'Arlesiana> ,
-                                     :IlGiardiniere ;
+                :haRealizzatoDipinto :IlGiardiniere ,
+                                     <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L'Arlesiana> ;
                 :nomeArtista "Vincent Van Gogh"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta l'artista Vincent Van Gogh"@it ;
                 rdfs:label "VincentVanGogh"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie'sAngelsVsTheBionicWoman
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie'sAngelsVsTheBionicWoman> rdf:type owl:NamedIndividual ,
+                                                                                                               :Fumetto ;
+                                                                                                      :operaMembroDi :EsposizioneFumettisticaNewYork ;
+                                                                                                      :realizzatoDa :SooLee ;
+                                                                                                      :realizzataNel "1980"^^xsd:unsignedInt ;
+                                                                                                      :titoloOpera "Charlie's Angels Vs The Bionic Woman"^^xsd:string ;
+                                                                                                      rdfs:comment "Individuo che rappresenta il fumetto Charlie's Angels Vs The Bionic Woman"@it ;
+                                                                                                      rdfs:label "Charlie'sAngelsVsTheBionicWoman"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD'Orsay
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD'Orsay> rdf:type owl:NamedIndividual ,
+                                                                                                                  :CollezioneArteModerna ;
+                                                                                                         :haMembroOpera :IGiocatoriDiCarte ;
+                                                                                                         :presentataIn <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Orsay> ;
+                                                                                                         rdfs:comment "Individuo che rappresenta l'esposizione d'arte moderna nel Museo D'Orsay"@it ;
+                                                                                                         rdfs:label "EsposizioneArteModernaMuseoD'Orsay"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L'Arlesiana
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L'Arlesiana> rdf:type owl:NamedIndividual ,
+                                                                                           :Dipinto ;
+                                                                                  :operaMembroDi :EsposizioneArteModernaRoma ;
+                                                                                  :realizzataNel "1890"^^xsd:unsignedInt ;
+                                                                                  :titoloOpera "L'Arlesiana"^^xsd:string ;
+                                                                                  rdfs:comment "Individuo che rappresenta l'opera d'arte L'Arlesiana di Vincent Van Gogh"@it ;
+                                                                                  rdfs:label "L'Arlesiana"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'ArteOrientale
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'ArteOrientale> rdf:type owl:NamedIndividual ,
+                                                                                                    :Museo ;
+                                                                                           :nomeMuseo "Museo d'arte orientale"^^xsd:string ;
+                                                                                           rdfs:comment "Individuo che rappresenta il museo d'arte orientale che si trova nella città di Torino"@it ;
+                                                                                           rdfs:label "MuseoD'ArteOrientale"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Orsay
+<http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Orsay> rdf:type owl:NamedIndividual ,
+                                                                                            :Museo ;
+                                                                                   :museoInCitta :Parigi ;
+                                                                                   :nomeMuseo "Museo D'Orsay"^^xsd:string ;
+                                                                                   rdfs:comment "Individuo che rappresenta il museo parigino di Orsay"@it ;
+                                                                                   rdfs:label "MuseoD'Orsay"@it .
 
 
 #################################################################
@@ -1509,9 +1509,22 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#Charlie'sAngelsVsTheBionicWoman>
-                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L'Arlesiana>
-                        :AcquarioGenova
+  owl:distinctMembers ( :AcquarioGenova
+                        :BorgoMedievale
+                        :GalleriaNazionaleRoma
+                        :MuseoDelCinema
+                        :MuseoDelFumetto
+                        :MuseoEgizio
+                        :MuseoNazionaleDiArteModernaTokyo
+                        :NationalGallery
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'ArteOrientale>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Orsay>
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :AcquarioGenova
                         :CreazioneDiAdamo
                         :CupolaDiSanPietro
                         :IGiocatoriDiCarte
@@ -1523,32 +1536,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                         :SpringRain
                         :StatuaDiRamsesII
                         :StatuaDiSetiII
-                      )
-] .
-
-
-[ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD'Orsay>
-                        :EsposizioneArteAnticaMuseoEgizioTorino
-                        :EsposizioneArteModernaNationalGallery
-                        :EsposizioneArteModernaRoma
-                        :EsposizioneFumettisticaNewYork
-                        :EsposizioneTempioGokokuji
-                      )
-] .
-
-
-[ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'ArteOrientale>
-                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD'Orsay>
-                        :AcquarioGenova
-                        :BorgoMedievale
-                        :GalleriaNazionaleRoma
-                        :MuseoDelCinema
-                        :MuseoDelFumetto
-                        :MuseoEgizio
-                        :MuseoNazionaleDiArteModernaTokyo
-                        :NationalGallery
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Charlie'sAngelsVsTheBionicWoman>
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#L'Arlesiana>
                       )
 ] .
 
@@ -1595,6 +1584,17 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
   owl:distinctMembers ( :DescrizioneIlGiardiniere
                         :DescrizioneKannon
                         :DescrizionePietàDiSanPietro
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :EsposizioneArteAnticaMuseoEgizioTorino
+                        :EsposizioneArteModernaNationalGallery
+                        :EsposizioneArteModernaRoma
+                        :EsposizioneFumettisticaNewYork
+                        :EsposizioneTempioGokokuji
+                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaMuseoD'Orsay>
                       )
 ] .
 

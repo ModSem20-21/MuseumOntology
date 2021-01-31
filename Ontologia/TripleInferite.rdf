@@ -19,23 +19,10 @@ Michele Lanotte</dc:creators>
         <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></dc:description>
         <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museum Informator</dc:title>
         <cpannotationschema:coversRequirements rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology"/>
-        <cpannotationschema:coversRequirements>What things are contained in this collection (community, collective)? What collections this thing is member of?</cpannotationschema:coversRequirements>
-        <cpannotationschema:extractedFrom>http://www.ontologydesignpatterns.org/ont/dul/DUL.owl</cpannotationschema:extractedFrom>
-        <cpannotationschema:hasAuthor>Aldo Gangemi</cpannotationschema:hasAuthor>
-        <cpannotationschema:hasConsequences>Collections and their members can be associated. Time-indexed membership cannot be represented though (you need a situation-based pattern).</cpannotationschema:hasConsequences>
-        <cpannotationschema:hasIntent>To represent domain (not set theory) membership.</cpannotationschema:hasIntent>
-        <cpannotationschema:relatedCPs>TimeIndexedMembership</cpannotationschema:relatedCPs>
-        <cpannotationschema:scenarios>My saxophone collection includes a Mark VI tenor, a Balanced Action alto, and a Conn Transitional bari.</cpannotationschema:scenarios>
-        <vann:preferredNamespacePrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></vann:preferredNamespacePrefix>
-        <vann:preferredNampespaceUri rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></vann:preferredNampespaceUri>
+        <vann:preferredNamespacePrefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string">museum</vann:preferredNamespacePrefix>
+        <vann:preferredNampespaceUri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#</vann:preferredNampespaceUri>
         <reusesPatternAsTemplate rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
-        <rdfs:comment>The collection entity pattern. 
-It is extracted from DOLCE-UltraLite by partial clone of elements.</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MuseumInformator</rdfs:label>
-        <rdfs:label>collection entity</rdfs:label>
-        <rdfs:label>membership</rdfs:label>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1 added rdfs:isDefinedBy for all named entities</owl:versionInfo>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created by Aldo Gangemi and Valentina Presutti</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -77,55 +64,7 @@ It is extracted from DOLCE-UltraLite by partial clone of elements.</rdfs:comment
 
     <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements -->
 
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
-        <rdfs:comment>This annotation property is used for exemplifying possible requirements the content pattern provides a solution for. Requirements are expressed as natural language competency questions.</rdfs:comment>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#extractedFrom -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#extractedFrom">
-        <rdfs:comment>This annotation property should be assigned with a URI, which points to the possible reference ontology which the annotated pattern was extracted from (i.e. the reference ontology that the ontology elements have been deeply or partially cloned by). The range is not explicit in the definition of the annotation property because it would turn the ontology to OWL Full. E.g. The participation pattern is extracted from the Dolce Ultra Lite ontology, hence the value for this annotation property is http://www.ontologydesignpatterns.org/ont/dul/DUL.owl</rdfs:comment>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor"/>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasConsequences -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasConsequences">
-        <rdfs:comment>This annotation property is used for briefly describing the benefits and/or possible trade-offs when using the CP.</rdfs:comment>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent">
-        <rdfs:comment>This annotation property is used in order to describe the intent of the content pattern.</rdfs:comment>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs">
-        <rdfs:comment>This annotation property can be used to indicate other CPs (if any) that specialize, generalize, inlcude, or are components of the CP. Furthermore, this field may indicate other CPs that are typically used in conjunction with the described one. Important similarities and differences with other patterns can be also described here.</rdfs:comment>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios -->
-
-    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios">
-        <rdfs:comment>This annotation property is used for describing examples of instantiation of the Content OP. For example, for the part-of Content OP (which represents part-whole relations) a possible scenario is the sentence: &quot;the brain is part of the human body&quot;. Scenarios are expressed as natural language sentences.</rdfs:comment>
-    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements"/>
     
 
 
@@ -160,25 +99,13 @@ It is extracted from DOLCE-UltraLite by partial clone of elements.</rdfs:comment
 
     <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember -->
 
-    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember">
-        <owl:inverseOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf"/>
-        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:comment>A relation between collections and entities, e.g. &apos;my collection of saxophones includes an old Adolphe Sax original alto&apos; (i.e. my collection has member an Adolphe Sax alto).</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
-        <rdfs:label xml:lang="en">has member</rdfs:label>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember"/>
     
 
 
     <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf -->
 
-    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf">
-        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
-        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
-        <rdfs:label xml:lang="en">is member of</rdfs:label>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf"/>
     
 
 
@@ -243,6 +170,7 @@ Es. Torino è una città &apos;contenutaIn&apos; Europa</rdfs:comment>
                 <owl:inverseOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf"/>
             </rdf:Description>
         </rdfs:subPropertyOf>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#operaMembroDi"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
         <rdfs:comment xml:lang="it">Relazione tra entità della classe Collezione e la classe Opera
@@ -544,6 +472,8 @@ Es. la Gioconda è stata &apos;realizzataDa&apos; Leonardo Da Vinci</rdfs:commen
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#contenutoDescrizione">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Descrizione"/>
+        <rdfs:comment xml:lang="it">Indica il contenuto di una descrizione di un&apos;opera</rdfs:comment>
+        <rdfs:label xml:lang="it">contenutoDescrizione</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -699,9 +629,6 @@ E71(x) ⊃ E70(x)</rdfs:comment>
 
     <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">
         <owl:equivalentClass rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
-        <rdfs:comment>Any container for entities that share one or more common properties. E.g. &quot;stone objects&quot;, &quot;the nurses&quot;, &quot;the Louvre Aegyptian collection&quot;. A collection is not a logical class: a collection is a first-order entity, while a class is a second-order one.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
-        <rdfs:label xml:lang="en">Collection</rdfs:label>
     </owl:Class>
     
 
@@ -795,13 +722,6 @@ E71(x) ⊃ E70(x)</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CapoDiModa">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Film"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografia"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta tutti i capi di moda</rdfs:comment>
         <rdfs:label xml:lang="it">CapoDiModa</rdfs:label>
     </owl:Class>
@@ -1041,12 +961,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Film"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografia"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta i dipinti</rdfs:comment>
         <rdfs:label xml:lang="it">Dipinto</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/ontology/Painting</rdfs:seeAlso>
@@ -1067,11 +981,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Film">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografia"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta opere cinematografiche</rdfs:comment>
         <rdfs:label xml:lang="it">Film</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/ontology/Film</rdfs:seeAlso>
@@ -1084,10 +993,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografia">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta opere di tipo fotografico</rdfs:comment>
         <rdfs:label xml:lang="it">Fotografia</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/page/Photograph</rdfs:seeAlso>
@@ -1135,9 +1040,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta opere di tipo fumetto</rdfs:comment>
         <rdfs:label xml:lang="it">Fumetto</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dbpedia.org/ontology/Comic</rdfs:seeAlso>
@@ -1269,9 +1171,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAfricana">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Nazione"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAmericana"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAsiatica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneEuropea"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta le nazioni africane</rdfs:comment>
         <rdfs:label xml:lang="it">NazioneAfricana</rdfs:label>
     </owl:Class>
@@ -1282,8 +1181,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAmericana">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Nazione"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAsiatica"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneEuropea"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta le nazioni americane</rdfs:comment>
         <rdfs:label xml:lang="it">NazioneAmericana</rdfs:label>
     </owl:Class>
@@ -1294,7 +1191,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAsiatica">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Nazione"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneEuropea"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta le nazioni asiatiche</rdfs:comment>
         <rdfs:label xml:lang="it">NazioneAsiatica</rdfs:label>
     </owl:Class>
@@ -1333,8 +1229,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaArchitettonica">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta opere architettoniche</rdfs:comment>
         <rdfs:label xml:lang="it">OperaArchitettonica</rdfs:label>
     </owl:Class>
@@ -1345,7 +1239,6 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura"/>
         <rdfs:comment xml:lang="it">Classe che rappresenta opere letterarie</rdfs:comment>
         <rdfs:label xml:lang="it">OperaLetteraria</rdfs:label>
     </owl:Class>
@@ -1711,6 +1604,22 @@ Ad esempio il metodo usato per realizzarle</rdfs:comment>
         <contenutoDescrizione xml:lang="it">Il giardiniere, conosciuto anche come Ritratto di giovane contadino o Contadino provenzale, è un olio su tela (61×51 cm) di Vincent van Gogh, databile al settembre del 1889 e conservato nella Galleria nazionale d&apos;arte moderna e contemporanea di Roma.
 
 L&apos;opera, considerata la più importante del pittore olandese tra quelle presenti nelle collezioni pubbliche italiane, è un capolavoro del periodo provenzale di Van Gogh e racchiude alcuni dei temi fondamentali della sua pittura, come il tema del ritratto, il rapporto con la natura e l&apos;accostamento dei colori primari e complementari.</contenutoDescrizione>
+        <rdfs:comment xml:lang="it">Descrizione dell&apos;opera il Giardiniere</rdfs:comment>
+        <rdfs:label xml:lang="it">DescrizioneIlGiardiniere</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Descrizione"/>
+        <rdf:type rdf:resource="https://w3id.org/italia/onto/l0/Description"/>
+        <èDescrizioneDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
+        <l0:isDescriptionOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
+        <contenutoDescrizione xml:lang="en">The large canvas features Kannon in a white robe riding the dragon, with a willow branch in the right hand and a water cup in the left hand. Having studied in Germany, Harada made this piece referring to European religious paintings and Japanese pieces showing Kannon. Applying realistic representation of oil painting to a traditional Japanese subject, this ambitious work generated fierce debates about its theme and vivid depiction when first shown.</contenutoDescrizione>
+        <rdfs:comment xml:lang="it">Descrizione opera di Kannon Bodhisattva Riding The Drago</rdfs:comment>
+        <rdfs:label xml:lang="it">DescrizioneKannon</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1724,6 +1633,8 @@ L&apos;opera, considerata la più importante del pittore olandese tra quelle pre
         <l0:isDescriptionOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PietàDiSanPietro"/>
         <contenutoDescrizione xml:lang="it">La Pietà di San Pietro è una scultura in marmo realizzata da Michelangelo Buonarroti e conservata nella basilica di San Pietro in Vaticano.
 Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro dell&apos;artista, allora poco più che ventenne, nonché una delle maggiori opere d&apos;arte che l&apos;Occidente abbia mai prodotto.</contenutoDescrizione>
+        <rdfs:comment xml:lang="it">Descrizione della PietàDiSanPietro</rdfs:comment>
+        <rdfs:label xml:lang="it">DescrizionePietàDiSanPietro</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1736,6 +1647,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteAntica"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiRamsesII"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiSetiII"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiRamsesII"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiSetiII"/>
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoEgizio"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte antica nel Museo Egizio di Torino</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneArteAnticaMuseoEgizioTorino</rdfs:label>
@@ -1750,6 +1663,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteModerna"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LesGrandesBaigneuses"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LesGrandesBaigneuses"/>
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte moderna nel National Gallery di Londra</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneArteModernaNationalGallery</rdfs:label>
@@ -1766,6 +1680,9 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
         <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#L&apos;Arlesiana"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione d&apos;arte moderna nell Galleria Nazionale a Roma</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneArteModernaRoma</rdfs:label>
@@ -1784,6 +1701,23 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
         <rdfs:comment xml:lang="it">Individuo che rappresenta l&apos;esposizione di fumetti nel museo del fumetto di New York</rdfs:comment>
         <rdfs:label xml:lang="it">EsposizioneFumettisticaNewYork</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Collezione"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneArteOrientale"/>
+        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
+        <collectionentity:hasMember rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
+        <haMembroOpera rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain"/>
+        <presentataIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
+        <rdfs:comment xml:lang="it">Collezione artistica del tempio giapponese</rdfs:comment>
+        <rdfs:label xml:lang="it">EsposizioneTempioGokokuji</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1862,6 +1796,22 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     
 
 
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Artista"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaFigurativo"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaVisivo"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Pittore"/>
+        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
+        <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
+        <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harada Naojiro</nomeArtista>
+        <rdfs:comment xml:lang="it">Pittore del &apos;900 giapponese</rdfs:comment>
+        <rdfs:label xml:lang="it">HaradaNaojiro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte">
@@ -1871,6 +1821,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
         <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay"/>
         <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#EsposizioneArteModernaMuseoD&apos;Orsay"/>
         <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PaulCézanne"/>
         <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1890</realizzataNel>
         <titoloOpera rdf:datatype="http://www.w3.org/2001/XMLSchema#string">I giocatori di carte</titoloOpera>
@@ -1927,6 +1878,43 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdfs:comment xml:lang="it">Individuo che rappresenta la nazione italiana</rdfs:comment>
         <rdfs:label xml:lang="it">Italia</rdfs:label>
         <rdfs:seeAlso>http://dbpedia.org/page/Italy</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago">
+        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
+        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
+        <haDescrizione rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon"/>
+        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
+        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro"/>
+        <l0:hasDescription rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon"/>
+        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1890</realizzataNel>
+        <titoloOpera>Kannon Bodhisattava Riding The Drago</titoloOpera>
+        <rdfs:comment xml:lang="it">Opera giapponese del museo di Tokyo di arte moderna</rdfs:comment>
+        <rdfs:label xml:lang="it">KannonBodhisattvaRidingTheDrago</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KawaseHasui -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KawaseHasui">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Artista"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaFigurativo"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaVisivo"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Pittore"/>
+        <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain"/>
+        <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
+        <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kawase Hasui</nomeArtista>
+        <rdfs:comment xml:lang="it">Pittore giapponese del &apos;900</rdfs:comment>
+        <rdfs:label xml:lang="it">KawaseHasui</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2061,6 +2049,19 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     
 
 
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD&apos;Arte"/>
+        <museoInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo"/>
+        <nomeMuseo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Museo Nazionale di Arte Moderna, Tokyo</nomeMuseo>
+        <rdfs:comment xml:lang="it">Museo nazionale di Arte Moderna Tokyo</rdfs:comment>
+        <rdfs:label xml:lang="it">MuseoNazionaleDiArteModernaTokyo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery">
@@ -2134,6 +2135,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
         <haRealizzato rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LesGrandesBaigneuses"/>
         <haRealizzatoDipinto rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
+        <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator#MuseoD&apos;Orsay"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma"/>
         <presentaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
         <nomeArtista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paul Cézanne</nomeArtista>
@@ -2223,6 +2225,24 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     
 
 
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain">
+        <rdf:type rdf:resource="http://erlangen-crm.org/200717/E71_Human-Made_Thing"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Dipinto"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Opera"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall&apos;uomo"/>
+        <collectionentity:isMemberOf rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
+        <operaInCitta rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo"/>
+        <operaMembroDi rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
+        <realizzatoDa rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KawaseHasui"/>
+        <realizzataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1932</realizzataNel>
+        <rdfs:comment xml:lang="it">Dipinto giapponese</rdfs:comment>
+        <rdfs:label xml:lang="it">SpringRain</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatiUniti -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatiUniti">
@@ -2271,6 +2291,21 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     
 
 
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Citta"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàTuristica"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica"/>
+        <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
+        <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Asia"/>
+        <nomeCittà rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tokyo</nomeCittà>
+        <rdfs:comment xml:lang="it">Città asiatica</rdfs:comment>
+        <rdfs:label xml:lang="it">Tokyo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino">
@@ -2315,32 +2350,6 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasComponent">
-        <rdfs:comment>This annotation property is useful for content ontology design patterns. Its value is a URI, which refers to another content ontology design pattern which is a component of the annotated one.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasUnitTest">
-        <rdfs:comment>This property can be used to annotate a unit test (e.g. in the form of a SPARQL query) to be launched to evaluate an ontology against a requirement-based task.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf">
-        <rdfs:comment>This annotation property is used for referring a cloned ontology entity to its cloning source.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isSpecializationOf">
-        <rdfs:comment>This annotation property is useful for content ontology design patterns and its elements. Its value is a URI, which refers either to a content ontology design pattern that is specialized by the annotated one, or to an ontology element that is specialized by the annotated one.</rdfs:comment>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#reengineeredFrom">
-        <rdfs:comment>This annotation property should be assigned with a URI, which points to the concept schema, page, or anything else from which the annotated pattern was reengineered.  If the source does not have any URI e.g., a printed book, this property value should provide information as precise as possible in order to identify the source. This property is alternative to the extractedFrom property because it is used when the pattern come from a concept schema which is not an owl ontology. For example content ontology design patterns, which are reengineered from data model patterns, rdf schemas, etc. should be annotatd with this property. E.g. The basicpersonalfoaf pattern is extracted from the rdf FOAF specification, hence the value for this annotation property is http://xmlns.com/foaf/spec/20071002.rdf</rdfs:comment>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // General axioms
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -2378,9 +2387,11 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CupolaDiSanPietro"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IlGiardiniere"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LesGrandesBaigneuses"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PietàDiSanPietro"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiRamsesII"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiSetiII"/>
         </owl:distinctMembers>
@@ -2393,6 +2404,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaNationalGallery"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteModernaRoma"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneFumettisticaNewYork"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>
@@ -2406,6 +2418,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelCinema"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoDelFumetto"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoEgizio"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery"/>
         </owl:distinctMembers>
     </rdf:Description>
@@ -2425,9 +2438,11 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Berlino"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Genova"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Londra"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NewYork"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Pisa"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Roma"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino"/>
         </owl:distinctMembers>
     </rdf:Description>
@@ -2435,12 +2450,22 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CameronDeordio"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KawaseHasui"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Marc_Chagall"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MichelangeloBuonarroti"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PaulCézanne"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#RenzoPiano"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SooLee"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#VincentVanGogh"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneIlGiardiniere"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizionePietàDiSanPietro"/>
         </owl:distinctMembers>
     </rdf:Description>
     <rdf:Description>

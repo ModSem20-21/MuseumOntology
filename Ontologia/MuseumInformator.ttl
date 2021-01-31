@@ -14,8 +14,8 @@ Michele Lanotte"""^^xsd:string ;
                                                                         <http://purl.org/dc/elements/1.1/description> ""^^xsd:string ;
                                                                         <http://purl.org/dc/elements/1.1/title> "Museum Informator"^^xsd:string ;
                                                                         <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology> ;
-                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> ""^^xsd:string ;
-                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> ""^^xsd:string ;
+                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> "museum"^^xsd:string ;
+                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> "http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#"^^xsd:string ;
                                                                         :reusesPatternAsTemplate <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
                                                                         rdfs:label "MuseumInformator"^^xsd:string .
 
@@ -39,6 +39,10 @@ Michele Lanotte"""^^xsd:string ;
 <http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
 
@@ -54,6 +58,14 @@ Michele Lanotte"""^^xsd:string ;
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> rdf:type owl:ObjectProperty .
+
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#cittaHaMuseo
 :cittaHaMuseo rdf:type owl:ObjectProperty ;
@@ -97,6 +109,7 @@ Es. Torino è una città 'contenutaIn' Europa"""@it ;
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#haMembroOpera
 :haMembroOpera rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> ;
+               owl:inverseOf :operaMembroDi ;
                rdfs:domain :Collezione ;
                rdfs:range :Opera ;
                rdfs:comment """Relazione tra entità della classe Collezione e la classe Opera
@@ -272,7 +285,9 @@ Es. la Gioconda è stata 'realizzataDa' Leonardo Da Vinci"""@it ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#contenutoDescrizione
 :contenutoDescrizione rdf:type owl:DatatypeProperty ;
-                      rdfs:domain :Descrizione .
+                      rdfs:domain :Descrizione ;
+                      rdfs:comment "Indica il contenuto di una descrizione di un'opera"@it ;
+                      rdfs:label "contenutoDescrizione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#nomeArtista
@@ -375,7 +390,8 @@ E71(x) ⊃ E70(x)"""@en ;
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection
-<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> owl:equivalentClass :Collezione .
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> rdf:type owl:Class ;
+                                                                               owl:equivalentClass :Collezione .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Acquario
@@ -1035,7 +1051,17 @@ Ad esempio il metodo usato per realizzarle"""@it ;
                                    :Descrizione ;
                           :contenutoDescrizione """Il giardiniere, conosciuto anche come Ritratto di giovane contadino o Contadino provenzale, è un olio su tela (61×51 cm) di Vincent van Gogh, databile al settembre del 1889 e conservato nella Galleria nazionale d'arte moderna e contemporanea di Roma.
 
-L'opera, considerata la più importante del pittore olandese tra quelle presenti nelle collezioni pubbliche italiane, è un capolavoro del periodo provenzale di Van Gogh e racchiude alcuni dei temi fondamentali della sua pittura, come il tema del ritratto, il rapporto con la natura e l'accostamento dei colori primari e complementari."""@it .
+L'opera, considerata la più importante del pittore olandese tra quelle presenti nelle collezioni pubbliche italiane, è un capolavoro del periodo provenzale di Van Gogh e racchiude alcuni dei temi fondamentali della sua pittura, come il tema del ritratto, il rapporto con la natura e l'accostamento dei colori primari e complementari."""@it ;
+                          rdfs:comment "Descrizione dell'opera il Giardiniere"@it ;
+                          rdfs:label "DescrizioneIlGiardiniere"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizioneKannon
+:DescrizioneKannon rdf:type owl:NamedIndividual ,
+                            :Descrizione ;
+                   :contenutoDescrizione "The large canvas features Kannon in a white robe riding the dragon, with a willow branch in the right hand and a water cup in the left hand. Having studied in Germany, Harada made this piece referring to European religious paintings and Japanese pieces showing Kannon. Applying realistic representation of oil painting to a traditional Japanese subject, this ambitious work generated fierce debates about its theme and vivid depiction when first shown."@en ;
+                   rdfs:comment "Descrizione opera di Kannon Bodhisattva Riding The Drago"@it ;
+                   rdfs:label "DescrizioneKannon"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#DescrizionePietàDiSanPietro
@@ -1043,7 +1069,9 @@ L'opera, considerata la più importante del pittore olandese tra quelle presenti
                                       :Descrizione ;
                              :èDescrizioneDi :PietàDiSanPietro ;
                              :contenutoDescrizione """La Pietà di San Pietro è una scultura in marmo realizzata da Michelangelo Buonarroti e conservata nella basilica di San Pietro in Vaticano.
-Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro dell'artista, allora poco più che ventenne, nonché una delle maggiori opere d'arte che l'Occidente abbia mai prodotto."""@it .
+Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro dell'artista, allora poco più che ventenne, nonché una delle maggiori opere d'arte che l'Occidente abbia mai prodotto."""@it ;
+                             rdfs:comment "Descrizione della PietàDiSanPietro"@it ;
+                             rdfs:label "DescrizionePietàDiSanPietro"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneArteAnticaMuseoEgizioTorino
@@ -1077,6 +1105,15 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                                 :presentataIn :MuseoDelFumetto ;
                                 rdfs:comment "Individuo che rappresenta l'esposizione di fumetti nel museo del fumetto di New York"@it ;
                                 rdfs:label "EsposizioneFumettisticaNewYork"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EsposizioneTempioGokokuji
+:EsposizioneTempioGokokuji rdf:type owl:NamedIndividual ,
+                                    :CollezioneArteOrientale ;
+                           :haMembroOpera :KannonBodhisattvaRidingTheDrago ;
+                           :presentataIn :MuseoNazionaleDiArteModernaTokyo ;
+                           rdfs:comment "Collezione artistica del tempio giapponese"@it ;
+                           rdfs:label "EsposizioneTempioGokokuji"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Europa
@@ -1127,6 +1164,14 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
           rdfs:seeAlso "http://dbpedia.org/page/Germany"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro
+:HaradaNaojiro rdf:type owl:NamedIndividual ,
+                        :Pittore ;
+               :nomeArtista "Harada Naojiro"^^xsd:string ;
+               rdfs:comment "Pittore del '900 giapponese"@it ;
+               rdfs:label "HaradaNaojiro"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#IGiocatoriDiCarte
 :IGiocatoriDiCarte rdf:type owl:NamedIndividual ,
                             :Dipinto ;
@@ -1167,6 +1212,27 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         rdfs:comment "Individuo che rappresenta la nazione italiana"@it ;
         rdfs:label "Italia"@it ;
         rdfs:seeAlso "http://dbpedia.org/page/Italy" .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago
+:KannonBodhisattvaRidingTheDrago rdf:type owl:NamedIndividual ,
+                                          :Dipinto ;
+                                 :haDescrizione :DescrizioneKannon ;
+                                 :operaInCitta :Tokyo ;
+                                 :realizzatoDa :HaradaNaojiro ;
+                                 :realizzataNel "1890"^^xsd:unsignedInt ;
+                                 :titoloOpera "Kannon Bodhisattava Riding The Drago" ;
+                                 rdfs:comment "Opera giapponese del museo di Tokyo di arte moderna"@it ;
+                                 rdfs:label "KannonBodhisattvaRidingTheDrago"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KawaseHasui
+:KawaseHasui rdf:type owl:NamedIndividual ,
+                      :Pittore ;
+             :haRealizzato :SpringRain ;
+             :nomeArtista "Kawase Hasui"^^xsd:string ;
+             rdfs:comment "Pittore giapponese del '900"@it ;
+             rdfs:label "KawaseHasui"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#LeCabanonDeJourdan
@@ -1244,6 +1310,15 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
              :nomeMuseo "Museo Egizio"^^xsd:string ;
              rdfs:comment "Individuo che rappresenta il museo Egizio che si trova nella città di Torino"@it ;
              rdfs:label "MuseoEgizio"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo
+:MuseoNazionaleDiArteModernaTokyo rdf:type owl:NamedIndividual ,
+                                           <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte> ;
+                                  :museoInCitta :Tokyo ;
+                                  :nomeMuseo "Museo Nazionale di Arte Moderna, Tokyo"^^xsd:string ;
+                                  rdfs:comment "Museo nazionale di Arte Moderna Tokyo"@it ;
+                                  rdfs:label "MuseoNazionaleDiArteModernaTokyo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NationalGallery
@@ -1339,6 +1414,15 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         rdfs:label "SooLee"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SpringRain
+:SpringRain rdf:type owl:NamedIndividual ,
+                     :Dipinto ;
+            :operaMembroDi :EsposizioneTempioGokokuji ;
+            :realizzataNel "1932"^^xsd:unsignedInt ;
+            rdfs:comment "Dipinto giapponese"@it ;
+            rdfs:label "SpringRain"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatiUniti
 :StatiUniti rdf:type owl:NamedIndividual ,
                      :NazioneAmericana ;
@@ -1364,6 +1448,16 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                 :titoloOpera "Statua di Sei II"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta la statua egizia di Seti II"@it ;
                 rdfs:label "StatuaDiSetiII"@it .
+
+
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Tokyo
+:Tokyo rdf:type owl:NamedIndividual ,
+                :Citta ;
+       :cittaHaMuseo :MuseoNazionaleDiArteModernaTokyo ;
+       :contenutaIn :Asia ;
+       :nomeCittà "Tokyo"^^xsd:string ;
+       rdfs:comment "Città asiatica"@it ;
+       rdfs:label "Tokyo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Torino
@@ -1422,9 +1516,11 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                         :CupolaDiSanPietro
                         :IGiocatoriDiCarte
                         :IlGiardiniere
+                        :KannonBodhisattvaRidingTheDrago
                         :LeCabanonDeJourdan
                         :LesGrandesBaigneuses
                         :PietàDiSanPietro
+                        :SpringRain
                         :StatuaDiRamsesII
                         :StatuaDiSetiII
                       )
@@ -1437,6 +1533,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                         :EsposizioneArteModernaNationalGallery
                         :EsposizioneArteModernaRoma
                         :EsposizioneFumettisticaNewYork
+                        :EsposizioneTempioGokokuji
                       )
 ] .
 
@@ -1450,6 +1547,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                         :MuseoDelCinema
                         :MuseoDelFumetto
                         :MuseoEgizio
+                        :MuseoNazionaleDiArteModernaTokyo
                         :NationalGallery
                       )
 ] .
@@ -1469,9 +1567,11 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
   owl:distinctMembers ( :Berlino
                         :Genova
                         :Londra
+                        :NewYork
                         :Parigi
                         :Pisa
                         :Roma
+                        :Tokyo
                         :Torino
                       )
 ] .
@@ -1479,12 +1579,22 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :CameronDeordio
+                        :HaradaNaojiro
+                        :KawaseHasui
                         :Marc_Chagall
                         :MichelangeloBuonarroti
                         :PaulCézanne
                         :RenzoPiano
                         :SooLee
                         :VincentVanGogh
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :DescrizioneIlGiardiniere
+                        :DescrizioneKannon
+                        :DescrizionePietàDiSanPietro
                       )
 ] .
 

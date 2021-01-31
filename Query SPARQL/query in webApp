@@ -1,7 +1,0 @@
-SELECT ?museo ?citta ?nazione 
-	WHERE { 
-		{?museo museum:localizzatoIn ?nazione} 
-		UNION 
-		{ {?museo museum:museoInCittà ?citta} UNION {?citta museum:cittàHaMuseo ?museo} ?citta museum:contenutaIn ?nazione.}.
-		?nazione museum:contenutaIn ?continente.
-	}

@@ -1117,6 +1117,15 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
           rdfs:seeAlso "http://dbpedia.org/page/Germany"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone
+:Giappone rdf:type owl:NamedIndividual ,
+                   :EntitàGeografica ,
+                   :Nazione ,
+                   :NazioneAsiatica ;
+          :contenutaIn :Asia ;
+          :nomeNazione "Giappone"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro
 :HaradaNaojiro rdf:type owl:NamedIndividual ,
                         :Pittore ;
@@ -1407,7 +1416,8 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 :Tokyo rdf:type owl:NamedIndividual ,
                 :Citta ;
        :cittaHaMuseo :MuseoNazionaleDiArteModernaTokyo ;
-       :contenutaIn :Asia ;
+       :contenutaIn :Asia ,
+                    :Giappone ;
        :nomeCittà "Tokyo"^^xsd:string ;
        rdfs:comment "Città asiatica"@it ;
        rdfs:label "Tokyo"@it .
@@ -1602,6 +1612,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :Francia
                         :Germania
+                        :Giappone
                         :Inghilterra
                         :Italia
                         :StatiUniti

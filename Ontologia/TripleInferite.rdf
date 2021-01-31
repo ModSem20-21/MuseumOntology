@@ -1722,6 +1722,18 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
     
 
 
+    <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone">
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Nazione"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAsiatica"/>
+        <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Asia"/>
+        <nomeNazione xml:lang="it">Giappone</nomeNazione>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro">
@@ -2225,6 +2237,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <rdf:type rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica"/>
         <cittaHaMuseo rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoNazionaleDiArteModernaTokyo"/>
         <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Asia"/>
+        <contenutaIn rdf:resource="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone"/>
         <nomeCittà rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tokyo</nomeCittà>
         <rdfs:comment xml:lang="it">Città asiatica</rdfs:comment>
         <rdfs:label xml:lang="it">Tokyo</rdfs:label>
@@ -2479,6 +2492,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Germania"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Inghilterra"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatiUniti"/>

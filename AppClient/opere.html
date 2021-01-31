@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
-	
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -23,7 +22,7 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="nav nav-tabs">
 						<li class="nav-item">
-							<a class="nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="localita.html">Località<span class="sr-only">(current)</span></a>
@@ -32,7 +31,7 @@
 							<a class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
 						</li>-->
 						<li class="nav-item">
-							<a class="nav-link" href="opere.html">Opere<span class="sr-only">(current)</span></a>
+							<a class="nav-link active" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
 						<!--<li class="nav-item">
 							<!--<a class="nav-link" href="#">Link</a>-->
@@ -43,24 +42,35 @@
 			</nav>
 		</header>
 
-		<div class="content">
-			<div class="col-md-8 ml-auto mr-auto">
-				<div class="card-header ">
-					<br><br>
-					<h4 class="card-title text-center">Museum Informator</h4>
-					<h5 class="card-title text-center">Applicazione web per divulgazione di conoscenza su musei </h5>
-					<h6 class="card-title text-center">Musuem Informator è un portale nato con l'intento di raccogliere informazioni sui musei e artisti, 
-						per offrire un'esperienza unica per chi, appassionato o non, si vuole avvicinare a questo mondo. 
-						<br> Il sito offre diversi spunti interessanti per conoscere di più su luoghi e riferimenti così da incentivare percorsi turistici guidati virtuali e no.</h6>
-					<br>
-					<img src="mole.jpeg" class="center" style="width:350px;height:300px;"></img>
-					<br><br><br><br>
+		<div class="content center">
+		<br><br><br>
+			<div class="tab-content tab-space tab-subcategories">
+				<div class="col-md-8 ml-auto mr-auto">
+					<div class="input-group">
+						<input id="artist" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
+						<button id="search" type="button" class="btn btn-outline-primary">Cerca</button>
+					</div>
+				</div>
+				<div class="tab-pane active" id="div_for_all" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+					<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
+						<tr id="consoleName"></tr>
+					</table>
 				</div>
 			</div>
-		</div>
-
+		 </div>
+		 
 		<footer class="footer">
 			<p>All Right Reserved © MuseumInformator 2020/2021 - Università degli Studi di Torino</p>
 		</footer>
+		
+		<script>
+		
+			jQuery("#search").click(function(e){
+				var artist = document.getElementById("artist").value;
+				console.log(artist);
+				document.getElementById("artist").value = "";
+			});
+		
+		</script>
 	</body>
 </html>

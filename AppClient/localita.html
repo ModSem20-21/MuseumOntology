@@ -27,13 +27,16 @@
 						<li class="nav-item active">
 							<a class="nav-link active" href="localita.html">Località<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
+						<!---<li class="nav-item">
 							<a class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
-						</li>
+						</li>-->
 						<li class="nav-item">
-							<!--<a class="nav-link" href="#">Link</a>-->
-							<a class="nav-link" href="artisti.html">Grandi artisti<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
+						<!--<li class="nav-item">
+							<!--<a class="nav-link" href="#">Link</a>-->
+							<!--<a class="nav-link" href="artisti.html">Grandi artisti<span class="sr-only">(current)</span></a>
+						</li>-->
 					</ul>
 				</div>
 			</nav>
@@ -121,7 +124,7 @@
 					</div>
 				</div>
 			</div>
-		 </div>
+		</div>
 		 
 		<footer class="footer">
 			<p>All Right Reserved © MuseumInformator 2020/2021 - Università degli Studi di Torino</p>
@@ -260,6 +263,7 @@
 			function createTable(table, type){
 				var row = $("<tr>").appendTo(table);
 				
+				row.append($("<th> Opera </th>"));
 				row.append($("<th> Museo </th>"));
 				row.append($("<th> Città </th>"));
 				if(type == 0)
@@ -271,7 +275,7 @@
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
-				var query = "SELECT ?museo ?citta ?nazione ?continente WHERE { {?museo museum:localizzatoIn ?nazione} UNION { {?museo museum:museoInCittà ?citta} UNION {?citta museum:cittàHaMuseo ?museo} ?citta museum:contenutaIn ?nazione.}. ?nazione museum:contenutaIn ?continente.}";
+				var query = "SELECT ?opera ?museo ?citta ?nazione ?continente WHERE {?opera museum:operaMembroDi ?collezione. ?collezione museum:presentataIn ?museo. ?museo museum:museoInCitta ?citta. ?citta museum:contenutaIn ?nazione. ?nazione rdf:type museum:Nazione. ?nazione museum:contenutaIn ?continente} ORDER BY ?continente, ?nazione";
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
 
 				$.ajax({
@@ -285,6 +289,7 @@
 					
 					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
 					success: function (dati) {
+						console.log(dati);
 						var str = "";
 						var continents = ["Europa", "Americhe", "Asia", "Oceania", "Africa"];
 						if(dati.head.vars){
@@ -315,6 +320,8 @@
 				var row;
 				if(nazione == entity.nazione.value.slice(entity.nazione.value.search("#") + 1)) {
 					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
+					row.append($("</td>"));
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
 					row.append($("</td>"));
 					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
@@ -329,6 +336,9 @@
 				var row;
 				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				row = $("<tr>").appendTo(table);
+				
+				row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
+				row.append($("</td>"));
 				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
@@ -343,6 +353,8 @@
 				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				if(continentForEntity == continent){
 					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
+					row.append($("</td>"));
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 					row.append($("</td>"));
 					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));

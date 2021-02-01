@@ -25,13 +25,16 @@
 							<a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link active" href="localita.html">Località<span class="sr-only">(current)</span></a>
+							<a id="localita" class="nav-link active" href="localita.html">Località<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a id="collection" class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="opere.html">Opere<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="grandiArtisti.html">Grandi Artisti<span class="sr-only">(current)</span></a>
 						</li>
 					</ul>
 				</div>
@@ -238,6 +241,7 @@
 			jQuery("#europa").click(function(e){
 				$('*').removeClass('active');
 				$("#europa").addClass('active');
+				$("#localita").addClass('active');
 				var continent = "Europa";
 				handleEventForContinents(continent);
 			});
@@ -246,6 +250,7 @@
 			jQuery("#america").click(function(e){
 				$('*').removeClass('active');
 				$("#america").addClass('active');
+				$("#localita").addClass('active');
 				var continent = "Americhe";
 				handleEventForContinents(continent);
 			});
@@ -254,6 +259,7 @@
 			jQuery("#asia").click(function(e){
 				$('*').removeClass('active');
 				$("#asia").addClass('active');
+				$("#localita").addClass('active');
 				var continent = "Asia";
 				handleEventForContinents(continent);
 			});
@@ -262,6 +268,7 @@
 			jQuery("#oceania").click(function(e){
 				$('*').removeClass('active');
 				$("#oceania").addClass('active');
+				$("#localita").addClass('active');
 				var continent = "Oceania";
 				handleEventForContinents(continent);
 			});
@@ -270,6 +277,7 @@
 			jQuery("#africa").click(function(e){
 				$('*').removeClass('active');
 				$("#africa").addClass('active');
+				$("#localita").addClass('active');
 				var continent = "Africa";
 				handleEventForContinents(continent);
 			});

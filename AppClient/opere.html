@@ -33,10 +33,9 @@
 						<li class="nav-item">
 							<a class="nav-link active" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
-						<!--<li class="nav-item">
-							<!--<a class="nav-link" href="#">Link</a>-->
-							<!--<a class="nav-link" href="artisti.html">Grandi artisti<span class="sr-only">(current)</span></a>
-						</li>-->
+						<li class="nav-item">
+							<a class="nav-link" href="grandiArtisti.html">Grandi Artisti<span class="sr-only">(current)</span></a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -47,10 +46,10 @@
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
 					<div class="input-group">
-						<input id="artist" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
+						<input id="artist" type="search" class="form-control rounded" placeholder="Cerca per artista" aria-label="Search" aria-describedby="search-addon" />
 						<button id="search" type="button" class="btn btn-outline-primary">Cerca</button>
 					</div>
-					<div class="tab-pane active" id="div_for_all" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+					<div class="tab-pane active" id="div_for_operas" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
 						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
 							<tr id="consoleName"></tr>
 						</table>
@@ -64,13 +63,87 @@
 		</footer>
 		
 		<script>
-		
-			jQuery("#search").click(function(e){
-				var artist = document.getElementById("artist").value;
-				console.log(artist);
-				document.getElementById("artist").value = "";
+			//stampa di tutte le opere organizzate per artista e città
+			$(document).ready(function () {
+				//il codice jQuery che segue, è usato per effettuare il refresh della tabella in cui vengono stampati i risultati della query richiesta
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				var table = $("#table0");
+				createTable(table);
+				
+				queryPrintOpera(table, "");
 			});
+			
+			jQuery("#search").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				var artist = document.getElementById("artist").value;
+				document.getElementById("artist").value = "";
+				
+				var table = $("#table0");
+				createTable(table);
+				queryPrintOpera(table, artist);
+			});
+			
+			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
+			function createTable(table){
+				var row = $("<tr>").appendTo(table);
+				
+				row.append($("<th> Artista </th>"));
+				row.append($("<th> Opera </th>"));
+				row.append($("<th> Città </th>"));
+				row.append($("</tr>"));
+			}
 		
+			function queryPrintOpera(table, artist){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?opera ?citta ?artista WHERE { ?opera museum:operaInCitta ?citta; museum:realizzatoDa ?artista.";
+				var filteringByCity = " } ORDER BY ?artista";
+				//se è stata specificata una città nella barra di ricerca, sarà fatto un filtraggio a livello di query proprio sulla città indicata
+				if(artist)
+					filteringByCity = " FILTER regex(?artista, \"" + artist + "\").} ORDER BY ?artista";
+				query = query + filteringByCity;
+
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+									printOperas(table, entity);										
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+			
+			function printOperas(table, entity){
+				var row;
+				row = $("<tr>").appendTo(table);
+				row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.opera.value.slice(entity.opera.value.search("#") + 1)}));
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
+				row.append($("</td>"));
+				row.append($("</tr>"));
+			}
 		</script>
 	</body>
 </html>

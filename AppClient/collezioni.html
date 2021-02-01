@@ -27,36 +27,53 @@
 						<li class="nav-item">
 							<a class="nav-link" href="localita.html">Località<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
-							<div class="dropdown-menu">
-								<a id="collection1" class="dropdown-item" data-toggle="tab" role="tablist">
-									<i class="now-ui-icons objects_umbrella-13"></i>
-									Collezioni in città
-								</a>
-								<div class="dropdown-divider"></div>
-								<a id="collection2" class="dropdown-item" data-toggle="tab" role="tablist">
-									<i class="now-ui-icons objects_umbrella-13"></i>
-									Collezioni nei musei
-								</a>
-							</div>
+						<li class="nav-item">
+							<a id="collection" class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
-						<!--<li class="nav-item">
-							<!--<a class="nav-link" href="#">Link</a>-->
-							<!--<a class="nav-link" href="artisti.html">Grandi artisti<span class="sr-only">(current)</span></a>
-						</li>-->
 					</ul>
 				</div>
 			</nav>
 		</header>
 
 		<div class="content center">
-		<br><br><br>
+			<ul class="nav nav-pills mb-3 nav-pills-primary nav-pills-icons justify-content-center">
+				<li class="nav-item">
+					<a id="collection1"  class="nav-link active" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<i class="now-ui-icons objects_umbrella-13"></i>
+						Collezioni in città
+					</a>
+				</li>
+				<li class="nav-item">
+					<a id="collection2" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<i class="now-ui-icons objects_umbrella-13"></i>
+						Collezioni nei musei
+					</a>
+				</li>
+			</ul>	
+			<br>
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
+					<div class="tab-pane active" id="div_for_city" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						<div class="input-group">
+							<input id="city" type="search" class="form-control rounded" placeholder="Cerca per città" aria-label="Search" aria-describedby="search-addon" />
+							<button id="search1" type="button" class="btn btn-outline-primary">Cerca</button>
+						</div>
+						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
+					<div class="tab-pane active" id="div_for_museum" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						<div class="input-group">
+							<input id="museum" type="search" class="form-control rounded" placeholder="Cerca per museo" aria-label="Search" aria-describedby="search-addon" />
+							<button id="search2" type="button" class="btn btn-outline-primary">Cerca</button>
+						</div>
+						<table id="table1" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="consoleName"></tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		 </div>
@@ -65,13 +82,180 @@
 			<p>All Right Reserved © MuseumInformator 2020/2021 - Università degli Studi di Torino</p>
 		</footer>
 		
-		<script>
-		
-			jQuery("#search").click(function(e){
-				var artist = document.getElementById("artist").value;
-				console.log(artist);
-				document.getElementById("artist").value = "";
+		<script>		
+			//evento generato dal caricamento della pagina. In tal caso saranno mostrate le collezioni per città
+			$(document).ready(function () {
+				$('*').removeClass('active');
+				$("#collection1").addClass('active');
+				collectionByCity();
 			});
+			
+			//evento generato dal click di 'collezioni in città'
+			jQuery("#collection1").click(function(e){
+				$('*').removeClass('active');
+				$("#collection1").addClass('active');
+				collectionByCity("");
+			});
+			
+			//evento generato dal click di 'collezioni nei musei'
+			jQuery("#collection2").click(function(e){
+				$('*').removeClass('active');
+				$("#collection2").addClass('active');
+				collectionByMuseum("");
+			});			
+					
+			
+			jQuery("#search1").click(function(e){
+				var city = document.getElementById("city").value;
+				city = city.split(' ').join('')
+				console.log(city);
+				document.getElementById("city").value = "";
+				collectionByCity(city);
+			});
+			
+			jQuery("#search2").click(function(e){
+				var museum = document.getElementById("museum").value;
+				museum = museum.split(' ').join('')
+				document.getElementById("museum").value = "";
+				collectionByMuseum(museum);
+			});
+			
+			
+			function collectionByCity(specificCity){
+				var div_for_city = document.getElementById("div_for_city");
+				var div_for_museum = document.getElementById("div_for_museum");
+				
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				div_for_city.style.display = "block";
+				div_for_museum.style.display = "none";
+				var table = $("#table0");
+				createTable(table, 0);
+				
+				//stampa delle collezioni nelle città
+				queryByCity(table, specificCity);
+			}
+			
+			function collectionByMuseum(specificMuseum){
+				var div_for_city = document.getElementById("div_for_city");
+				var div_for_museum = document.getElementById("div_for_museum");
+				
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				div_for_city.style.display = "none";
+				div_for_museum.style.display = "block";
+				var table = $("#table1");
+				createTable(table, 1);
+					
+				//stampa delle collezioni nei musei
+				queryByMuseum(table, specificMuseum);
+			}
+			
+			function queryByCity(table, city){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?collezione ?citta WHERE {?collezione museum:presentataIn ?museo. ?museo museum:museoInCitta ?citta.";
+				var filteringByCity = " }";
+				
+				//se è stata specificata una città nella barra di ricerca, sarà fatto un filtraggio a livello di query proprio sulla città indicata
+				if(city)
+					filteringByCity = " FILTER regex(?citta, \"" + city + "\").}"
+				
+				var query = query + filteringByCity;
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+									printCollectionsByCity(table, entity);										
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+
+			function queryByMuseum(table, museum){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?collezione ?museo WHERE { ?collezione museum:presentataIn ?museo.";
+				var filteringByMuseum = "}";
+				
+				//se è stato specificato un museo nella barra di ricerca, sarà fatto un filtraggio a livello di query proprio sul museo indicato
+				if(museum)
+					filteringByMuseum = " FILTER regex(?museo, \"" + museum + "\").}";
+					
+				var query = query + filteringByMuseum;
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+									printCollectionsByMuseum(table, entity);										
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+			
+			function printCollectionsByCity(table, entity){
+				var row;
+				row = $("<tr>").appendTo(table);
+				row.append($("<td>", {text: entity.collezione.value.slice(entity.collezione.value.search("#") + 1)})); 
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
+				row.append($("</td>"));
+				row.append($("</tr>"));
+			}
+			
+			function printCollectionsByMuseum(table, entity){
+				var row;
+				row = $("<tr>").appendTo(table);
+				row.append($("<td>", {text: entity.collezione.value.slice(entity.collezione.value.search("#") + 1)})); 
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));
+				row.append($("</td>"));
+				row.append($("</tr>"));
+			}
+			
+			function createTable(table, type){
+				var row = $("<tr>").appendTo(table);		
+				row.append($("<th> Collezione </th>"));
+				if(type == 0)
+					row.append($("<th> Città </th>"));
+				else
+					row.append($("<th> Museo </th>"));
+			}
 		
 		</script>
 	</body>

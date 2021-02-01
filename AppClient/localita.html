@@ -58,16 +58,86 @@
 								Francia
 							</a>
 							<div class="dropdown-divider"></div>
-							<a id="inghilterra" class="dropdown-item" data-toggle="tab" role="tablist">
+							<a id="regnounito" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons shopping_shop"></i>
-								Inghilterra
+								Regno Unito
 							</a>
 							<div class="dropdown-divider"></div>
 							<a id="germania" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons shopping_shop"></i>
 								Germania
 							</a>
-							//TO DO: AGGIUNGERE ALTRE NAZIONI
+							<div class="dropdown-divider"></div>
+							<a id="austria" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons objects_umbrella-13"></i>
+								Austria
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="spagna" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Spagna
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="grecia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Grecia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="portogallo" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Portogallo
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="turchia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Turchia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="svizzera" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Svizzera
+							</a>
+							
+							<div class="dropdown-divider"></div>
+							<a id="paesibassi" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Paesi Bassi
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="belgio" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons objects_umbrella-13"></i>
+								Belgio
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="norvegia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Norvegia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="finlandia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Finlandia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="russia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Russia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="polonia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Polonia
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="ungheria" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Ungheria
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="svezia" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Svezia
+							</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -79,6 +149,21 @@
 							<a id="statiuniti" class="dropdown-item" data-toggle="tab" role="tablist">
 								<i class="now-ui-icons objects_umbrella-13"></i>
 								Stati Uniti
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="messico" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Messico
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="canada" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Canada
+							</a>
+							<div class="dropdown-divider"></div>
+							<a id="brasile" class="dropdown-item" data-toggle="tab" role="tablist">
+								<i class="now-ui-icons shopping_shop"></i>
+								Brasile
 							</a>
 						</div>
 					</li>
@@ -193,11 +278,41 @@
 			jQuery("#statiuniti").click(function(e){
 				var country = "StatiUniti";
 				handleEvent(country);
-			});			
+			});	
+
+			//stampa dei musei messicani organizzati per città
+			jQuery("#messico").click(function(e){
+				var country = "Messico";
+				handleEvent(country);
+			});	
+
+			//stampa dei musei canadesi organizzati per città
+			jQuery("#canada").click(function(e){
+				var country = "Canada";
+				handleEvent(country);
+			});				
 		  
+		  	//stampa dei musei brasiliani organizzati per città
+			jQuery("#brasile").click(function(e){
+				var country = "Brasile";
+				handleEvent(country);
+			});	
+			
 			//stampa dei musei italiani organizzati per città
 			jQuery("#italia").click(function(e){
 				var country = "Italia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei ungheresi organizzati per città
+			jQuery("#ungheria").click(function(e){
+				var country = "Ungheria";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei svedesi organizzati per città
+			jQuery("#svezia").click(function(e){
+				var country = "Svezia";
 				handleEvent(country);
 			});
 			
@@ -209,8 +324,8 @@
 			});
 			
 			//stampa dei musei inglesi organizzati per città
-			jQuery("#inghilterra").click(function(e){
-				var country = "Inghilterra";
+			jQuery("#regnounito").click(function(e){
+				var country = "RegnoUnito";
 				handleEvent(country);
 			});
 			
@@ -220,6 +335,77 @@
 				handleEvent(country);
 			});
 			
+			//stampa dei musei olandesi organizzati per città
+			jQuery("#paesibassi").click(function(e){
+				var country = "Paesi Bassi";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei svizzeri organizzati per città
+			jQuery("#svizzera").click(function(e){
+				var country = "Svizzera";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei polacchi organizzati per città
+			jQuery("#polonia").click(function(e){
+				var country = "Polonia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei portoghesi organizzati per città
+			jQuery("#portogallo").click(function(e){
+				var country = "Portogallo";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei grechi organizzati per città
+			jQuery("#grecia").click(function(e){
+				var country = "Grecia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei turchi organizzati per città
+			jQuery("#turchia").click(function(e){
+				var country = "Turchia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei belgi organizzati per città
+			jQuery("#belgio").click(function(e){
+				var country = "Belgio";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei finlandesi organizzati per città
+			jQuery("#finlandia").click(function(e){
+				var country = "Finlandia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei norvegesi organizzati per città
+			jQuery("#norvegia").click(function(e){
+				var country = "Norvegia";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei spagnoli organizzati per città
+			jQuery("#spagna").click(function(e){
+				var country = "Spagna";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei austriaci organizzati per città
+			jQuery("#austria").click(function(e){
+				var country = "Austria";
+				handleEvent(country);
+			});
+			
+			//stampa dei musei russi organizzati per città
+			jQuery("#russia").click(function(e){
+				var country = "Russia";
+				handleEvent(country);
+			});
 			
 			function handleEventForContinents(continent){
 				$( "tr" ).each(function() {
@@ -357,7 +543,10 @@
 			//stampa dei musei della nazione specificata
 			function printMuseumGroupedByCountry(table, entity, nazione){
 				var row;
-				if(nazione == entity.nazione.value.slice(entity.nazione.value.search("#") + 1)) {
+				var entityNation = entity.nazione.value.slice(entity.nazione.value.search("#") + 1);
+				if(entityNation == "Inghilterra" || entityNation == "Galles" || entityNation == "Scozia" || entityNation == "Irlanda delNord")
+					entityNation = "RegnoUnito";
+				if(nazione == entityNation) {
 					row = $("<tr>").appendTo(table);
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
 					row.append($("</td>"));
@@ -371,19 +560,25 @@
 			//stampa dei musei presenti nel mondo esplicitati nell'ontologia
 			function printMuseum(table, entity){
 				var row;
+				var entityNation = entity.nazione.value.slice(entity.nazione.value.search("#") + 1);
+				if(entityNation == "Inghilterra" || entityNation == "Galles" || entityNation == "Scozia" || entityNation == "Irlanda delNord")
+					entityNation = "RegnoUnito";
 				row = $("<tr>").appendTo(table);
 				
 				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
 				row.append($("</td>"));		
-				row.append($("<td>", {text: entity.nazione.value.slice(entity.nazione.value.search("#") + 1)}));
+				row.append($("<td>", {text: entityNation}));
 				row.append($("</tr>"));
 			}
 			
 			//stampa dei musei presenti nel continente specificato
 			function printMuseumGroupedByContinent(table, entity, continent){
 				var row;
+				var entityNation = entity.nazione.value.slice(entity.nazione.value.search("#") + 1);
+				if(entityNation == "Inghilterra" || entityNation == "Galles" || entityNation == "Scozia" || entityNation == "Irlanda delNord")
+					entityNation = "RegnoUnito";
 				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				if(continentForEntity == continent){
 					row = $("<tr>").appendTo(table);
@@ -391,41 +586,48 @@
 					row.append($("</td>"));
 					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
 					row.append($("</td>"));		
-					row.append($("<td>", {text: entity.nazione.value.slice(entity.nazione.value.search("#") + 1)}));
+					row.append($("<td>", {text: entityNation}));
 					row.append($("</tr>"));
 				}
 			}
 		
 			function printMuseumWikiData(table, entity){
 				var row;
+				var entityNation = entity.PaeseLabel.value;
 				row = $("<tr>").appendTo(table);
 				
 				row.append($("<td>", {text: entity.museoLabel.value}));				
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
-				row.append($("</td>"));		
-				row.append($("<td>", {text: entity.PaeseLabel.value}));
+				row.append($("</td>"));	
+				/*if(entityNation == "Stati Uniti d'America")
+					entityNation = "StatiUniti";*/				
+				row.append($("<td>", {text: entityNation}));
 				row.append($("</tr>"));
 			}
-			
-			
+					
 			function printMuseumGroupedByContinentWikiData(table, entity, continent){
 				var row;
+				var nation = entity.PaeseLabel.value;
 				continentForEntity = entity.continenteLabel.value;
 				if(continentForEntity == "America meridionale" || continentForEntity == "America centrale" || continentForEntity == "America del Nord")
 					continentForEntity = "Americhe";
+				if(nation == "Stati Uniti d'America")
+					nation = "StatiUniti";
 				if(continentForEntity == continent){
-					row = $("<tr>").appendTo(table);
-					row.append($("<td>", {text: entity.museoLabel.value}));				
-					row.append($("</td>"));
-					row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
-					row.append($("</td>"));		
-					row.append($("<td>", {text: entity.PaeseLabel.value}));
-					row.append($("</tr>"));
-					row.append($("</tr>"));
+					if(checkContinent(continent, nation)){
+						row = $("<tr>").appendTo(table);
+						row.append($("<td>", {text: entity.museoLabel.value}));				
+						row.append($("</td>"));
+						row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
+						row.append($("</td>"));							
+						row.append($("<td>", {text: nation}));
+						row.append($("</tr>"));
+						row.append($("</tr>"));
+					}
 				}
 			}
-			
+
 			function printMuseumGroupedByCountryWikiData(table, entity, country){
 				var row;
 				if(country == entity.PaeseLabel.value) {
@@ -437,7 +639,19 @@
 					row.append($("</tr>"));			
 				}
 			}
-			
+	
+			function checkContinent(continent, nation){
+				var check = true;
+				if(continent == "Americhe"){
+					if(nation == "Danimarca" || nation == "Paesi Bassi")
+						check = false;
+				}
+				else if(continent == "Asia" && nation == "Egitto")
+					check = false;
+				else if(continent == "Oceania" && nation == "StatiUniti")
+					check = false;
+				return check;
+			}	
 		</script>
 	</body>
 </html>

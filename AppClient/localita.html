@@ -67,6 +67,7 @@
 								<i class="now-ui-icons shopping_shop"></i>
 								Germania
 							</a>
+							//TO DO: AGGIUNGERE ALTRE NAZIONI
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -144,7 +145,8 @@
 				div_for_all.style.display = "block";
 				div_for_countries.style.display = "none";
 				div_for_continents.style.display = "none";
-				stampaMusei(table, "");
+				queryMuseumFromWikiData(table, "");
+				queryStampaMusei(table, "");
 			});
 			
 			//stampa dei musei europei
@@ -186,24 +188,6 @@
 				var continent = "Africa";
 				handleEventForContinents(continent);
 			});
-			
-			function handleEventForContinents(continent){
-				$( "tr" ).each(function() {
-					$( "tr" ).remove();
-				});
-				
-				var div_for_countries = document.getElementById("div_for_countries");
-				var div_for_all = document.getElementById("div_for_all");
-				var div_for_continents = document.getElementById("div_for_continents");
-				
-				var table = $("#table0");
-				createTable(table, 0);
-				
-				div_for_all.style.display = "block";
-				div_for_countries.style.display = "none";
-				div_for_continents.style.display = "none";
-				stampaMusei(table, continent);
-			}
 
 			//stampa dei musei negli Stati Uniti organizzati per città
 			jQuery("#statiuniti").click(function(e){
@@ -237,6 +221,25 @@
 			});
 			
 			
+			function handleEventForContinents(continent){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				var div_for_countries = document.getElementById("div_for_countries");
+				var div_for_all = document.getElementById("div_for_all");
+				var div_for_continents = document.getElementById("div_for_continents");
+				
+				var table = $("#table0");
+				createTable(table, 0);
+				
+				div_for_all.style.display = "block";
+				div_for_countries.style.display = "none";
+				div_for_continents.style.display = "none";
+				queryMuseumFromWikiData(table, continent);
+				queryStampaMusei(table, continent);
+			}	
+			
 			function handleEvent(country){
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
@@ -252,26 +255,67 @@
 				div_for_all.style.display = "none";
 				div_for_continents.style.display = "none";
 				div_for_countries.style.display = "block";
-				stampaMusei(table, country);
+				queryMuseumFromWikiData(table, country);
+				queryStampaMusei(table, country);
 			}
 			
 			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
 			function createTable(table, type){
 				var row = $("<tr>").appendTo(table);
 				
-				row.append($("<th> Opera </th>"));
 				row.append($("<th> Museo </th>"));
 				row.append($("<th> Città </th>"));
 				if(type == 0)
 					row.append($("<th> Nazione </th>"));
 				row.append($("</tr>"));
 			}
+
+			function queryMuseumFromWikiData(table, entitàGeografica){
+				var url = "https://query.wikidata.org/sparql";
+				var query = " SELECT DISTINCT ?museoLabel ?PaeseLabel ?continenteLabel ?unit__amministrativa_in_cui___situatoLabel WHERE { SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],it\". }?museo wdt:P31 wd:Q33506.?museo wdt:P17 ?Paese. ?museo wdt:P131 ?unit__amministrativa_in_cui___situato. ?Paese wdt:P30 ?continente.} LIMIT 100 ";
+				var queryUrl = encodeURI(url + "?query=" + query + "&format=json");
+
+				$.ajax({
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						var str = "";
+						var continents = ["Europa", "Americhe", "Asia", "Oceania", "Africa"];
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+								if(entitàGeografica == ""){ 
+									//print se non è stata selezionata alcuna entità geografica
+									printMuseumWikiData(table, entity);	
+								}
+								else{
+									if(continents.indexOf(entitàGeografica) != -1){
+										//print eseguita se è stato selezionato un continente
+										printMuseumGroupedByContinentWikiData(table, entity, entitàGeografica);
+									}else{
+										//print eseguita se è stato selezionato una nazione
+										printMuseumGroupedByCountryWikiData(table, entity, entitàGeografica);
+									}	
+								}									
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
 			
-			function stampaMusei(table, entitàGeografica){
+			function queryStampaMusei(table, entitàGeografica){
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
-				var query = "SELECT ?opera ?museo ?citta ?nazione ?continente WHERE {?opera museum:operaMembroDi ?collezione. ?collezione museum:presentataIn ?museo. ?museo museum:museoInCitta ?citta. ?citta museum:contenutaIn ?nazione. ?nazione rdf:type museum:Nazione. ?nazione museum:contenutaIn ?continente} ORDER BY ?continente, ?nazione";
+				var query = "SELECT ?museo ?citta ?nazione ?continente WHERE {?museo museum:museoInCitta ?citta. ?citta museum:contenutaIn ?nazione. ?nazione rdf:type museum:Nazione. ?nazione museum:contenutaIn ?continente} ORDER BY ?continente, ?nazione ";
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
 
 				$.ajax({
@@ -285,7 +329,6 @@
 					
 					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
 					success: function (dati) {
-						console.log(dati);
 						var str = "";
 						var continents = ["Europa", "Americhe", "Asia", "Oceania", "Africa"];
 						if(dati.head.vars){
@@ -316,8 +359,6 @@
 				var row;
 				if(nazione == entity.nazione.value.slice(entity.nazione.value.search("#") + 1)) {
 					row = $("<tr>").appendTo(table);
-					row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
-					row.append($("</td>"));
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)})); 
 					row.append($("</td>"));
 					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
@@ -330,11 +371,8 @@
 			//stampa dei musei presenti nel mondo esplicitati nell'ontologia
 			function printMuseum(table, entity){
 				var row;
-				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				row = $("<tr>").appendTo(table);
 				
-				row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
-				row.append($("</td>"));
 				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
@@ -349,8 +387,6 @@
 				continentForEntity = entity.continente.value.slice(entity.continente.value.search("#") + 1);
 				if(continentForEntity == continent){
 					row = $("<tr>").appendTo(table);
-					row.append($("<td>", {text: entity.opera.value.slice(entity.museo.value.search("#") + 1)})); 
-					row.append($("</td>"));
 					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));				
 					row.append($("</td>"));
 					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
@@ -359,6 +395,49 @@
 					row.append($("</tr>"));
 				}
 			}
+		
+			function printMuseumWikiData(table, entity){
+				var row;
+				row = $("<tr>").appendTo(table);
+				
+				row.append($("<td>", {text: entity.museoLabel.value}));				
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
+				row.append($("</td>"));		
+				row.append($("<td>", {text: entity.PaeseLabel.value}));
+				row.append($("</tr>"));
+			}
+			
+			
+			function printMuseumGroupedByContinentWikiData(table, entity, continent){
+				var row;
+				continentForEntity = entity.continenteLabel.value;
+				if(continentForEntity == "America meridionale" || continentForEntity == "America centrale" || continentForEntity == "America del Nord")
+					continentForEntity = "Americhe";
+				if(continentForEntity == continent){
+					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.museoLabel.value}));				
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
+					row.append($("</td>"));		
+					row.append($("<td>", {text: entity.PaeseLabel.value}));
+					row.append($("</tr>"));
+					row.append($("</tr>"));
+				}
+			}
+			
+			function printMuseumGroupedByCountryWikiData(table, entity, country){
+				var row;
+				if(country == entity.PaeseLabel.value) {
+					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.museoLabel.value}));				
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
+					row.append($("</td>"));	
+					row.append($("</tr>"));			
+				}
+			}
+			
 		</script>
 	</body>
 </html>

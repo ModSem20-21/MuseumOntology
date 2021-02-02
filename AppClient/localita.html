@@ -602,49 +602,71 @@
 			function printMuseumWikiData(table, entity){
 				var row;
 				var entityNation = entity.PaeseLabel.value;
-				row = $("<tr>").appendTo(table);
-				
-				row.append($("<td>", {text: entity.museoLabel.value}));				
-				row.append($("</td>"));
-				row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
-				row.append($("</td>"));	
-				/*if(entityNation == "Stati Uniti d'America")
-					entityNation = "StatiUniti";*/				
-				row.append($("<td>", {text: entityNation}));
-				row.append($("</tr>"));
+				var entityName = entity.museoLabel.value;
+				var city = entity.unit__amministrativa_in_cui___situatoLabel.value;
+				var numbers = /^[-+]?[0-9]+$/;
+				if(!(entityName.substring(1).match(numbers)))
+				{
+					row = $("<tr>").appendTo(table);	
+					row.append($("<td>", {text: entityName}));				
+					row.append($("</td>"));
+					if(entityName.substring(1).match(numbers))
+						city = "/";
+					row.append($("<td>", {text: city}));
+					row.append($("</td>"));					
+					row.append($("<td>", {text: entityNation}));
+					row.append($("</tr>"));
+				}
 			}
 					
 			function printMuseumGroupedByContinentWikiData(table, entity, continent){
 				var row;
 				var nation = entity.PaeseLabel.value;
-				continentForEntity = entity.continenteLabel.value;
+				var entityName = entity.museoLabel.value;
+				var continentForEntity = entity.continenteLabel.value;
+				var city = entity.unit__amministrativa_in_cui___situatoLabel.value;
+				
 				if(continentForEntity == "America meridionale" || continentForEntity == "America centrale" || continentForEntity == "America del Nord")
 					continentForEntity = "Americhe";
 				if(nation == "Stati Uniti d'America")
 					nation = "StatiUniti";
 				if(continentForEntity == continent){
 					if(checkContinent(continent, nation)){
-						row = $("<tr>").appendTo(table);
-						row.append($("<td>", {text: entity.museoLabel.value}));				
-						row.append($("</td>"));
-						row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
-						row.append($("</td>"));							
-						row.append($("<td>", {text: nation}));
-						row.append($("</tr>"));
-						row.append($("</tr>"));
+						var numbers = /^[-+]?[0-9]+$/;
+						if(!(entityName.substring(1).match(numbers)))
+						{
+							row = $("<tr>").appendTo(table);
+							row.append($("<td>", {text: entityName}));				
+							row.append($("</td>"));
+							if(entityName.substring(1).match(numbers))
+								city = "/";
+							row.append($("<td>", {text: city}));
+							row.append($("</td>"));							
+							row.append($("<td>", {text: nation}));
+							row.append($("</tr>"));
+							row.append($("</tr>"));
+						}
 					}
 				}
 			}
 
 			function printMuseumGroupedByCountryWikiData(table, entity, country){
 				var row;
+				var entityName = entity.museoLabel.value;
+				var city = entity.unit__amministrativa_in_cui___situatoLabel.value;
 				if(country == entity.PaeseLabel.value) {
-					row = $("<tr>").appendTo(table);
-					row.append($("<td>", {text: entity.museoLabel.value}));				
-					row.append($("</td>"));
-					row.append($("<td>", {text: entity.unit__amministrativa_in_cui___situatoLabel.value}));
-					row.append($("</td>"));	
-					row.append($("</tr>"));			
+					var numbers = /^[-+]?[0-9]+$/;
+					if(!(entityName.substring(1).match(numbers)))
+					{
+						row = $("<tr>").appendTo(table);
+						row.append($("<td>", {text: entityName}));				
+						row.append($("</td>"));
+						if(entityName.substring(1).match(numbers))
+							city = "/";
+						row.append($("<td>", {text: city}));
+						row.append($("</td>"));	
+						row.append($("</tr>"));	
+					}
 				}
 			}
 	
@@ -658,6 +680,11 @@
 					check = false;
 				else if(continent == "Oceania" && nation == "StatiUniti")
 					check = false;
+				else if(continent == "Asia" && nation == "Turchia")
+					check = false;
+				else if(continent == "Europa" && nation == "Russia")
+					check = false;
+					
 				return check;
 			}	
 		</script>

@@ -610,8 +610,9 @@
 					row = $("<tr>").appendTo(table);	
 					row.append($("<td>", {text: entityName}));				
 					row.append($("</td>"));
-					if(entityName.substring(1).match(numbers))
+					if(city.substring(1).match(numbers)){
 						city = "/";
+					}
 					row.append($("<td>", {text: city}));
 					row.append($("</td>"));					
 					row.append($("<td>", {text: entityNation}));
@@ -638,8 +639,9 @@
 							row = $("<tr>").appendTo(table);
 							row.append($("<td>", {text: entityName}));				
 							row.append($("</td>"));
-							if(entityName.substring(1).match(numbers))
+							if(city.substring(1).match(numbers)){
 								city = "/";
+							}
 							row.append($("<td>", {text: city}));
 							row.append($("</td>"));							
 							row.append($("<td>", {text: nation}));
@@ -661,8 +663,9 @@
 						row = $("<tr>").appendTo(table);
 						row.append($("<td>", {text: entityName}));				
 						row.append($("</td>"));
-						if(entityName.substring(1).match(numbers))
+						if(city.substring(1).match(numbers)){
 							city = "/";
+						}
 						row.append($("<td>", {text: city}));
 						row.append($("</td>"));	
 						row.append($("</tr>"));	

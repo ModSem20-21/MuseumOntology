@@ -31,7 +31,7 @@
 							<a id="collection" class="nav-link" href="collezioni.html">Collezioni<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="opere.html">Opere<span class="sr-only">(current)</span></a>
+							<a id = "opere" class="nav-link active" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="artisti.html">Artisti<span class="sr-only">(current)</span></a>
@@ -41,16 +41,39 @@
 			</nav>
 		</header>
 
-		<div class="content center">
-		<br><br><br>
+		<div class="content center" style= "width:100%">
+			<ul class="nav nav-pills mb-3 nav-pills-primary nav-pills-icons justify-content-center">
+				<li class="nav-item">
+					<a id="opere1"  class="nav-link active" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<i class="now-ui-icons objects_umbrella-13"></i>
+						Opere
+					</a>
+				</li>
+				<li class="nav-item">
+					<a id="opere2" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						<i class="now-ui-icons objects_umbrella-13"></i>
+						Opere nel dettaglio
+					</a>
+				</li>
+			</ul>	
+			<br>
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
-					<div class="input-group">
-						<input id="opera" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
-						<button id="search" type="button" class="btn btn-outline-primary">Cerca</button>
+					<div class="tab-pane center" id="div1" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						<div class="input-group">
+							<input id="searchOpera1" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
+							<button id="search1" type="button" class="btn btn-outline-primary">Cerca</button>
+						</div>
+						<table id="table1" class="table table-striped" style="width:100%; margin-top:3em;">
+							<tr id="consoleName"></tr>
+						</table>
 					</div>
-					<div class="tab-pane active" id="div_for_operas" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
-						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
+					<div class="tab-pane center" id="div2" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						<div class="input-group">
+							<input id="searchOpera1" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
+							<button id="search2" type="button" class="btn btn-outline-primary">Cerca</button>
+						</div>
+						<table id="table2" class="table table-striped" style="width:100%; margin-top:3em;">
 							<tr id="consoleName"></tr>
 						</table>
 					</div>
@@ -65,37 +88,108 @@
 		<script>
 			//stampa di tutte le opere organizzate per artista e città
 			$(document).ready(function () {
+				var div1 = document.getElementById("div1");
+				var div2 = document.getElementById("div2");
+				
+				div1.style.display = "block";
+				div2.style.display = "none";
+				$('*').removeClass('active');
+				$("#opere1").addClass('active');
+				$("#opere").addClass('active');
+				
 				//il codice jQuery che segue, è usato per effettuare il refresh della tabella in cui vengono stampati i risultati della query richiesta
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
 				});
 				
-				var table = $("#table0");
-				createTable(table);
+				var table = $("#table1");
+				createTable(table, 1);
+				
+				queryPrintOpera(table, "");
+			});
+
+			jQuery("#opere1").click(function(e){
+				var div1 = document.getElementById("div1");
+				var div2 = document.getElementById("div2");
+				
+				div1.style.display = "block";
+				div2.style.display = "none";
+				$('*').removeClass('active');
+				$("#opere1").addClass('active');
+				$("#opere").addClass('active');
+				
+				//il codice jQuery che segue, è usato per effettuare il refresh della tabella in cui vengono stampati i risultati della query richiesta
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				var table = $("#table1");
+				createTable(table, 1);
 				
 				queryPrintOpera(table, "");
 			});
 			
-			jQuery("#search").click(function(e){
+			jQuery("#search1").click(function(e){
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
 				});
-				var opera = document.getElementById("opera").value;
-				document.getElementById("opera").value = "";
+				var opera = document.getElementById("searchOpera1").value;
+				document.getElementById("searchOpera1").value = "";
 				
-				var table = $("#table0");
-				createTable(table);
+				var table = $("#table1");
+				createTable(table, 1);
 				queryPrintOpera(table, opera.split(' ').join(''));
 			});
-			
-			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
-			function createTable(table){
+
+			jQuery("#opere2").click(function(e){
+				var div1 = document.getElementById("div1");
+				var div2 = document.getElementById("div2");
+				
+				div1.style.display = "none";
+				div2.style.display = "block";
+				$('*').removeClass('active');
+				$("#opere2").addClass('active');
+				$("#opere").addClass('active');
+				
+				//il codice jQuery che segue, è usato per effettuare il refresh della tabella in cui vengono stampati i risultati della query richiesta
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				
+				var table = $("#table2");
+				createTable(table, 0);
+				
+				queryPrintOperaDescription(table, "");
+			});
+
+			jQuery("#search2").click(function(e){
+				$( "tr" ).each(function() {
+					$( "tr" ).remove();
+				});
+				var opera = document.getElementById("searchOpera2").value;
+				document.getElementById("searchOpera2").value = "";
+				
+				var table = $("#table2");
+				createTable(table, 1);
+				queryPrintOperaDescription(table, opera.split(' ').join(''));
+			});			
+	
+	//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
+			function createTable(table, type){
 				var row = $("<tr>").appendTo(table);
 				
 				row.append($("<th> Opera </th>"));
 				row.append($("<th> Artista </th>"));
-				row.append($("<th> Città </th>"));
-				row.append($("</tr>"));
+				if(type == 1){
+					row.append($("<th> Città </th>"));
+					row.append($("</tr>"));
+				}
+				else{
+					row.append($("<th> Anno </th>"));
+					row.append($("</tr>"));
+					row.append($("<th> Descrizione </th>"));
+					row.append($("</tr>"));	
+				}
 			}
 		
 			function queryPrintOpera(table, opera){
@@ -132,6 +226,41 @@
 					}
 				});
 			}
+
+			function queryPrintOperaDescription(table, opera){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?opera ?artista ?anno ?contenutoDes WHERE{ ?opera museum:realizzatoDa ?artista OPTIONAL {?opera museum:realizzataNel ?anno} OPTIONAL{?opera museum:haDescrizione ?descrizione. ?descrizione museum:contenutoDescrizione ?contenutoDes}";
+				var filteringByCity = "}";
+				//se è stata specificata una città nella barra di ricerca, sarà fatto un filtraggio a livello di query proprio sulla città indicata
+				if(opera)
+					filteringByCity = " FILTER regex(?opera, \"" + opera + "\").}";
+				query = query + filteringByCity;
+
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						if(dati.head.vars){
+							$.each(dati.results.bindings, function(index, entity){
+									printOperasDescription(table, entity);										
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
 			
 			function printOperas(table, entity){
 				var row;
@@ -143,6 +272,23 @@
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
 				row.append($("</td>"));
 				row.append($("</tr>"));
+			}
+
+			function printOperasDescription(table, entity){
+				var row;
+				var des = entity.contenutoDes.value.slice(entity.contenutoDes.value.search("#") + 1);
+				if(des != ""){
+					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.opera.value.slice(entity.opera.value.search("#") + 1)}));
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.anno.value.slice(entity.anno.value.search("\"") + 1)}));
+					row.append($("</td>"));
+					row.append($("<td>", {text: des}));
+					row.append($("</td>"));
+					row.append($("</tr>"));
+				}
 			}
 		</script>
 	</body>

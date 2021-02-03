@@ -1123,7 +1123,7 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                    :Nazione ,
                    :NazioneAsiatica ;
           :contenutaIn :Asia ;
-          :nomeNazione "Giappone"@it .
+          :nomeNazione "Giappone"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro

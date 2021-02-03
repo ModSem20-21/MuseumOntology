@@ -655,7 +655,10 @@
 				var row;
 				var entityName = entity.museoLabel.value;
 				var city = entity.unit__amministrativa_in_cui___situatoLabel.value;
-				if(country == entity.PaeseLabel.value) {
+				var nation = entity.PaeseLabel.value;
+				if(nation == "Stati Uniti d'America")
+					nation = "StatiUniti";
+				if(country == nation) {
 					var numbers = /^[-+]?[0-9]+$/;
 					if(!(entityName.substring(1).match(numbers)))
 					{

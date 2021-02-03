@@ -5,7 +5,7 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../css/style.css" rel="stylesheet" type="text/css">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="nav nav-tabs">
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="../index.html">Home<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="localita.html">Località<span class="sr-only">(current)</span></a>
@@ -33,8 +33,8 @@
 						<li class="nav-item">
 							<a class="nav-link" href="opere.html">Opere<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="artisti.html">Artisti<span class="sr-only">(current)</span></a>
+						<li class="nav-item ">
+							<a id ="artist" class="nav-link active" href="artisti.html">Artisti<span class="sr-only">(current)</span></a>
 						</li>
 					</ul>
 				</div>
@@ -58,10 +58,13 @@
 			</ul>	
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
-					<div class="tab-pane active" id="div1" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
-						<table id="table0" class="table table-striped" style="width:100%; margin-top:3em;">
-							<tr id="consoleName"></tr>
-						</table>
+					<div id = "div0">
+						<div class="tab-pane active" id="div1" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						</div>
+						<div class="tab-pane active" id="div3" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						</div>
+						<div class="tab-pane active" id="div4" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
+						</div>
 					</div>
 					<div class="tab-pane center" id="div2" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
 						<div class="input-group">
@@ -83,14 +86,18 @@
 		<script>		
 			//stampa di tutte le opere organizzate per artista e città
 			$(document).ready(function () {
-				var div_for_artists1 = document.getElementById("div1");
+				var div_for_artists1 = document.getElementById("div0");
 				var div_for_artists2 = document.getElementById("div2");
 				
 				div_for_artists1.style.display = "block";
 				div_for_artists2.style.display = "none";
 				
-				$( "h5" ).each(function() {
-					$( "h5" ).remove();
+				$( "h6" ).each(function() {
+					$( "h6" ).remove();
+				});
+				
+				$( "img" ).each(function() {
+					$( "img" ).remove();
 				});
 				
 				$('*').removeClass('active');
@@ -101,11 +108,19 @@
 			});
 			
 			jQuery("#artists1").click(function(e){
-				var div_for_artists1 = document.getElementById("div1");
+				var div_for_artists1 = document.getElementById("div0");
 				var div_for_artists2 = document.getElementById("div2");
 				
 				$( "h5" ).each(function() {
 					$( "h5" ).remove();
+				});
+				
+				$( "h6" ).each(function() {
+					$( "h6" ).remove();
+				});
+
+				$( "img" ).each(function() {
+					$( "img" ).remove();
 				});
 				
 				$('*').removeClass('active');
@@ -119,7 +134,7 @@
 			});
 			
 			jQuery("#artists2").click(function(e){
-				var div_for_artists1 = document.getElementById("div1");
+				var div_for_artists1 = document.getElementById("div0");
 				var div_for_artists2 = document.getElementById("div2");
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
@@ -180,11 +195,6 @@
 					success: function (dati) {
 						if(dati.head.vars){
 							var div;
-							//v var artists = "";
-							var intro = "Si consiglia la visione delle opere dei seguenti artisti";
-							div = $("#div1");
-							div.append($("<h5>", {text: intro})); 
-							div.append("</h5>");
 							var i = 0;
 							$.each(dati.results.bindings, function(index, entity){	
 								printArtist(entity, i);
@@ -237,35 +247,41 @@
 			}
 			
 			function printArtist(artist, id){
-				var srcImg1 = "img/paul-cezanne.jpeg";
-				var srcImg2 = "img/van-gogh.jpg";
-				var srcImg3 = "img/michelangelo-buonarroti.jpg";
+				var srcImg1 = "../img/paul-cezanne.jpeg";
+				var srcImg2 = "../img/van-gogh.jpg";
+				var srcImg3 = "../img/michelangelo-buonarroti.jpg";
 				var src = "";
 				var title = "";
-				$('#div1').append($("<h6>", {text: artist.artista.value.slice(artist.artista.value.search("#") + 1)})); 
-				$('#div1').append("</h6>");
-				$('#div1').append("<img />");
+				var div;
 				
 				if(id == 0){
 					src = srcImg1;
 					title = "Paul Cezanne";
+					div = $('#div1');
+					var intro = "Si consiglia la visione delle opere dei seguenti artisti";
+					div.append($("<h5>", {text: intro})); 
+					div.append("</h5>");
 				}else {
 					if(id == 1){
 						src = srcImg2;
+						title = "Van Gogh";
+						div = $('#div3');
 					}else{
 						src = srcImg3;
+						title = "Michelangelo Buonarroti";
+						div = $('#div4');
 					}
 				}
+								
+				div.append($("<h6>", {text: artist.artista.value.slice(artist.artista.value.search("#") + 1)})); 
+				div.append("</h6>");
 				
 				$('<img />')
-                    .attr('src', "" + src + "")         // ADD IMAGE PROPERTIES.
+                    .attr('src', "" + src + "")         // aggiunta delle proprietà per l'immagine
                     .attr('title', title)
                     .width('250').height('240')
 
-                    .appendTo($('#div1'));       // ADD THE IMAGE TO DIV.
-				
-				$('#div1').append("<br><br><br>");
-				
+                    .appendTo(div);       // aggiunta dell'immagine al div		
 			}
 		
 			function printOperasForArtists(table, entity){

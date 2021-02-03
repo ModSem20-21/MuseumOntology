@@ -1,0 +1,2 @@
+1) museum:Museo(?x) ^ museum:Opera(?x) -> museum:MuseoOpera(?x)
+2) museum:Opera(?x)  museum:realizzataNel(?x, ?a) -> museum:

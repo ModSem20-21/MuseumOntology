@@ -56,7 +56,6 @@
 					</a>
 				</li>
 			</ul>	
-			<br>
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
 					<div class="tab-pane active" id="div1" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
@@ -181,15 +180,16 @@
 					success: function (dati) {
 						if(dati.head.vars){
 							var div;
-							var artists = "";
+							//v var artists = "";
 							var intro = "Si consiglia la visione delle opere dei seguenti artisti";
 							div = $("#div1");
 							div.append($("<h5>", {text: intro})); 
 							div.append("</h5>");
-							$.each(dati.results.bindings, function(index, entity){
-								artists = artists + entity.artista.value.slice(entity.artista.value.search("#") + 1) + ", ";										
+							var i = 0;
+							$.each(dati.results.bindings, function(index, entity){	
+								printArtist(entity, i);
+								i++;
 							});
-							printArtists(artists);	
 						}
 					},
 					error: function (xhr){
@@ -236,14 +236,36 @@
 				});
 			}
 			
-			function printArtists(artists){
-				var div;
-				div = $("#div1");
-				artists = artists.substring(0, artists.length - 2);
-				div.append($("<h5>", {text: artists})); 
-				div.append("</h5>");
-				div.append($("<h5>", {text: "sono dei grandi artisti"})); 
-				div.append("</h5>");
+			function printArtist(artist, id){
+				var srcImg1 = "img/paul-cezanne.jpeg";
+				var srcImg2 = "img/van-gogh.jpg";
+				var srcImg3 = "img/michelangelo-buonarroti.jpg";
+				var src = "";
+				var title = "";
+				$('#div1').append($("<h6>", {text: artist.artista.value.slice(artist.artista.value.search("#") + 1)})); 
+				$('#div1').append("</h6>");
+				$('#div1').append("<img />");
+				
+				if(id == 0){
+					src = srcImg1;
+					title = "Paul Cezanne";
+				}else {
+					if(id == 1){
+						src = srcImg2;
+					}else{
+						src = srcImg3;
+					}
+				}
+				
+				$('<img />')
+                    .attr('src', "" + src + "")         // ADD IMAGE PROPERTIES.
+                    .attr('title', title)
+                    .width('250').height('240')
+
+                    .appendTo($('#div1'));       // ADD THE IMAGE TO DIV.
+				
+				$('#div1').append("<br><br><br>");
+				
 			}
 		
 			function printOperasForArtists(table, entity){

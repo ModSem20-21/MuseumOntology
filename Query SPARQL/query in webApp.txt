@@ -1,9 +1,0 @@
-4) SELECT ?opera ?museo ?citta ?nazione ?continente 
-	WHERE 
-		{?opera museum:operaMembroDi ?collezione. 
-		?collezione museum:presentataIn ?museo. 
-		?museo museum:museoInCitta ?citta. 
-		?citta museum:contenutaIn ?nazione. 
-		?nazione rdf:type museum:Nazione. 
-		?nazione museum:contenutaIn ?continente} 
-	ORDER BY ?continente, ?nazione

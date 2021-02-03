@@ -607,16 +607,15 @@
 				var numbers = /^[-+]?[0-9]+$/;
 				if(!(entityName.substring(1).match(numbers)))
 				{
-					row = $("<tr>").appendTo(table);	
-					row.append($("<td>", {text: entityName}));				
-					row.append($("</td>"));
-					if(city.substring(1).match(numbers)){
-						city = "/";
+					if(!city.substring(1).match(numbers)){
+						row = $("<tr>").appendTo(table);	
+						row.append($("<td>", {text: entityName}));				
+						row.append($("</td>"));
+						row.append($("<td>", {text: city}));
+						row.append($("</td>"));					
+						row.append($("<td>", {text: entityNation}));
+						row.append($("</tr>"));
 					}
-					row.append($("<td>", {text: city}));
-					row.append($("</td>"));					
-					row.append($("<td>", {text: entityNation}));
-					row.append($("</tr>"));
 				}
 			}
 					
@@ -636,17 +635,17 @@
 						var numbers = /^[-+]?[0-9]+$/;
 						if(!(entityName.substring(1).match(numbers)))
 						{
-							row = $("<tr>").appendTo(table);
-							row.append($("<td>", {text: entityName}));				
-							row.append($("</td>"));
-							if(city.substring(1).match(numbers)){
-								city = "/";
+							if(!city.substring(1).match(numbers)){
+								row = $("<tr>").appendTo(table);
+								row.append($("<td>", {text: entityName}));				
+								row.append($("</td>"));
+
+								row.append($("<td>", {text: city}));
+								row.append($("</td>"));							
+								row.append($("<td>", {text: nation}));
+								row.append($("</tr>"));
+								row.append($("</tr>"));
 							}
-							row.append($("<td>", {text: city}));
-							row.append($("</td>"));							
-							row.append($("<td>", {text: nation}));
-							row.append($("</tr>"));
-							row.append($("</tr>"));
 						}
 					}
 				}
@@ -660,15 +659,14 @@
 					var numbers = /^[-+]?[0-9]+$/;
 					if(!(entityName.substring(1).match(numbers)))
 					{
-						row = $("<tr>").appendTo(table);
-						row.append($("<td>", {text: entityName}));				
-						row.append($("</td>"));
-						if(city.substring(1).match(numbers)){
-							city = "/";
+						if(!city.substring(1).match(numbers)){
+							row = $("<tr>").appendTo(table);
+							row.append($("<td>", {text: entityName}));				
+							row.append($("</td>"));
+							row.append($("<td>", {text: city}));
+							row.append($("</td>"));	
+							row.append($("</tr>"));	
 						}
-						row.append($("<td>", {text: city}));
-						row.append($("</td>"));	
-						row.append($("</tr>"));	
 					}
 				}
 			}

@@ -46,7 +46,7 @@
 			<div class="tab-content tab-space tab-subcategories">
 				<div class="col-md-8 ml-auto mr-auto">
 					<div class="input-group">
-						<input id="artist" type="search" class="form-control rounded" placeholder="Cerca per artista" aria-label="Search" aria-describedby="search-addon" />
+						<input id="opera" type="search" class="form-control rounded" placeholder="Cerca opera" aria-label="Search" aria-describedby="search-addon" />
 						<button id="search" type="button" class="btn btn-outline-primary">Cerca</button>
 					</div>
 					<div class="tab-pane active" id="div_for_operas" style="background-color: white; margin: auto; width: 100%; padding: 10px;">
@@ -80,33 +80,33 @@
 				$( "tr" ).each(function() {
 					$( "tr" ).remove();
 				});
-				var artist = document.getElementById("artist").value;
-				document.getElementById("artist").value = "";
+				var opera = document.getElementById("opera").value;
+				document.getElementById("opera").value = "";
 				
 				var table = $("#table0");
 				createTable(table);
-				queryPrintOpera(table, artist);
+				queryPrintOpera(table, opera.split(' ').join(''));
 			});
 			
 			//funzione usata per impostare i nomi delle colonne della tabella in cui vengono stampati i risultati della query desiderata
 			function createTable(table){
 				var row = $("<tr>").appendTo(table);
 				
-				row.append($("<th> Artista </th>"));
 				row.append($("<th> Opera </th>"));
+				row.append($("<th> Artista </th>"));
 				row.append($("<th> Città </th>"));
 				row.append($("</tr>"));
 			}
 		
-			function queryPrintOpera(table, artist){
+			function queryPrintOpera(table, opera){
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
 				var query = "SELECT ?opera ?citta ?artista WHERE { ?opera museum:operaInCitta ?citta; museum:realizzatoDa ?artista.";
-				var filteringByCity = " } ORDER BY ?artista";
+				var filteringByCity = " } ORDER BY ?opera";
 				//se è stata specificata una città nella barra di ricerca, sarà fatto un filtraggio a livello di query proprio sulla città indicata
-				if(artist)
-					filteringByCity = " FILTER regex(?artista, \"" + artist + "\").} ORDER BY ?artista";
+				if(opera)
+					filteringByCity = " FILTER regex(?opera, \"" + opera + "\").} ORDER BY ?opera";
 				query = query + filteringByCity;
 
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
@@ -136,9 +136,9 @@
 			function printOperas(table, entity){
 				var row;
 				row = $("<tr>").appendTo(table);
-				row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
-				row.append($("</td>"));
 				row.append($("<td>", {text: entity.opera.value.slice(entity.opera.value.search("#") + 1)}));
+				row.append($("</td>"));
+				row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
 				row.append($("</td>"));
 				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
 				row.append($("</td>"));

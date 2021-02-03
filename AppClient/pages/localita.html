@@ -656,19 +656,22 @@
 				var entityName = entity.museoLabel.value;
 				var city = entity.unit__amministrativa_in_cui___situatoLabel.value;
 				var nation = entity.PaeseLabel.value;
+				var continent = entity.continenteLabel.value;
 				if(nation == "Stati Uniti d'America")
 					nation = "StatiUniti";
 				if(country == nation) {
-					var numbers = /^[-+]?[0-9]+$/;
-					if(!(entityName.substring(1).match(numbers)))
-					{
-						if(!city.substring(1).match(numbers)){
-							row = $("<tr>").appendTo(table);
-							row.append($("<td>", {text: entityName}));				
-							row.append($("</td>"));
-							row.append($("<td>", {text: city}));
-							row.append($("</td>"));	
-							row.append($("</tr>"));	
+					if(checkContinent(continent, nation)){
+						var numbers = /^[-+]?[0-9]+$/;
+						if(!(entityName.substring(1).match(numbers)))
+						{
+							if(!city.substring(1).match(numbers)){
+								row = $("<tr>").appendTo(table);
+								row.append($("<td>", {text: entityName}));				
+								row.append($("</td>"));
+								row.append($("<td>", {text: city}));
+								row.append($("</td>"));	
+								row.append($("</tr>"));	
+							}
 						}
 					}
 				}

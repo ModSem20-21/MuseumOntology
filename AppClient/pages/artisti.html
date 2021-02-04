@@ -255,7 +255,6 @@
 				var div;
 				
 				if(id == 0){
-					src = srcImg1;
 					title = "Paul Cezanne";
 					div = $('#div1');
 					var intro = "Si consiglia la visione delle opere dei seguenti artisti";
@@ -263,16 +262,25 @@
 					div.append("</h5>");
 				}else {
 					if(id == 1){
-						src = srcImg2;
 						title = "Van Gogh";
 						div = $('#div3');
 					}else{
-						src = srcImg3;
 						title = "Michelangelo Buonarroti";
 						div = $('#div4');
 					}
 				}
-								
+						
+				if((artist.artista.value.slice(artist.artista.value.search("#") + 1)) == "PaulCézanne"){
+					src = srcImg1;
+				}
+				else{
+					if((artist.artista.value.slice(artist.artista.value.search("#") + 1)) == "VincentVanGogh"){
+						src = srcImg2;
+					}else{
+						src = srcImg3;
+					}
+				}
+						
 				div.append($("<h6>", {text: artist.artista.value.slice(artist.artista.value.search("#") + 1)})); 
 				div.append("</h6>");
 				

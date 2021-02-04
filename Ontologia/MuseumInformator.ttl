@@ -1,4 +1,5 @@
 @prefix : <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#> .
+@prefix dbr: <http://dbpedia.org/resource/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -587,6 +588,13 @@ museum:CollezioneCostume rdf:type owl:Class ;
                          rdfs:label "CollezioneCostume"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneItaliana
+museum:CollezioneItaliana rdf:type owl:Class ;
+                          rdfs:subClassOf museum:Collezione ;
+                          rdfs:comment "Classe che contiene tutte le collezioni che risiedono in musei italiani"@it ;
+                          rdfs:label "CollezioneItaliana"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CollezioneOrnamento
 museum:CollezioneOrnamento rdf:type owl:Class ;
                            rdfs:subClassOf museum:Collezione ;
@@ -826,6 +834,13 @@ museum:OperaArchitettonica rdf:type owl:Class ;
                            rdfs:label "OperaArchitettonica"@it .
 
 
+###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaInComune
+museum:OperaInComune rdf:type owl:Class ;
+                     rdfs:subClassOf museum:Opera ;
+                     rdfs:comment "Opere realizzate da pù artisti"@it ;
+                     rdfs:label "OperaInComune"@it .
+
+
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#OperaLetteraria
 museum:OperaLetteraria rdf:type owl:Class ;
                        rdfs:subClassOf museum:Opera ;
@@ -933,6 +948,11 @@ museum:Scultura rdf:type owl:Class ;
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://dbpedia.org/resource/Villa_Medici
+dbr:Villa_Medici rdf:type owl:NamedIndividual ;
+                 rdfs:label "Villa_Medici"@it .
+
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova
 museum:AcquarioGenova rdf:type owl:NamedIndividual ,
@@ -1510,6 +1530,12 @@ museum:VincentVanGogh rdf:type owl:NamedIndividual ,
                                                                                    rdfs:label "MuseoD'Orsay"@it .
 
 
+###  https://dbpedia.org/resource/National_Gallery
+<https://dbpedia.org/resource/National_Gallery> rdf:type owl:NamedIndividual ;
+                                                rdfs:comment "Entità del museo National Gallery definito in DBPedia"@it ;
+                                                rdfs:label "National_Gallery"@it .
+
+
 #################################################################
 #    General axioms
 #################################################################
@@ -1644,7 +1670,83 @@ museum:VincentVanGogh rdf:type owl:NamedIndividual ,
 
 museum:x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
+museum:m rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:c rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:n rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:i rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
 museum:a rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:a1 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:o1 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:a2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S3"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> museum:Collezione ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:presentataIn ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> museum:x ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> museum:m
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:museoInCitta ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> museum:m ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> museum:c
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:contenutaIn ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> museum:c ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> museum:n
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:nomeNazione ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> museum:n ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> museum:i
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#containsIgnoreCase> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first museum:i ;
+                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                      rdf:first "italia"^^xsd:string ;
+                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                    ]
+                                                                                                                                                         ]
+                                                                                                            ] ;
+                                                                                                  rdf:rest rdf:nil
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> museum:CollezioneItaliana ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:x
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
@@ -1687,13 +1789,98 @@ museum:a rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
                                                                   <http://www.w3.org/2003/11/swrl#argument1> museum:x ;
                                                                   <http://www.w3.org/2003/11/swrl#argument2> museum:a
                                                                 ] ;
-                                                      rdf:rest rdf:nil
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first museum:a ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 1800 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
                                                     ]
                                          ] ;
    <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#classPredicate> museum:OperaModerna ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> museum:x
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S4"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:haRealizzato ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:a1 ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> museum:o1
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:haRealizzato ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> museum:a2 ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> museum:o2
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#SameIndividualAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> museum:o1 ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> museum:o2
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DifferentIndividualsAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> museum:a1 ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> museum:a2
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> museum:OperaInComune ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:o1
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S5"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> museum:nomeMuseo ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> museum:n
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#containsIgnoreCase> ;
+                                                                  <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                               rdf:first museum:n ;
+                                                                                                               rdf:rest [ rdf:type rdf:List ;
+                                                                                                                          rdf:first "National Gallery"^^xsd:string ;
+                                                                                                                          rdf:rest rdf:nil
+                                                                                                                        ]
+                                                                                                             ]
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#SameIndividualAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> museum:m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <https://dbpedia.org/resource/National_Gallery>
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]

@@ -1,2 +1,5 @@
 1) museum:Museo(?x) ^ museum:Opera(?x) -> museum:MuseoOpera(?x)
-2) museum:Opera(?x)  museum:realizzataNel(?x, ?a) -> museum:
+2) museum:Opera(?x) ^ museum:realizzataNel(?x, ?a) ^ swrlb:greaterThanOrEqual(?a, 1800) -> museum:OperaModerna(?x)
+3) museum:Collezione(?x) ^ museum:presentataIn(?x, ?m) ^ museum:museoInCitta(?m, ?c) ^ museum:contenutaIn(?c, ?n) ^ museum:nomeNazione(?n, ?i) ^ swrlb:containsIgnoreCase(?i, "italia") -> museum:CollezioneItaliana(?x)
+4) museum:haRealizzato(?a1, ?o1) ^ museum:haRealizzato(?a2, ?o2) ^ sameAs(?o1, ?o2) ^ differentFrom(?a1, ?a2) -> museum:OperaInComune(?o1)
+5) museum:nomeMuseo(?m, ?n) ^ swrlb:containsIgnoreCase(?n, "National Gallery") -> sameAs(?m, autogen0:National_Gallery)

@@ -23,7 +23,7 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="nav nav-tabs">
 						<li class="nav-item">
-							<a class="nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
+							<a class="nav-link active" href="homepage.html">Home<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="pages/localita.html">Località<span class="sr-only">(current)</span></a>
@@ -53,7 +53,8 @@
 						<br> Il sito offre diversi spunti interessanti per conoscere di più su luoghi e riferimenti così da incentivare percorsi turistici guidati virtuali e no.</p>
 					<br>
 					<img src="img/mole.jpeg" class="center" style="width:350px;height:300px;"></img>
-					<br><br><br>
+					<div class = "card-title text-center" id="div1"></div>
+					<br>
 				</div>
 			</div>
 		</div>
@@ -61,5 +62,85 @@
 		<footer class="footer">
 			<p>All Right Reserved © MuseumInformator 2020/2021 - Università degli Studi di Torino</p>
 		</footer>
+		
+		<script>
+			$(document).ready(function () {				
+				queryPrintCities();
+			});
+			
+			//ricerca del numero di musei nelle varie città
+			function queryPrintCities(){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT ?citta (count(*) as ?count) WHERE { ?museo museum:museoInCitta ?citta} GROUP BY ?citta";
+
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+					
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (dati) {
+						if(dati.head.vars){
+							queryCheckMostTouristicCity(dati);						
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+			
+			
+			function queryCheckMostTouristicCity(dati){
+				var key = "dba";
+				var url = "http://localhost:8890/sparql";
+				var defGIRI = "http://localhost:8890/DAV/MuseumInformator";
+				var query = "SELECT (MAX(?count) as ?max) WHERE{ SELECT ?citta (count(*) as ?count) WHERE { ?museo museum:museoInCitta ?citta} GROUP BY ?citta}";
+
+				//query necessaria per ottenere il numero massimo di musei presenti nelle città dell'ontologia
+				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query + "&wskey="+ key + "&format=json");
+				$.ajax({
+					dataType: 'jsonp',
+					url: queryUrl,
+					method: 'GET',
+
+					statusCode:{
+
+					},
+		
+					//blocco eseguito se la chiamata GET all'API del tool Virtuoso viene eseguita con successo
+					success: function (max) {
+						if(max.head.vars){
+							var maxValue = max.results.bindings[0].max.value;
+							$.each(dati.results.bindings, function(index, entity){	
+									
+								//se la città ha il numero di musei che coincide con maxValue, allora sarà stampato a video il suo nome
+								if(entity.count.value == maxValue){
+									printCity(entity);
+								}
+							});
+						}
+					},
+					error: function (xhr){
+						alert ("Errore nell'estrazione dei dati: " + xhr.status + " " + xhr.statusText);
+					}
+				});
+			}
+			
+			function printCity(entity){
+				var div = $("#div1");
+				console.log(entity);
+				div.append($("<p> ", {text: "Se stai cercando la città giusta da visitare, " + entity.citta.value.slice(entity.citta.value.search("#") + 1) +" potrebbe fare al caso tuo!"})); 
+				div.append("</p>");
+			
+			}
+		</script>
 	</body>
 </html>

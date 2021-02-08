@@ -192,6 +192,7 @@
 				}
 			}
 		
+			//ricerca delle opere, dell'artista che ha realizzato l'opera e la città in cui si trova
 			function queryPrintOpera(table, opera){
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
@@ -217,6 +218,7 @@
 					success: function (dati) {
 						if(dati.head.vars){
 							$.each(dati.results.bindings, function(index, entity){
+									//stampa dell'output ottenuto
 									printOperas(table, entity);										
 							});
 						}
@@ -227,6 +229,7 @@
 				});
 			}
 
+			//ricerca delle opere, l'artista che ha realizzato l'opera, l'anno di realizzazione e la descrizione dell'oper
 			function queryPrintOperaDescription(table, opera){
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";

@@ -509,7 +509,7 @@
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
-				var query = "SELECT ?museo ?citta ?nazione ?continente WHERE {?museo museum:museoInCitta ?citta. ?citta museum:contenutaIn ?nazione. ?nazione rdf:type museum:Nazione. ?nazione museum:contenutaIn ?continente} ORDER BY ?continente, ?nazione ";
+				var query = "SELECT ?museo ?citta ?nazione ?continente WHERE {?museo museum:museoInCitta ?citta. ?citta museum:contenutaIn ?nazione. ?nazione rdf:type museum:Nazione. ?nazione museum:contenutaIn ?continente} ORDER BY ?continente ?nazione";
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
 
 				$.ajax({

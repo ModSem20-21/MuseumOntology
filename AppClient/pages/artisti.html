@@ -180,7 +180,7 @@
 				var key = "dba";
 				var url = "http://localhost:8890/sparql";
 				var defGIRI= "http://localhost:8890/DAV/MuseumInformator";
-				var query = "SELECT ?artista ?count WHERE{ SELECT ?artista (COUNT(?artista) as ?count) WHERE { ?artista museum:haRealizzato ?opera.} } GROUP BY ?artista HAVING (?count > 1)";
+				var query = "SELECT ?artista ?count WHERE{ SELECT ?artista (COUNT(?artista) as ?count) WHERE { ?artista museum:haRealizzato ?opera.} GROUP BY ?artista } GROUP BY ?artista ?count HAVING (?count > 1)";
 
 				var queryUrl = encodeURI(url + "?default-graph-uri=" + defGIRI + "&query=" + query+ "&wskey="+ key + "&format=json");
 				$.ajax({

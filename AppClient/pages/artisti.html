@@ -295,14 +295,16 @@
 		
 			function printOperasForArtists(table, entity){
 				var row;
-				row = $("<tr>").appendTo(table);
-				row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
-				row.append($("</td>"));
-				row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));
-				row.append($("</td>"));
-				row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
-				row.append($("</td>"));
-				row.append($("</tr>"));
+				if(!(entity.museo.value == "https://dbpedia.org/resource/National_Gallery")){
+					row = $("<tr>").appendTo(table);
+					row.append($("<td>", {text: entity.artista.value.slice(entity.artista.value.search("#") + 1)})); 
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.museo.value.slice(entity.museo.value.search("#") + 1)}));
+					row.append($("</td>"));
+					row.append($("<td>", {text: entity.citta.value.slice(entity.citta.value.search("#") + 1)}));
+					row.append($("</td>"));
+					row.append($("</tr>"));
+				}
 			}
 		
 		</script>

@@ -416,8 +416,7 @@ museum:Architetto rdf:type owl:Class ;
                                       ] ;
                   rdfs:subClassOf museum:ArtistaFigurativo ;
                   rdfs:comment "Classe di artisti che realizza opere architettoniche"@it ;
-                  rdfs:label "Architetto"@it ;
-                  rdfs:seeAlso "http://dbpedia.org/ontology/Architect"^^xsd:string .
+                  rdfs:label "Architetto"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Artista
@@ -631,8 +630,7 @@ Ad esempio il metodo usato per realizzarle"""@it ;
 museum:Dipinto rdf:type owl:Class ;
                rdfs:subClassOf museum:Opera ;
                rdfs:comment "Classe che rappresenta i dipinti"@it ;
-               rdfs:label "Dipinto"@it ;
-               rdfs:seeAlso "http://dbpedia.org/ontology/Painting"^^xsd:string .
+               rdfs:label "Dipinto"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica
@@ -645,17 +643,14 @@ museum:EntitàGeografica rdf:type owl:Class ;
 museum:Film rdf:type owl:Class ;
             rdfs:subClassOf museum:Opera ;
             rdfs:comment "Classe che rappresenta opere cinematografiche"@it ;
-            rdfs:label "Film"@it ;
-            rdfs:seeAlso "http://dbpedia.org/ontology/Film"^^xsd:string ,
-                         "http://dbpedia.org/page/Film"^^xsd:string .
+            rdfs:label "Film"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografia
 museum:Fotografia rdf:type owl:Class ;
                   rdfs:subClassOf museum:Opera ;
                   rdfs:comment "Classe che rappresenta opere di tipo fotografico"@it ;
-                  rdfs:label "Fotografia"@it ;
-                  rdfs:seeAlso "http://dbpedia.org/page/Photograph"^^xsd:string .
+                  rdfs:label "Fotografia"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fotografo
@@ -667,8 +662,7 @@ museum:Fotografo rdf:type owl:Class ;
                                      ] ;
                  rdfs:subClassOf museum:ArtistaVisivo ;
                  rdfs:comment "Classe di artisti che realizza opere fotografiche"@it ;
-                 rdfs:label "Fotografo"@it ;
-                 rdfs:seeAlso "http://dbpedia.org/ontology/photographer"^^xsd:string .
+                 rdfs:label "Fotografo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumettista
@@ -680,8 +674,7 @@ museum:Fumettista rdf:type owl:Class ;
                                       ] ;
                   rdfs:subClassOf museum:ArtistaVisivo ;
                   rdfs:comment "Classe di artisti che realizza fumetti"@it ;
-                  rdfs:label "Fumettista"@it ;
-                  rdfs:seeAlso "http://dbpedia.org/ontology/ComicsCreator"^^xsd:string .
+                  rdfs:label "Fumettista"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Fumetto
@@ -864,8 +857,7 @@ museum:Pittore rdf:type owl:Class ;
                                    ] ;
                rdfs:subClassOf museum:ArtistaFigurativo ;
                rdfs:comment "Classe di artisti che realizza dipinti"@it ;
-               rdfs:label "Pittore"@it ;
-               rdfs:seeAlso "http://dbpedia.org/ontology/Painter"^^xsd:string .
+               rdfs:label "Pittore"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scrittore
@@ -877,8 +869,7 @@ museum:Scrittore rdf:type owl:Class ;
                                      ] ;
                  rdfs:subClassOf museum:ArtistaVisivo ;
                  rdfs:comment "Classe di artisti che realizza opere letterarie"@it ;
-                 rdfs:label "Scrittore"@it ;
-                 rdfs:seeAlso "http://dbpedia.org/ontology/writer"^^xsd:string .
+                 rdfs:label "Scrittore"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultore
@@ -890,16 +881,14 @@ museum:Scultore rdf:type owl:Class ;
                                     ] ;
                 rdfs:subClassOf museum:ArtistaFigurativo ;
                 rdfs:comment "Classe di artisti che realizza sculture"@it ;
-                rdfs:label "Scultore"@it ;
-                rdfs:seeAlso "http://dbpedia.org/ontology/Sculptor"^^xsd:string .
+                rdfs:label "Scultore"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Scultura
 museum:Scultura rdf:type owl:Class ;
                 rdfs:subClassOf museum:Opera ;
                 rdfs:comment "Classe che rappresenta le sculture"@it ;
-                rdfs:label "Scultura"@it ;
-                rdfs:seeAlso "http://dbpedia.org/page/Sculpture"^^xsd:string .
+                rdfs:label "Scultura"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CoseFatteDall'uomo

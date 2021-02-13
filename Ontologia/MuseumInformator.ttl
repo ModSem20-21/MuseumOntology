@@ -12,14 +12,14 @@
                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
                                                                         <http://purl.org/dc/elements/1.1/creators> """Pier Balestrucci
 Michele Lanotte"""^^xsd:string ;
-                                                                        <http://purl.org/dc/elements/1.1/date> ""^^xsd:dateTime ;
-                                                                        <http://purl.org/dc/elements/1.1/description> ""^^xsd:string ;
-                                                                        <http://purl.org/dc/elements/1.1/title> "Museum Informator"^^xsd:string ;
+                                                                        <http://purl.org/dc/elements/1.1/date> "2020-02-16" ;
+                                                                        <http://purl.org/dc/elements/1.1/description> "Ontologia per consultazione e ricerca di musei e collezioni"@it ;
+                                                                        <http://purl.org/dc/elements/1.1/title> "Museum Informator"@it ;
                                                                         <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology> ;
                                                                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> "museum"^^xsd:string ;
                                                                         <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> "http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#"^^xsd:string ;
                                                                         museum:reusesPatternAsTemplate <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
-                                                                        rdfs:label "MuseumInformator"^^xsd:string .
+                                                                        rdfs:label "MuseumInformator"@it .
 
 #################################################################
 #    Annotation properties
@@ -404,8 +404,7 @@ E71(x) ⊃ E70(x)"""@en ;
 museum:Acquario rdf:type owl:Class ;
                 rdfs:subClassOf museum:MuseoMarittimo ;
                 rdfs:comment "Classe che rappresenta gli acquari"@it ;
-                rdfs:label "Acquario"@it ;
-                rdfs:seeAlso "http://dbpedia.org/page/Public_aquarium"^^xsd:string .
+                rdfs:label "Acquario"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Architetto
@@ -428,8 +427,7 @@ museum:Artista rdf:type owl:Class ;
                                      owl:someValuesFrom museum:Opera
                                    ] ;
                rdfs:comment "La classe Artista rappresenta le principali categorie di artisti"@it ;
-               rdfs:label "Artista"@it ;
-               rdfs:seeAlso "http://dbpedia.org/ontology/Artist"^^xsd:string .
+               rdfs:label "Artista"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#ArtistaAudiovisivo
@@ -490,8 +488,7 @@ museum:Cineasta rdf:type owl:Class ;
 museum:Citta rdf:type owl:Class ;
              rdfs:subClassOf museum:EntitàGeografica ;
              rdfs:comment "Classe che rappresenta territori cittadini"@it ;
-             rdfs:label "Citta"@it ;
-             rdfs:seeAlso "http://dbpedia.org/ontology/city"^^xsd:string .
+             rdfs:label "Citta"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#CittàMoltoTuristica
@@ -619,8 +616,7 @@ museum:Continente rdf:type owl:Class ;
 -Asia
 -Europa
 -Oceania"""@it ;
-                  rdfs:label "Continente"@it ;
-                  rdfs:seeAlso "http://dbpedia.org/ontology/continent"^^xsd:string .
+                  rdfs:label "Continente"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Descrizione
@@ -641,7 +637,7 @@ museum:Dipinto rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#EntitàGeografica
 museum:EntitàGeografica rdf:type owl:Class ;
-                        rdfs:comment "Rappresenta la classe geografica dei luoghi"^^xsd:string ;
+                        rdfs:comment "Rappresenta la classe geografica dei luoghi"@it ;
                         rdfs:label "EntitàGeografica"@it .
 
 
@@ -701,8 +697,7 @@ museum:Fumetto rdf:type owl:Class ;
 museum:GiardinoBotanico rdf:type owl:Class ;
                         rdfs:subClassOf museum:Museo ;
                         rdfs:comment "Rappresenta musei botanici"@it ;
-                        rdfs:label "GiardinoBotanico"@it ;
-                        rdfs:seeAlso "http://dbpedia.org/page/Botanical_garden"^^xsd:string .
+                        rdfs:label "GiardinoBotanico"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Museo
@@ -713,8 +708,7 @@ museum:Museo rdf:type owl:Class ;
                                    owl:onClass museum:Citta
                                  ] ;
              rdfs:comment "Classe che rappresenta i musei"@it ;
-             rdfs:label "Museo"@it ;
-             rdfs:seeAlso "http://dbpedia.org/ontology/museum"^^xsd:string .
+             rdfs:label "Museo"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoArcheologico
@@ -783,8 +777,7 @@ museum:MuseoVirtuale rdf:type owl:Class ;
 museum:Nazione rdf:type owl:Class ;
                rdfs:subClassOf museum:EntitàGeografica ;
                rdfs:comment "Classe che rappresenta territori nazionali"@it ;
-               rdfs:label "Nazione"@it ;
-               rdfs:seeAlso "http://dbpedia.org/ontology/nation"^^xsd:string .
+               rdfs:label "Nazione"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#NazioneAfricana
@@ -925,8 +918,7 @@ museum:Scultura rdf:type owl:Class ;
 <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#MuseoD'Arte> rdf:type owl:Class ;
                                                                                   rdfs:subClassOf museum:Museo ;
                                                                                   rdfs:comment "Classe di musei d'arte"@it ;
-                                                                                  rdfs:label "MuseoD'Arte"@it ;
-                                                                                  rdfs:seeAlso "http://dbpedia.org/page/Art_museum"^^xsd:string .
+                                                                                  rdfs:label "MuseoD'Arte"@it .
 
 
 ###  https://w3id.org/arco/ontology/core/Method
@@ -949,11 +941,6 @@ museum:Scultura rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://dbpedia.org/resource/Villa_Medici
-dbr:Villa_Medici rdf:type owl:NamedIndividual ;
-                 rdfs:label "Villa_Medici"@it .
-
-
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#AcquarioGenova
 museum:AcquarioGenova rdf:type owl:NamedIndividual ,
                                museum:Acquario ;
@@ -969,8 +956,7 @@ museum:Africa rdf:type owl:NamedIndividual ,
                        museum:Continente ;
               museum:nomeContinente "Africa"^^xsd:string ;
               rdfs:comment "Individuo che rappresenta il continente africano"@it ;
-              rdfs:label "Africa"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Africa" .
+              rdfs:label "Africa"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Americhe
@@ -978,8 +964,7 @@ museum:Americhe rdf:type owl:NamedIndividual ,
                          museum:Continente ;
                 museum:nomeContinente "Americhe"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta il continente americano"@it ;
-                rdfs:label "Americhe"@it ;
-                rdfs:seeAlso "http://dbpedia.org/page/Americas" .
+                rdfs:label "Americhe"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Asia
@@ -987,8 +972,7 @@ museum:Asia rdf:type owl:NamedIndividual ,
                      museum:Continente ;
             museum:nomeContinente "Asia"^^xsd:string ;
             rdfs:comment "Individuo che rappresenta il continente asiatico"@it ;
-            rdfs:label "Asia"@it ;
-            rdfs:seeAlso "http://dbpedia.org/page/Asia" .
+            rdfs:label "Asia"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Berlino
@@ -1112,8 +1096,7 @@ museum:Europa rdf:type owl:NamedIndividual ,
                        museum:Continente ;
               museum:nomeContinente "Europa"^^xsd:string ;
               rdfs:comment "Individuo che rappresenta il continente europeo"@it ;
-              rdfs:label "Europa"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Europe" .
+              rdfs:label "Europa"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Francia
@@ -1122,8 +1105,7 @@ museum:Francia rdf:type owl:NamedIndividual ,
                museum:contenutaIn museum:Europa ;
                museum:nomeNazione "Francia"^^xsd:string ;
                rdfs:comment "Individuo che rappresenta la nazione francese"@it ;
-               rdfs:label "Francia"@it ;
-               rdfs:seeAlso "http://dbpedia.org/page/France"@it .
+               rdfs:label "Francia"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#GalleriaNazionaleRoma
@@ -1141,8 +1123,7 @@ museum:Genova rdf:type owl:NamedIndividual ,
               museum:cittaInNazione museum:Italia ;
               museum:nomeCittà "Genova"^^xsd:string ;
               rdfs:comment "Individuo che rappresenta la città di Genova"@it ;
-              rdfs:label "Genova"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Genoa"@it .
+              rdfs:label "Genova"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Germania
@@ -1151,8 +1132,7 @@ museum:Germania rdf:type owl:NamedIndividual ,
                 museum:contenutaIn museum:Europa ;
                 museum:nomeNazione "Germania"^^xsd:string ;
                 rdfs:comment "Individuo che rappresenta la nazione tedesca"@it ;
-                rdfs:label "Germania"@it ;
-                rdfs:seeAlso "http://dbpedia.org/page/Germany"@it .
+                rdfs:label "Germania"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Giappone
@@ -1161,7 +1141,9 @@ museum:Giappone rdf:type owl:NamedIndividual ,
                          museum:Nazione ,
                          museum:NazioneAsiatica ;
                 museum:contenutaIn museum:Asia ;
-                museum:nomeNazione "Giappone"^^xsd:string .
+                museum:nomeNazione "Giappone"^^xsd:string ;
+                rdfs:comment "Individuo che rappresenta la nazione giapponese"@it ;
+                rdfs:label "Giappone"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#HaradaNaojiro
@@ -1200,8 +1182,7 @@ museum:Inghilterra rdf:type owl:NamedIndividual ,
                    museum:contenutaIn museum:Europa ;
                    museum:nomeNazione "Inghilterra"^^xsd:string ;
                    rdfs:comment "Individuo che rappresenta la nazione inglese"@it ;
-                   rdfs:label "Inghilterra"@it ;
-                   rdfs:seeAlso "http://dbpedia.org/page/England"@it .
+                   rdfs:label "Inghilterra"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Italia
@@ -1210,8 +1191,7 @@ museum:Italia rdf:type owl:NamedIndividual ,
               museum:contenutaIn museum:Europa ;
               museum:nomeNazione "Italia" ;
               rdfs:comment "Individuo che rappresenta la nazione italiana"@it ;
-              rdfs:label "Italia"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Italy" .
+              rdfs:label "Italia"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#KannonBodhisattvaRidingTheDrago
@@ -1261,9 +1241,8 @@ museum:Londra rdf:type owl:NamedIndividual ,
                        museum:Citta ;
               museum:cittaInNazione museum:Inghilterra ;
               museum:nomeCittà "Londra"^^xsd:string ;
-              rdfs:label "Londra"@it ;
-              rdfs:seeAlso "Individuo che rappresenta la città di Londra"@it ,
-                           "http://dbpedia.org/page/London"@it .
+              rdfs:comment "Individuo che rappresenta la città di Londra"@it ;
+              rdfs:label "Londra"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Marc_Chagall
@@ -1336,8 +1315,7 @@ museum:NewYork rdf:type owl:NamedIndividual ,
                museum:cittaInNazione museum:StatiUniti ;
                museum:nomeCittà "New York"^^xsd:string ;
                rdfs:comment "Individuo che rappresenta la città di NewYork"@it ;
-               rdfs:label "NewYork"@it ;
-               rdfs:seeAlso "http://dbpedia.org/page/New_York_City" .
+               rdfs:label "NewYork"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Oceania
@@ -1345,8 +1323,7 @@ museum:Oceania rdf:type owl:NamedIndividual ,
                         museum:Continente ;
                museum:nomeContinente "Oceania"^^xsd:string ;
                rdfs:comment "Individuo che rappresenta il continente oceanico"@it ;
-               rdfs:label "Oceania"@it ;
-               rdfs:seeAlso "http://dbpedia.org/page/Oceania" .
+               rdfs:label "Oceania"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Parigi
@@ -1355,8 +1332,7 @@ museum:Parigi rdf:type owl:NamedIndividual ,
               museum:cittaInNazione museum:Francia ;
               museum:nomeCittà "Parigi"^^xsd:string ;
               rdfs:comment "Individuo che rappresenta la città di Parigi"@it ;
-              rdfs:label "Parigi"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Paris"@it .
+              rdfs:label "Parigi"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#PaulCézanne
@@ -1385,8 +1361,7 @@ museum:Pisa rdf:type owl:NamedIndividual ,
             museum:contenutaIn museum:Italia ;
             museum:nomeCittà "Pisa"^^xsd:string ;
             rdfs:comment "Individuo che rappresenta la cittadina italiana di Pisa"@it ;
-            rdfs:label "Pisa"@it ;
-            rdfs:seeAlso "http://dbpedia.org/page/Pisa"@it .
+            rdfs:label "Pisa"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#RenzoPiano
@@ -1403,8 +1378,7 @@ museum:Roma rdf:type owl:NamedIndividual ,
             museum:contenutaIn museum:Italia ;
             museum:nomeCittà "Roma"^^xsd:string ;
             rdfs:comment "Individuo che rappresenta la città di Roma"@it ;
-            rdfs:label "Roma"@it ;
-            rdfs:seeAlso "http://dbpedia.org/page/Rome"@it .
+            rdfs:label "Roma"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#SooLee
@@ -1428,8 +1402,7 @@ museum:StatiUniti rdf:type owl:NamedIndividual ,
                            museum:NazioneAmericana ;
                   museum:contenutaIn museum:Americhe ;
                   rdfs:comment "Individuo che rappresenta gli Stati Uniti d'America"@it ;
-                  rdfs:label "StatiUniti"@it ;
-                  rdfs:seeAlso "http://dbpedia.org/page/United_States"@it .
+                  rdfs:label "StatiUniti"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#StatuaDiRamsesII
@@ -1469,8 +1442,7 @@ museum:Torino rdf:type owl:NamedIndividual ,
               museum:cittaInNazione museum:Italia ;
               museum:nomeCittà "Torino"^^xsd:string ;
               rdfs:comment "Individuo che rappresenta la città di Torino"@it ;
-              rdfs:label "Torino"@it ;
-              rdfs:seeAlso "http://dbpedia.org/page/Turin" .
+              rdfs:label "Torino"@it .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#VincentVanGogh
@@ -1690,7 +1662,7 @@ museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
-   rdfs:label "S3"^^xsd:string ;
+   rdfs:label "S3" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
@@ -1750,7 +1722,7 @@ museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
-   rdfs:label "S1"^^xsd:string ;
+   rdfs:label "S1" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
@@ -1776,7 +1748,7 @@ museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
-   rdfs:label "S2"^^xsd:string ;
+   rdfs:label "S2" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
@@ -1815,7 +1787,7 @@ museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
-   rdfs:label "S4"^^xsd:string ;
+   rdfs:label "S4" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
@@ -1855,7 +1827,7 @@ museum:o2 rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment ""^^xsd:string ;
-   rdfs:label "S5"^^xsd:string ;
+   rdfs:label "S5" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;

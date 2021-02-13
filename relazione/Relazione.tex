@@ -118,7 +118,7 @@ a cura di
 I musei rivestono un ruolo importante per ogni società. Coinvolgono ed educano la comunità grazie alle parti di storia che raccontano. I musei scandiscono il tempo e celano storie nascoste che si svelano durante la visione delle opere.  
 Visitare un museo, lasciarsi ispirare da un’opera e trascorrere momenti in un luogo pieno di stimoli diventa una esperienza formativa oltre che educativa.
 
-Nel periodo storico in cui stiamo vivendo, la pandemia da covid19, i musei sono tra i pochi luoghi ancora accessibili sotto alcune e strette restrizioni. Sviluppare un progetto che stimoli l’interesse di più persone risulta essere oltre che una sfida professionale anche sociale.
+Nel periodo storico in cui stiamo vivendo, segnato dalla pandemia da covid19, i musei sono tra i pochi luoghi ancora accessibili sotto alcune e strette restrizioni. Sviluppare un progetto che stimoli l’interesse di più persone risulta essere oltre che una sfida professionale anche sociale.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Requisiti}
 L’obiettivo di questo progetto è creare innanzitutto uno strumento di consultazione. Infatti, seppur esistano numerosi siti web per i musei, questi risultano essere specifici di uno oppure di un insieme che ne condivide stesse caratteristiche (vicinanza geografica, temi, collezioni d’arte). 
@@ -213,7 +213,7 @@ Per i design pattern si è scelto di implementare “Collection” \\$http://www
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Documentazione con LODE}
-L’ontologia e le triple materializzate inferite sono state caricate in formato .owl e .ttl al seguente indirizzo Github: \href{https://github.com/ModSem20-21/MuseumOntology/tree/master/Ontologia}{ModSem20-21/MuseumOntology}.\\
+L’ontologia e le triple materializzate inferite sono state caricate in formato .owl e .ttl all'indirizzo Github: \href{https://github.com/ModSem20-21/MuseumOntology/tree/master/Ontologia}{ModSem20-21/MuseumOntology}.\\
 Inoltre, tramite lo strumento LODE è stata creata una documentazione dell’ontologia. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
@@ -337,7 +337,7 @@ Si precisa che il prefisso nelle tabelle ":" equivale a \\$<http://www.semanticw
 \end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{Queries SPARQL }
+\section{Queries SPARQL e Web App Client}
 Nella progettazione del flusso di interazione con l’utente e quindi, delle query SPARQL, si è mantenuta costante attenzione sugli obiettivi del progetto. Di fatti, si voleva creare sia un sistema di consultazione sia di creazione di itinerari turistici. 
 Una rappresentazione che mostra il risultato di questa fase è la seguente:
 \begin{figure}[!h]
@@ -348,7 +348,19 @@ Una rappresentazione che mostra il risultato di questa fase è la seguente:
 
 L’utente, in questo caso “Actor” nella figura, può chiedere al sistema di ricercare musei, artisti, opere o collezioni e per ciascuna di queste categorie usare una serie di filtri per facilitarla. Inoltre, questi ultimi sono generalmente pensati proprio per offrire anche la località di ciò che si cerca. Di rilievo è sicuramente il sistema di suggerimenti proposto. Seppur questo non sia un progetto orientato alla profilazione utente, si è sfruttata la struttura dell’ontologia per dare suggerimenti “naive”. Infatti, il sistema consiglierà all’utente di visitare città particolarmente turistiche o artisti che hanno prodotto molte opere.
 
-L’applicazione client realizzata a partire da questo modello è la seguente. Si noti che per ogni schermata vi è la query SPARQL realizzata a supporto dell’interazione.
+Il passo successivo è stato elaborare dei mockup che rendessero l'idea di ciò che sarebbe stata l'interazione.
+\begin{figure}[!ht]
+   \centering
+   \includegraphics[scale=0.35]{fig/moqup1.png}
+   \caption{Mockup - Interazione con "Musei"}\label{fig:picture}
+\end{figure}
+\begin{figure}[!ht]
+   \centering
+   \includegraphics[scale=0.35]{fig/moqup2.png}
+   \caption{Mockup - Interazione con "Artisti"}\label{fig:picture}
+\end{figure}
+
+L’applicazione client realizzata a partire dalla fase di progettazione verrà esaminata nelle successive pagine. Si noti che per ogni schermata vi è la query SPARQL realizzata a supporto dell’interazione. Ciò è stato reso possibile caricando l'ontologia inferita su Virtuoso e interrogando l'endpoint SPARQL messo a disposizione.
 
 \begin{figure}[!ht]
    \centering
@@ -425,7 +437,8 @@ Le query in ordine per schermata sono:
  \item SELECT ?artista ?museo ?citta WHERE {?artista museum:presentaIn ?museo. ?museo museum:museoInCitta ?citta. FILTER regex(?artista, $<$artista$>$).} ORDER BY ?artista
 \end{itemize} 
 
-Essendo l’ontologia piccola, si è preferito definire grandi artisti coloro i quali abbiano almeno realizzato più di un’opera.
+Essendo l’ontologia piccola, si è preferito definire grandi artisti coloro i quali abbiano almeno realizzato più di un’opera.\\
+Per una visione completa di tutte le query SPARQL formulate si rimanda a questo \href{https://github.com/ModSem20-21/MuseumOntology/blob/master/Query%20SPARQL/Query%20SPARQL.pdf}{link}.
 
 \begin{figure}[!p]
    \centering
@@ -487,9 +500,9 @@ sameAs(?m, autogen0:National\_Gallery)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Conclusioni}
-Il progetto presentato mostra sicuramente molti e possibili futuri sviluppi. Innanzitutto vi è la possibilità di continuare ad arricchire l'ontologia
+Il progetto presentato mostra sicuramente diversi possibili futuri sviluppi. Innanzitutto vi è la possibilità di continuare ad arricchire l'ontologia
 aggiungendo istanze di musei, opere e artisti.\\
-Inoltre, esistendo diversi standard che riguardano la stessa materia è possibile fare ulteriori
+Inoltre, essendoci diversi standard che riguardano la stessa materia è possibile fare ulteriori
 allineamenti con questi e rendere l'ontologia siffatta più interoperabile. \\
 Oltre a ciò, sarebbe interessante sviluppare un sistema più ingegnoso di suggerimenti per gli utenti e per la creazione di itinerari turistici.\\
 Per il primo sarebbe necessario introdurre un sistema di profilazione che quindi possa in automatico filtrare le ricerche in base all'utente che sta navigando;

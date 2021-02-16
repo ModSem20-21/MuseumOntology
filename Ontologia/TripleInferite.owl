@@ -3486,37 +3486,37 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <Body>
             <ClassAtom>
                 <Class IRI="#Collezione"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="#presentataIn"/>
-                <Variable IRI="#x"/>
-                <Variable IRI="#m"/>
+                <Variable IRI="urn:swrl:var#x"/>
+                <Variable IRI="urn:swrl:var#m"/>
             </ObjectPropertyAtom>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="#museoInCitta"/>
-                <Variable IRI="#m"/>
-                <Variable IRI="#c"/>
+                <Variable IRI="urn:swrl:var#m"/>
+                <Variable IRI="urn:swrl:var#c"/>
             </ObjectPropertyAtom>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="#contenutaIn"/>
-                <Variable IRI="#c"/>
-                <Variable IRI="#n"/>
+                <Variable IRI="urn:swrl:var#c"/>
+                <Variable IRI="urn:swrl:var#n"/>
             </ObjectPropertyAtom>
             <DataPropertyAtom>
                 <DataProperty IRI="#nomeNazione"/>
-                <Variable IRI="#n"/>
-                <Variable IRI="#i"/>
+                <Variable IRI="urn:swrl:var#n"/>
+                <Variable IRI="urn:swrl:var#i"/>
             </DataPropertyAtom>
             <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#containsIgnoreCase">
-                <Variable IRI="#i"/>
+                <Variable IRI="urn:swrl:var#i"/>
                 <Literal>italia</Literal>
             </BuiltInAtom>
         </Body>
         <Head>
             <ClassAtom>
                 <Class IRI="#CollezioneItaliana"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
         </Head>
     </DLSafeRule>
@@ -3536,17 +3536,17 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <Body>
             <ClassAtom>
                 <Class IRI="#Museo"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
             <ClassAtom>
                 <Class IRI="#Opera"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
         </Body>
         <Head>
             <ClassAtom>
                 <Class IRI="#MuseoOpera"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
         </Head>
     </DLSafeRule>
@@ -3566,22 +3566,22 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <Body>
             <ClassAtom>
                 <Class IRI="#Opera"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
             <DataPropertyAtom>
                 <DataProperty IRI="#realizzataNel"/>
-                <Variable IRI="#x"/>
-                <Variable IRI="#a"/>
+                <Variable IRI="urn:swrl:var#x"/>
+                <Variable IRI="urn:swrl:var#a"/>
             </DataPropertyAtom>
             <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual">
-                <Variable IRI="#a"/>
+                <Variable IRI="urn:swrl:var#a"/>
                 <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1800</Literal>
             </BuiltInAtom>
         </Body>
         <Head>
             <ClassAtom>
                 <Class IRI="#OperaModerna"/>
-                <Variable IRI="#x"/>
+                <Variable IRI="urn:swrl:var#x"/>
             </ClassAtom>
         </Head>
     </DLSafeRule>
@@ -3601,27 +3601,27 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <Body>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="#haRealizzato"/>
-                <Variable IRI="#a1"/>
-                <Variable IRI="#o1"/>
+                <Variable IRI="urn:swrl:var#a1"/>
+                <Variable IRI="urn:swrl:var#o1"/>
             </ObjectPropertyAtom>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="#haRealizzato"/>
-                <Variable IRI="#a2"/>
-                <Variable IRI="#o2"/>
+                <Variable IRI="urn:swrl:var#a2"/>
+                <Variable IRI="urn:swrl:var#o2"/>
             </ObjectPropertyAtom>
             <SameIndividualAtom>
-                <Variable IRI="#o1"/>
-                <Variable IRI="#o2"/>
+                <Variable IRI="urn:swrl:var#o1"/>
+                <Variable IRI="urn:swrl:var#o2"/>
             </SameIndividualAtom>
             <DifferentIndividualsAtom>
-                <Variable IRI="#a1"/>
-                <Variable IRI="#a2"/>
+                <Variable IRI="urn:swrl:var#a1"/>
+                <Variable IRI="urn:swrl:var#a2"/>
             </DifferentIndividualsAtom>
         </Body>
         <Head>
             <ClassAtom>
                 <Class IRI="#OperaInComune"/>
-                <Variable IRI="#o1"/>
+                <Variable IRI="urn:swrl:var#o1"/>
             </ClassAtom>
         </Head>
     </DLSafeRule>
@@ -3641,17 +3641,17 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
         <Body>
             <DataPropertyAtom>
                 <DataProperty IRI="#nomeMuseo"/>
-                <Variable IRI="#m"/>
-                <Variable IRI="#n"/>
+                <Variable IRI="urn:swrl:var#m"/>
+                <Variable IRI="urn:swrl:var#n"/>
             </DataPropertyAtom>
             <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#containsIgnoreCase">
-                <Variable IRI="#n"/>
+                <Variable IRI="urn:swrl:var#n"/>
                 <Literal>National Gallery</Literal>
             </BuiltInAtom>
         </Body>
         <Head>
             <SameIndividualAtom>
-                <Variable IRI="#m"/>
+                <Variable IRI="urn:swrl:var#m"/>
                 <NamedIndividual IRI="https://dbpedia.org/resource/National_Gallery"/>
             </SameIndividualAtom>
         </Head>

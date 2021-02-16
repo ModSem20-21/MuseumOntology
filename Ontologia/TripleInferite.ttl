@@ -12,11 +12,24 @@ Michele Lanotte""" ;
                                                                        <http://purl.org/dc/elements/1.1/date> "2020-02-16" ;
                                                                        <http://purl.org/dc/elements/1.1/description> "Ontologia per consultazione e ricerca di musei e collezioni"@it ;
                                                                        <http://purl.org/dc/elements/1.1/title> "Museum Informator"@it ;
-                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology> ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology> ,
+                                                                                                                                                                 "What things are contained in this collection (community, collective)? What collections this thing is member of?" ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#extractedFrom> "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl" ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "Aldo Gangemi" ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasConsequences> "Collections and their members can be associated. Time-indexed membership cannot be represented though (you need a situation-based pattern)." ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent> "To represent domain (not set theory) membership." ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs> "TimeIndexedMembership" ;
+                                                                       <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios> "My saxophone collection includes a Mark VI tenor, a Balanced Action alto, and a Conn Transitional bari." ;
                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix> "museum" ;
                                                                        <http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNampespaceUri> "http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#" ;
                                                                        :reusesPatternAsTemplate <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
-                                                                       rdfs:label "MuseumInformator"@it .
+                                                                       rdfs:comment """The collection entity pattern. 
+It is extracted from DOLCE-UltraLite by partial clone of elements.""" ;
+                                                                       rdfs:label "MuseumInformator"@it ,
+                                                                                  "collection entity" ,
+                                                                                  "membership" ;
+                                                                       owl:versionInfo "1.1 added rdfs:isDefinedBy for all named entities"^^xsd:string ,
+                                                                                       "Created by Aldo Gangemi and Valentina Presutti"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -43,7 +56,37 @@ Michele Lanotte""" ;
 
 
 ###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
-<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> rdf:type owl:AnnotationProperty .
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> rdf:type owl:AnnotationProperty ;
+                                                                                          rdfs:comment "This annotation property is used for exemplifying possible requirements the content pattern provides a solution for. Requirements are expressed as natural language competency questions." .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#extractedFrom
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#extractedFrom> rdf:type owl:AnnotationProperty ;
+                                                                                     rdfs:comment "This annotation property should be assigned with a URI, which points to the possible reference ontology which the annotated pattern was extracted from (i.e. the reference ontology that the ontology elements have been deeply or partially cloned by). The range is not explicit in the definition of the annotation property because it would turn the ontology to OWL Full. E.g. The participation pattern is extracted from the Dolce Ultra Lite ontology, hence the value for this annotation property is http://www.ontologydesignpatterns.org/ont/dul/DUL.owl" .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasConsequences
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasConsequences> rdf:type owl:AnnotationProperty ;
+                                                                                       rdfs:comment "This annotation property is used for briefly describing the benefits and/or possible trade-offs when using the CP." .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent> rdf:type owl:AnnotationProperty ;
+                                                                                 rdfs:comment "This annotation property is used in order to describe the intent of the content pattern." .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#relatedCPs> rdf:type owl:AnnotationProperty ;
+                                                                                  rdfs:comment "This annotation property can be used to indicate other CPs (if any) that specialize, generalize, inlcude, or are components of the CP. Furthermore, this field may indicate other CPs that are typically used in conjunction with the described one. Important similarities and differences with other patterns can be also described here." .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios> rdf:type owl:AnnotationProperty ;
+                                                                                 rdfs:comment "This annotation property is used for describing examples of instantiation of the Content OP. For example, for the part-of Content OP (which represents part-whole relations) a possible scenario is the sentence: \"the brain is part of the human body\". Scenarios are expressed as natural language sentences." .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumInformator/vann:preferredNamespacePrefix
@@ -63,11 +106,21 @@ Michele Lanotte""" ;
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember
-<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> rdf:type owl:ObjectProperty .
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> rdf:type owl:ObjectProperty ;
+                                                                              owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
+                                                                              rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                              rdfs:range owl:Thing ;
+                                                                              rdfs:comment "A relation between collections and entities, e.g. 'my collection of saxophones includes an old Adolphe Sax original alto' (i.e. my collection has member an Adolphe Sax alto)." ;
+                                                                              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
+                                                                              rdfs:label "has member"@en .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf
-<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> rdf:type owl:ObjectProperty .
+<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:domain owl:Thing ;
+                                                                               rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                               rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
+                                                                               rdfs:label "is member of"@en .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#cittaHaMuseo
@@ -399,7 +452,10 @@ E71(x) ⊃ E70(x)"""@en ;
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection
 <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> rdf:type owl:Class ;
-                                                                               owl:equivalentClass :Collezione .
+                                                                               owl:equivalentClass :Collezione ;
+                                                                               rdfs:comment "Any container for entities that share one or more common properties. E.g. \"stone objects\", \"the nurses\", \"the Louvre Aegyptian collection\". A collection is not a logical class: a collection is a first-order entity, while a class is a second-order one." ;
+                                                                               rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
+                                                                               rdfs:label "Collection"@en .
 
 
 ###  http://www.semanticweb.org/utente/ontologies/2020/11/MuseumOntology#Acquario
@@ -1782,6 +1838,25 @@ Databile tra il 1497 e il 1499, la Pietà è considerata il primo capolavoro del
                                                 :nomeMuseo "National Gallery"^^xsd:string ;
                                                 rdfs:comment "Entità del museo National Gallery definito in DBPedia"@it ;
                                                 rdfs:label "National_Gallery"@it .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasComponent> rdfs:comment "This annotation property is useful for content ontology design patterns. Its value is a URI, which refers to another content ontology design pattern which is a component of the annotated one." .
+
+
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasUnitTest> rdfs:comment "This property can be used to annotate a unit test (e.g. in the form of a SPARQL query) to be launched to evaluate an ontology against a requirement-based task." .
+
+
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> rdfs:comment "This annotation property is used for referring a cloned ontology entity to its cloning source." .
+
+
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isSpecializationOf> rdfs:comment "This annotation property is useful for content ontology design patterns and its elements. Its value is a URI, which refers either to a content ontology design pattern that is specialized by the annotated one, or to an ontology element that is specialized by the annotated one." .
+
+
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#reengineeredFrom> rdfs:comment "This annotation property should be assigned with a URI, which points to the concept schema, page, or anything else from which the annotated pattern was reengineered.  If the source does not have any URI e.g., a printed book, this property value should provide information as precise as possible in order to identify the source. This property is alternative to the extractedFrom property because it is used when the pattern come from a concept schema which is not an owl ontology. For example content ontology design patterns, which are reengineered from data model patterns, rdf schemas, etc. should be annotatd with this property. E.g. The basicpersonalfoaf pattern is extracted from the rdf FOAF specification, hence the value for this annotation property is http://xmlns.com/foaf/spec/20071002.rdf" .
 
 
 #################################################################
